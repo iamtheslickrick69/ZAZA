@@ -7,7 +7,7 @@ import {
     YoutubeIcon,
 } from 'lucide-react';
 import Image from 'next/image';
-import { SparkIcon } from '@/components/ui/spark-icon';
+import { HoneycombLoader } from '@/components/ui/honeycomb-loader';
 
 export function MinimalFooter() {
     const year = new Date().getFullYear();
@@ -91,9 +91,8 @@ export function MinimalFooter() {
                 <div className="grid max-w-4xl grid-cols-6 gap-6 p-4">
                     <div className="col-span-6 flex flex-col gap-5 md:col-span-4">
                         <a href="/" className="w-max flex items-center gap-2">
-                            <SparkIcon
+                            <HoneycombLoader
                                 size={24}
-                                className="text-neutral-700 dark:text-neutral-200"
                             />
                             <Image
                                 src="/logo/black.png"

@@ -13,7 +13,7 @@ import {
 import { useTheme } from 'next-themes';
 import { Dock, DockIcon, DockItem, DockLabel } from '@/components/ui/dock';
 import { useEffect, useState } from 'react';
-import Image from 'next/image';
+import { HoneycombLoader } from '@/components/ui/honeycomb-loader';
 
 const navigationItems = [
   {
@@ -68,14 +68,7 @@ export function DockNav() {
           <DockLabel>Home</DockLabel>
           <DockIcon>
             <a href='/' className='h-full w-full flex items-center justify-center'>
-              <Image
-                src='/icon.svg'
-                alt='Haestus'
-                width={32}
-                height={32}
-                className='h-8 w-8'
-                priority
-              />
+              <HoneycombLoader size={24} />
             </a>
           </DockIcon>
         </DockItem>

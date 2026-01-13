@@ -4,7 +4,7 @@ import React, { useEffect, useState, useRef } from "react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
-import { SparkIconInteractive } from "@/components/ui/spark-icon";
+import { HoneycombLoader } from "@/components/ui/honeycomb-loader";
 import { MissionModal } from "@/components/MissionModal";
 
 export function HeroSectionAnimated() {
@@ -61,12 +61,11 @@ export function HeroSectionAnimated() {
           transition={{ duration: 1, ease: "easeOut" }}
           className="mb-12 flex items-center gap-4"
         >
-          {/* Lambda Icon - clickable for mission modal */}
+          {/* Honeycomb Icon - clickable for mission modal */}
           <div ref={sparkIconRef}>
-            <SparkIconInteractive
+            <HoneycombLoader
               size={56}
-              color="#C00008"
-              className="opacity-70 hover:opacity-100 transition-opacity"
+              className="opacity-90 hover:opacity-100 transition-opacity"
               onClick={handleOpenMission}
             />
           </div>

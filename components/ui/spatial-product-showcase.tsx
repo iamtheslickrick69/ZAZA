@@ -1,7 +1,7 @@
 'use client';
 
-import { useState, useRef, useCallback } from 'react';
-import { motion, AnimatePresence, Variants, useMotionValue, useSpring, useTransform } from 'framer-motion';
+import { useState, useRef } from 'react';
+import { motion, AnimatePresence, useMotionValue, useSpring } from 'framer-motion';
 import {
   Clock,
   XCircle,
@@ -9,11 +9,15 @@ import {
   UserX,
   Rocket,
   Sparkles,
-  Check,
   Zap,
   LucideIcon,
+  DollarSign,
+  Ghost,
+  Bot,
+  Wrench,
+  TrendingUp,
+  Brain,
 } from 'lucide-react';
-import { ImageComparisonModal } from '@/components/ImageComparisonModal';
 
 // =========================================
 // 1. CONFIGURATION & DATA TYPES
@@ -33,7 +37,6 @@ export interface ProductData {
   title: string;
   subtitle: string;
   description: string;
-  image: string;
   features: FeatureMetric[];
 }
 
@@ -48,27 +51,29 @@ const PRODUCT_DATA: Record<ProductId, ProductData> = {
     label: '2025>',
     title: 'Static Sites',
     subtitle: 'Is your website more like a PDF?',
-    description: 'The old way of building websites. Slow timelines, endless revisions, and sites that feel outdated before they even launch.',
-    image: '/before.png',
+    description: 'The old way of building websites. Slow timelines, endless revisions, paying for every tiny change, and a site that just sits there doing nothing while your competitors pull ahead.',
     features: [
       { label: 'Months before launch', icon: Clock, isNegative: true },
       { label: 'Hostage to developers', icon: UserX, isNegative: true },
       { label: 'Every edit needs a ticket', icon: AlertTriangle, isNegative: true },
-      { label: 'Outdated on arrival', icon: XCircle, isNegative: true },
+      { label: 'Paying for every tiny change', icon: DollarSign, isNegative: true },
+      { label: 'No SEO, no traffic, no leads', icon: Ghost, isNegative: true },
+      { label: 'Site just sits there doing nothing', icon: XCircle, isNegative: true },
     ],
   },
   after: {
     id: 'after',
     label: 'AGI Sites',
-    title: 'Intelligent Web',
-    subtitle: 'Websites that work for you.',
-    description: 'AI-powered sites that launch fast, update easily, and evolve with your business. The future of web is here.',
-    image: '/after.png',
+    title: 'Your 24/7 Digital Employee',
+    subtitle: 'Not just a website. An AI-powered team member.',
+    description: 'AGI means Artificial General Intelligence—an AI trained specifically on YOUR business. It watches, learns, and works around the clock. We handle all updates, build custom AI features, and your site gets smarter every single day.',
     features: [
+      { label: 'AI trained on YOUR business', icon: Brain },
+      { label: 'We handle all updates', icon: Wrench },
+      { label: 'Custom AI features built for you', icon: Bot },
+      { label: 'AI-powered SEO & blogs', icon: TrendingUp },
       { label: 'Live in days, not months', icon: Rocket },
-      { label: 'Update anything yourself', icon: Check },
-      { label: 'AI features built-in', icon: Sparkles },
-      { label: 'Evolves with your business', icon: Zap },
+      { label: 'Gets smarter over time', icon: Zap },
     ],
   },
 };
@@ -98,25 +103,6 @@ const ANIMATIONS = {
     },
     exit: { opacity: 0, y: -10 },
   },
-  image: (isBefore: boolean): Variants => ({
-    initial: {
-      opacity: 0,
-      scale: 0.95,
-      y: 30,
-    },
-    animate: {
-      opacity: 1,
-      scale: 1,
-      y: 0,
-      transition: { type: 'spring', stiffness: 200, damping: 25 },
-    },
-    exit: {
-      opacity: 0,
-      scale: 0.98,
-      y: -20,
-      transition: { duration: 0.3 },
-    },
-  }),
 };
 
 // =========================================
@@ -145,13 +131,11 @@ const MagneticButton = ({
   className,
   onClick,
   style,
-  isActive,
 }: {
   children: React.ReactNode;
   className?: string;
   onClick?: () => void;
   style?: React.CSSProperties;
-  isActive?: boolean;
 }) => {
   const ref = useRef<HTMLButtonElement>(null);
   const x = useMotionValue(0);
@@ -269,100 +253,6 @@ const Switcher = ({
   );
 };
 
-const ProductImage = ({
-  data,
-  isBefore,
-  onImageClick
-}: {
-  data: ProductData;
-  isBefore: boolean;
-  onImageClick: () => void;
-}) => {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const mouseX = useMotionValue(0);
-  const mouseY = useMotionValue(0);
-
-  const springConfig = { damping: 20, stiffness: 100 };
-  const springX = useSpring(mouseX, springConfig);
-  const springY = useSpring(mouseY, springConfig);
-
-  // Cursor-following glow gradient
-  const glowGradient = useTransform(
-    [springX, springY],
-    ([x, y]: number[]) =>
-      `radial-gradient(400px circle at ${x}px ${y}px, ${isBefore ? BRAND_RED : BRAND_BLUE}20, transparent 40%)`
-  );
-
-  const handleMouseMove = useCallback((e: React.MouseEvent) => {
-    if (!containerRef.current) return;
-    const rect = containerRef.current.getBoundingClientRect();
-    mouseX.set(e.clientX - rect.left);
-    mouseY.set(e.clientY - rect.top);
-  }, [mouseX, mouseY]);
-
-  return (
-    <motion.div
-      ref={containerRef}
-      onClick={onImageClick}
-      onMouseMove={handleMouseMove}
-      className="relative group block transition-transform duration-300 cursor-pointer w-full rounded-2xl overflow-hidden"
-      whileHover={{ scale: 1.02 }}
-      whileTap={{ scale: 0.99 }}
-    >
-      {/* Cursor-following glow overlay */}
-      <motion.div
-        className="absolute inset-0 z-10 pointer-events-none rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-        style={{ background: glowGradient }}
-      />
-
-      <AnimatePresence mode="wait">
-        <motion.img
-          key={data.id}
-          src={data.image}
-          alt={data.title}
-          variants={ANIMATIONS.image(isBefore)}
-          initial="initial"
-          animate="animate"
-          exit="exit"
-          className="w-full h-auto object-contain rounded-2xl shadow-xl"
-          draggable={false}
-        />
-      </AnimatePresence>
-
-      {/* Click to compare badge with pulse animation */}
-      <motion.div
-        className="absolute top-4 right-4 transition-all duration-200 z-20"
-        initial={{ opacity: 0, scale: 0.8 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ delay: 0.3 }}
-      >
-        <motion.div
-          className="flex items-center gap-1.5 px-3 py-1.5 rounded-full backdrop-blur-sm text-white text-xs font-medium transition-all group-hover:scale-105"
-          style={{
-            background: isBefore ? 'rgba(192, 0, 8, 0.9)' : 'rgba(0, 106, 170, 0.9)',
-          }}
-          animate={{
-            boxShadow: [
-              `0 0 0 0 ${isBefore ? BRAND_RED : BRAND_BLUE}40`,
-              `0 0 0 8px ${isBefore ? BRAND_RED : BRAND_BLUE}00`,
-            ],
-          }}
-          transition={{
-            duration: 2,
-            repeat: Infinity,
-            ease: "easeOut",
-          }}
-        >
-          <span>Click to Compare</span>
-          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-            <path d="M8 3H5a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-3M15 3h6v6M10 14L21 3" />
-          </svg>
-        </motion.div>
-      </motion.div>
-    </motion.div>
-  );
-};
-
 const ProductDetails = ({ data, isBefore }: { data: ProductData; isBefore: boolean }) => {
   const accentColor = isBefore ? BRAND_RED : BRAND_BLUE;
 
@@ -395,8 +285,8 @@ const ProductDetails = ({ data, isBefore }: { data: ProductData; isBefore: boole
         {data.description}
       </motion.p>
 
-      {/* Features Grid - 2x2 side by side */}
-      <motion.div variants={ANIMATIONS.item} className="grid grid-cols-2 gap-3">
+      {/* Features Grid - 2x3 for 6 features */}
+      <motion.div variants={ANIMATIONS.item} className="grid grid-cols-2 md:grid-cols-3 gap-3">
         {data.features.map((feature, idx) => (
           <motion.div
             key={feature.label}
@@ -418,20 +308,29 @@ const ProductDetails = ({ data, isBefore }: { data: ProductData; isBefore: boole
         ))}
       </motion.div>
 
-      {/* CTA Button - Magnetic with glow */}
-      <motion.div variants={ANIMATIONS.item} className="mt-6">
+      {/* CTA Button - Different for each tab */}
+      <motion.div variants={ANIMATIONS.item} className="mt-8">
         <MagneticButton
-          className="inline-flex items-center gap-2 px-6 py-3 text-white text-sm font-medium rounded-full shadow-lg transition-shadow hover:shadow-xl"
+          className="inline-flex items-center gap-2 px-8 py-4 text-white text-base font-semibold rounded-full shadow-lg transition-shadow hover:shadow-xl"
           style={{
             background: isBefore ? BRAND_RED : BRAND_BLUE,
-            boxShadow: isBefore ? '0 10px 40px rgba(192, 0, 8, 0.25)' : '0 10px 40px rgba(0, 106, 170, 0.25)',
+            boxShadow: isBefore ? '0 10px 40px rgba(192, 0, 8, 0.3)' : '0 10px 40px rgba(0, 106, 170, 0.3)',
           }}
           onClick={() => {
             document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
           }}
         >
-          <Sparkles size={18} />
-          <span>See What&apos;s Possible</span>
+          {isBefore ? (
+            <>
+              <Rocket size={20} />
+              <span>Escape the Old Way</span>
+            </>
+          ) : (
+            <>
+              <Bot size={20} />
+              <span>Meet Your AI Team</span>
+            </>
+          )}
         </MagneticButton>
       </motion.div>
     </motion.div>
@@ -444,17 +343,12 @@ const ProductDetails = ({ data, isBefore }: { data: ProductData; isBefore: boole
 
 export default function SmartSitesShowcase() {
   const [activeSide, setActiveSide] = useState<ProductId>('before');
-  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const currentData = PRODUCT_DATA[activeSide];
   const isBefore = activeSide === 'before';
 
-  const handleImageClick = () => {
-    setIsModalOpen(true);
-  };
-
   return (
-    <div className="relative w-full overflow-hidden py-12 md:py-16 lg:py-20 min-h-[90vh] bg-[#FAFAFA]">
+    <div className="relative w-full overflow-hidden py-12 md:py-16 lg:py-20 min-h-[70vh] bg-[#FAFAFA]">
       {/* Film Grain Texture Overlay */}
       <div
         className="absolute inset-0 opacity-[0.02] pointer-events-none z-0"
@@ -518,42 +412,18 @@ export default function SmartSitesShowcase() {
         }}
       />
 
-      <div className="relative z-10 w-full px-6 max-w-7xl mx-auto">
+      <div className="relative z-10 w-full px-6 max-w-4xl mx-auto">
         {/* Centered Header + Tabs at TOP */}
         <SectionHeader />
         <Switcher activeId={activeSide} onToggle={setActiveSide} />
 
-        {/* Two-column layout below */}
-        <div className="flex flex-col lg:flex-row lg:items-center gap-8 lg:gap-0">
-
-          {/* LEFT COLUMN - Text Content */}
-          <div className="flex-1 lg:pr-10 lg:max-w-[45%]">
-            <AnimatePresence mode="wait">
-              <ProductDetails key={`details-${activeSide}`} data={currentData} isBefore={isBefore} />
-            </AnimatePresence>
-          </div>
-
-          {/* VERTICAL DIVIDER - Hidden on mobile */}
-          <div className="hidden lg:block w-px bg-neutral-200 mx-6 self-stretch min-h-[400px]" />
-
-          {/* RIGHT COLUMN - Image */}
-          <div className="flex-1 lg:pl-10 lg:max-w-[55%] flex items-center justify-center">
-            <ProductImage
-              data={currentData}
-              isBefore={isBefore}
-              onImageClick={handleImageClick}
-            />
-          </div>
-
+        {/* Centered Content */}
+        <div className="flex justify-center">
+          <AnimatePresence mode="wait">
+            <ProductDetails key={`details-${activeSide}`} data={currentData} isBefore={isBefore} />
+          </AnimatePresence>
         </div>
       </div>
-
-      {/* Image Comparison Modal */}
-      <ImageComparisonModal
-        isOpen={isModalOpen}
-        onClose={() => setIsModalOpen(false)}
-        initialView={activeSide}
-      />
     </div>
   );
 }
