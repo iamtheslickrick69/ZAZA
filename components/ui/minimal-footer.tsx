@@ -1,12 +1,13 @@
 import {
     FacebookIcon,
     GithubIcon,
-    Grid2X2Plus,
     InstagramIcon,
     LinkedinIcon,
     TwitterIcon,
     YoutubeIcon,
 } from 'lucide-react';
+import Image from 'next/image';
+import { SparkIcon } from '@/components/ui/spark-icon';
 
 export function MinimalFooter() {
     const year = new Date().getFullYear();
@@ -89,11 +90,28 @@ export function MinimalFooter() {
                 <div className="bg-border absolute inset-x-0 h-px w-full" />
                 <div className="grid max-w-4xl grid-cols-6 gap-6 p-4">
                     <div className="col-span-6 flex flex-col gap-5 md:col-span-4">
-                        <a href="#" className="w-max opacity-25">
-                            <Grid2X2Plus className="size-8" />
+                        <a href="/" className="w-max flex items-center gap-2">
+                            <SparkIcon
+                                size={24}
+                                className="text-neutral-700 dark:text-neutral-200"
+                            />
+                            <Image
+                                src="/logo/black.png"
+                                alt="Haestus"
+                                width={120}
+                                height={28}
+                                className="h-7 w-auto dark:hidden block"
+                            />
+                            <Image
+                                src="/logo/white.png"
+                                alt="Haestus"
+                                width={120}
+                                height={28}
+                                className="h-7 w-auto dark:block hidden"
+                            />
                         </a>
                         <p className="text-muted-foreground max-w-sm font-mono text-sm text-balance">
-                            A comprehensive financial technology platform.
+                            Design systems and web development for visionary brands. We craft digital experiences that help Davids compete with Goliaths.
                         </p>
                         <div className="flex gap-2">
                             {socialLinks.map((item, i) => (
@@ -142,8 +160,7 @@ export function MinimalFooter() {
                 <div className="bg-border absolute inset-x-0 h-px w-full" />
                 <div className="flex max-w-4xl flex-col justify-between gap-2 pt-2 pb-5">
                     <p className="text-muted-foreground text-center font-thin">
-                        © <a href="https://x.com/sshahaider">sshahaider</a>. All rights
-                        reserved {year}
+                        © Haestus. All rights reserved {year}
                     </p>
                 </div>
             </div>

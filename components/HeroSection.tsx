@@ -89,15 +89,15 @@ export default function HeroSection() {
             }}
           />
 
-          {/* Dark mode mesh gradient - Ocean Breeze */}
+          {/* Dark mode mesh gradient - Monochrome Dark */}
           <div className="absolute inset-0 hidden dark:block"
             style={{
               background: `
-                radial-gradient(at 20% 30%, rgba(34, 211, 238, 0.15) 0px, transparent 50%),
-                radial-gradient(at 80% 20%, rgba(6, 182, 212, 0.12) 0px, transparent 50%),
-                radial-gradient(at 60% 70%, rgba(14, 165, 233, 0.15) 0px, transparent 50%),
-                radial-gradient(at 10% 80%, rgba(34, 211, 238, 0.1) 0px, transparent 50%),
-                linear-gradient(135deg, #0a2540 0%, #0f3460 25%, #164e63 50%, #155e75 75%, #1a365d 100%)
+                radial-gradient(at 20% 30%, rgba(75, 85, 99, 0.15) 0px, transparent 50%),
+                radial-gradient(at 80% 20%, rgba(55, 65, 81, 0.12) 0px, transparent 50%),
+                radial-gradient(at 60% 70%, rgba(107, 114, 128, 0.15) 0px, transparent 50%),
+                radial-gradient(at 10% 80%, rgba(75, 85, 99, 0.1) 0px, transparent 50%),
+                linear-gradient(135deg, #0a0a0a 0%, #141414 25%, #1a1a1a 50%, #1f1f1f 75%, #171717 100%)
               `,
               filter: 'url(#noiseFilter)'
             }}
@@ -105,20 +105,30 @@ export default function HeroSection() {
           <div className="absolute inset-0 hidden dark:block"
             style={{
               background: `
-                radial-gradient(at 40% 40%, rgba(34, 211, 238, 0.25) 0px, transparent 50%),
-                radial-gradient(at 90% 60%, rgba(6, 182, 212, 0.2) 0px, transparent 50%),
-                radial-gradient(at 30% 90%, rgba(14, 165, 233, 0.18) 0px, transparent 50%)
+                radial-gradient(at 40% 40%, rgba(75, 85, 99, 0.2) 0px, transparent 50%),
+                radial-gradient(at 90% 60%, rgba(55, 65, 81, 0.15) 0px, transparent 50%),
+                radial-gradient(at 30% 90%, rgba(107, 114, 128, 0.12) 0px, transparent 50%)
               `,
               mixBlendMode: 'overlay'
             }}
           />
 
-          {/* Ocean grid lines */}
-          <div className="absolute inset-0 hidden dark:block opacity-30"
+          {/* Subtle grid lines with brand gradient */}
+          <div className="absolute inset-0 hidden dark:block opacity-20"
             style={{
               backgroundImage: `
-                linear-gradient(to right, rgba(34, 211, 238, 0.25) 1px, transparent 1px),
-                linear-gradient(to bottom, rgba(34, 211, 238, 0.25) 1px, transparent 1px)
+                linear-gradient(to right, rgba(0, 106, 170, 0.15) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(192, 0, 8, 0.15) 1px, transparent 1px)
+              `,
+              backgroundSize: '80px 80px'
+            }}
+          />
+          {/* Light mode grid with subtle brand colors */}
+          <div className="absolute inset-0 dark:hidden opacity-10"
+            style={{
+              backgroundImage: `
+                linear-gradient(to right, rgba(0, 106, 170, 0.1) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(192, 0, 8, 0.1) 1px, transparent 1px)
               `,
               backgroundSize: '80px 80px'
             }}
@@ -127,11 +137,38 @@ export default function HeroSection() {
 
         <div className="pt-32 pb-10 sm:pt-40 sm:pb-12 text-center">
             <div className="relative max-w-2xl mx-auto">
-            <h1 className="text-3xl sm:text-5xl md:text-6xl text-gray-800 dark:text-white font-bold tracking-tight" style={{ textShadow: '0 0 30px rgba(34, 211, 238, 0.5), 0 0 60px rgba(34, 211, 238, 0.3)' }}>
-                Ruixen: Design Systems for the Visionary Web
-            </h1>
-            <p className="mt-4 text-lg text-gray-500 dark:text-[#a5f3fc]">
-                Whether you're designing interfaces or building full-scale apps, our tools empower creators to move fast, stay consistent, and ship beautiful products — every time.
+            <motion.h1
+              className="text-3xl sm:text-5xl md:text-6xl font-bold tracking-tight relative"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
+            >
+              {/* Base text */}
+              <span className="text-gray-800 dark:text-white">
+                Haestus: Design Systems for the Visionary Web
+              </span>
+              {/* Soft, graceful shimmer overlay */}
+              <motion.span
+                className="absolute inset-0 bg-clip-text text-transparent opacity-40"
+                style={{
+                  backgroundImage: 'linear-gradient(90deg, transparent 0%, transparent 20%, #006AAA 40%, #C00008 60%, #006AAA 80%, transparent 100%)',
+                  backgroundSize: '300% 100%',
+                }}
+                animate={{
+                  backgroundPosition: ['0% 0%', '300% 0%'],
+                }}
+                transition={{
+                  duration: 10,
+                  ease: 'easeInOut',
+                  repeat: Infinity,
+                }}
+              >
+                Haestus: Design Systems for the Visionary Web
+              </motion.span>
+            </motion.h1>
+            <p className="mt-4 text-lg text-gray-500 dark:text-gray-400">
+                The age of AI is the rematch between David and Goliath.<br />
+                and we&apos;re crafting slingshots
             </p>
             <AnimatedGroup
                 variants={{
@@ -147,34 +184,85 @@ export default function HeroSection() {
                 }}
                 className="mt-12 flex flex-col items-center justify-center gap-2 md:flex-row"
             >
-                <div key={1} className="relative overflow-hidden bg-foreground/10 rounded-[14px] border p-0.5">
-                <PixelCanvas
-                    gap={8}
-                    speed={25}
-                    colors={["#6366f1", "#8b5cf6", "#a78bfa"]}
-                    variant="default"
-                />
-                <Button asChild size="lg" className="relative z-10 rounded-xl px-5 text-base">
+                <div key={1} className="group relative rounded-[14px]">
+                  {/* Animated gradient border - ENHANCED */}
+                  <motion.div
+                    className="absolute -inset-[3px] rounded-[14px] z-0"
+                    style={{
+                      backgroundImage: 'linear-gradient(90deg, #006AAA, #C00008, #006AAA, #C00008, #006AAA)',
+                      backgroundSize: '400% 100%',
+                    }}
+                    animate={{
+                      backgroundPosition: ['0% 0%', '100% 0%', '0% 0%'],
+                    }}
+                    transition={{
+                      duration: 4,
+                      ease: 'linear',
+                      repeat: Infinity,
+                    }}
+                  />
+                  {/* Enhanced glow with pulsing */}
+                  <motion.div
+                    className="absolute -inset-[3px] rounded-[14px] z-0 blur-lg"
+                    style={{
+                      backgroundImage: 'linear-gradient(90deg, #006AAA, #C00008, #006AAA)',
+                      backgroundSize: '200% 100%',
+                    }}
+                    animate={{
+                      backgroundPosition: ['0% 0%', '100% 0%', '0% 0%'],
+                      opacity: [0.5, 0.8, 0.5],
+                    }}
+                    transition={{
+                      duration: 4,
+                      ease: 'easeInOut',
+                      repeat: Infinity,
+                    }}
+                  />
+                  <Button asChild size="lg" className="relative z-10 rounded-xl px-5 text-base bg-white/95 text-black hover:bg-white border-0 backdrop-blur-sm">
                     <span className="text-nowrap">Start Building</span>
-                </Button>
+                  </Button>
                 </div>
-                <div
-                key={2}
-                className="relative overflow-hidden bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-500 rounded-[14px] border p-0.5"
-                >
-                <PixelCanvas
-                    gap={8}
-                    speed={25}
-                    colors={["#e0f2fe", "#7dd3fc", "#0ea5e9"]}
-                    variant="default"
-                />
-                <Button
+                <div key={2} className="group relative rounded-[14px]">
+                  {/* Animated gradient border - ENHANCED */}
+                  <motion.div
+                    className="absolute -inset-[3px] rounded-[14px] z-0"
+                    style={{
+                      backgroundImage: 'linear-gradient(90deg, #C00008, #006AAA, #C00008, #006AAA, #C00008)',
+                      backgroundSize: '400% 100%',
+                    }}
+                    animate={{
+                      backgroundPosition: ['0% 0%', '100% 0%', '0% 0%'],
+                    }}
+                    transition={{
+                      duration: 4,
+                      ease: 'linear',
+                      repeat: Infinity,
+                    }}
+                  />
+                  {/* Enhanced glow with pulsing */}
+                  <motion.div
+                    className="absolute -inset-[3px] rounded-[14px] z-0 blur-lg"
+                    style={{
+                      backgroundImage: 'linear-gradient(90deg, #C00008, #006AAA, #C00008)',
+                      backgroundSize: '200% 100%',
+                    }}
+                    animate={{
+                      backgroundPosition: ['0% 0%', '100% 0%', '0% 0%'],
+                      opacity: [0.5, 0.8, 0.5],
+                    }}
+                    transition={{
+                      duration: 4,
+                      ease: 'easeInOut',
+                      repeat: Infinity,
+                    }}
+                  />
+                  <Button
                     asChild
                     size="lg"
-                    className="relative z-10 rounded-xl px-5 text-base bg-white text-black hover:bg-black hover:text-white"
-                >
+                    className="relative z-10 rounded-xl px-5 text-base bg-white text-black hover:bg-black hover:text-white border-0"
+                  >
                     <span className="text-nowrap">Request a demo</span>
-                </Button>
+                  </Button>
                 </div>
             </AnimatedGroup>
             </div>
@@ -221,65 +309,9 @@ export default function HeroSection() {
             </div>
         </AnimatedGroup>
         </div>
-        <BrandsGrid />
     </div>
   );
 }
-
-
-export const BrandsGrid = React.forwardRef<HTMLDivElement, React.HTMLAttributes<HTMLDivElement>>(
-    ({ className, ...props }, ref) => {
-      const brands = [
-        {
-          name: "loops",
-          logo: "https://assets.rapidui.dev/brands/loops.svg",
-        },
-        {
-          name: "pwc",
-          logo: "https://assets.rapidui.dev/brands/pwc.svg",
-        },
-        {
-          name: "resend",
-          logo: "https://assets.rapidui.dev/brands/resend.svg",
-        },
-        {
-          name: "udio",
-          logo: "https://assets.rapidui.dev/brands/udio.svg",
-        },
-        {
-          name: "krea",
-          logo: "https://assets.rapidui.dev/brands/krea.svg",
-        },
-        {
-          name: "gopuff",
-          logo: "https://assets.rapidui.dev/brands/gopuff.svg",
-        },
-      ];
-
-      return (
-        <div ref={ref} className={cn("py-8", className)} {...props}>
-          <div className="max-w-5xl mx-auto px-4">
-            <div className="max-w-xs mx-auto grid grid-cols-2 items-center md:grid-cols-3 md:max-w-lg lg:grid-cols-6 lg:max-w-3xl">
-              {brands.map((brand) => (
-                <div key={brand.name} className="flex items-center justify-center p-4">
-                  <div className="relative h-[76px] w-full">
-                    <Image
-                      src={brand.logo}
-                      alt={`${brand.name} logo`}
-                      fill
-                      className="object-contain"
-                    />
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      );
-    }
-  );
-
-  BrandsGrid.displayName = "BrandsGrid";
 
 type PresetType =
   | 'fade'

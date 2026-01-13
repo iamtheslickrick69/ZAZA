@@ -14,6 +14,8 @@ import { useTheme } from 'next-themes';
 import { Dock, DockIcon, DockItem, DockLabel } from '@/components/ui/dock';
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
+import { motion } from 'framer-motion';
+import Image from 'next/image';
 
 const navigationItems = [
   {
@@ -75,12 +77,25 @@ export function DockNav() {
       }`}
       style={{ willChange: 'transform, top' }}
     >
-      <Dock className='items-center'>
+      <Dock className='items-center relative font-nav'>
         {/* Brand Logo */}
         <Link href="/" className='flex items-center justify-center px-3 py-2'>
-          <span className='text-lg font-bold tracking-tight text-neutral-800 dark:text-neutral-100 hover:text-neutral-900 dark:hover:text-white transition-colors duration-75'>
-            RUIXEN
-          </span>
+          <Image
+            src="/logo/white.png"
+            alt="Haestus"
+            width={100}
+            height={24}
+            className="h-5 w-auto dark:block hidden"
+            priority
+          />
+          <Image
+            src="/logo/black.png"
+            alt="Haestus"
+            width={100}
+            height={24}
+            className="h-5 w-auto dark:hidden block"
+            priority
+          />
         </Link>
 
         {/* Divider */}
@@ -88,6 +103,7 @@ export function DockNav() {
 
         {navigationItems.map((item, idx) => {
           const Icon = item.icon;
+          const glowColor = idx % 2 === 0 ? '#006AAA' : '#C00008';
           return (
             <DockItem
               key={idx}
@@ -98,9 +114,16 @@ export function DockNav() {
             >
               <DockLabel>{item.title}</DockLabel>
               <DockIcon>
-                <a href={item.href} className='h-full w-full flex items-center justify-center group'>
+                <motion.a
+                  href={item.href}
+                  className='h-full w-full flex items-center justify-center group relative'
+                  whileHover={{
+                    filter: `drop-shadow(0 0 8px ${glowColor})`,
+                  }}
+                  transition={{ duration: 0.2 }}
+                >
                   <Icon className='w-5 h-5 text-neutral-700 dark:text-neutral-200 group-hover:text-neutral-900 dark:group-hover:text-white transition-colors duration-75' />
-                </a>
+                </motion.a>
               </DockIcon>
             </DockItem>
           );
@@ -118,17 +141,21 @@ export function DockNav() {
         >
           <DockLabel>Theme</DockLabel>
           <DockIcon>
-            <button
+            <motion.button
               onClick={handleThemeToggle}
               className='h-full w-full flex items-center justify-center group'
               aria-label='Toggle theme'
+              whileHover={{
+                filter: 'drop-shadow(0 0 8px #C00008)',
+              }}
+              transition={{ duration: 0.2 }}
             >
               {mounted && theme === 'dark' ? (
                 <Sun className='w-5 h-5 text-neutral-700 dark:text-neutral-200 group-hover:text-neutral-900 dark:group-hover:text-white transition-colors duration-75' />
               ) : (
                 <Moon className='w-5 h-5 text-neutral-700 dark:text-neutral-200 group-hover:text-neutral-900 dark:group-hover:text-white transition-colors duration-75' />
               )}
-            </button>
+            </motion.button>
           </DockIcon>
         </DockItem>
       </Dock>

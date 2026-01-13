@@ -45,9 +45,46 @@
   --color-ring: var(--ring);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+  --font-inter: var(--font-inter);
+  --font-space-mono: var(--font-space-mono);
   --radius: var(--radius);
 
   --animate-background-gradient: background-gradient var(--background-gradient-speed, 15s) cubic-bezier(0.445, 0.05, 0.55, 0.95) infinite;
+}
+
+/* Homepage Font Utilities */
+.font-display {
+  font-family: var(--font-inter), 'Helvetica Neue', -apple-system, sans-serif;
+  font-weight: 200;
+  letter-spacing: -0.02em;
+}
+
+.font-display-light {
+  font-family: var(--font-inter), 'Helvetica Neue', -apple-system, sans-serif;
+  font-weight: 300;
+  letter-spacing: -0.02em;
+}
+
+.font-body {
+  font-family: var(--font-inter), -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-weight: 400;
+}
+
+.font-body-medium {
+  font-family: var(--font-inter), -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-weight: 500;
+}
+
+.font-body-semibold {
+  font-family: var(--font-inter), -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-weight: 600;
+}
+
+.font-nav {
+  font-family: var(--font-space-mono), 'JetBrains Mono', 'Courier New', monospace;
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
 }
 
 @keyframes background-gradient {
@@ -265,4 +302,314 @@ body {
 .glass-dock-item:hover {
   transform: translateY(-2px);
   box-shadow: 0 8px 24px 0 rgba(0, 0, 0, 0.3), inset 0 2px 0 0 rgba(255, 255, 255, 0.4) !important;
+}
+
+/* Daybreak Logo Animations */
+@keyframes animate {
+  0% {
+    grid-template-columns: 0% 3.88% 20.96%;
+  }
+  34% {
+    grid-template-columns: 75.16% 3.88% 20.96%;
+  }
+  100% {
+    grid-template-columns: 75.16% 3.88% 20.96%;
+  }
+}
+
+@keyframes logoAnimate {
+  0% {
+    transform: rotate(-360deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+.daybreak {
+  display: grid;
+  grid-template-columns: 75.16% 3.88% 20.96%;
+  animation: animate 3s ease-in-out;
+  max-width: 800px;
+  width: 100%;
+  gap: 20px;
+  align-items: center;
+  position: relative;
+  z-index: 10;
+}
+
+.wordmark {
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.wordmark-text {
+  font-size: 4rem;
+  font-weight: 700;
+  color: black;
+  line-height: 1;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  letter-spacing: -0.02em;
+}
+
+.wordmark svg {
+  width: 100%;
+  height: auto;
+}
+
+.scrim {
+  width: 100%;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.scrim div {
+  width: 2px;
+  height: 100%;
+  background: black;
+}
+
+.logomark {
+  width: 100%;
+  height: 80px;
+  display: block;
+}
+
+.logomark-animate {
+  animation: logoAnimate 3s ease-in-out;
+  transform-origin: center;
+  transform: rotate(0deg);
+}
+
+/* Brand Colors Animation - Blue #006AAA & Red #C00008 */
+@keyframes gradient-flow {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes border-shine {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+/* Animated Button Border */
+.animated-border-button {
+  position: relative;
+  background: linear-gradient(135deg, #006AAA, #C00008, #006AAA, #C00008);
+  background-size: 300% 300%;
+  animation: gradient-flow 4s ease infinite;
+  padding: 2px;
+  border-radius: 14px;
+}
+
+.animated-border-button::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 14px;
+  padding: 2px;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+  background-size: 200% 100%;
+  animation: border-shine 3s linear infinite;
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
+.animated-border-button-inner {
+  background: var(--background);
+  border-radius: 12px;
+  width: 100%;
+  height: 100%;
+}
+
+/* Animated Nav Accent Line */
+@keyframes nav-gradient-scan {
+  0% {
+    background-position: -100% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.nav-accent-line {
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg,
+    transparent 0%,
+    #006AAA 20%,
+    #C00008 50%,
+    #006AAA 80%,
+    transparent 100%
+  );
+  background-size: 200% 100%;
+  animation: nav-gradient-scan 3s ease-in-out infinite;
+  border-radius: 1px;
+}
+
+/* Alternative glow effect for nav line */
+.nav-accent-glow {
+  position: absolute;
+  bottom: -4px;
+  left: 10%;
+  right: 10%;
+  height: 6px;
+  background: linear-gradient(90deg, #006AAA, #C00008, #006AAA);
+  background-size: 200% 100%;
+  animation: gradient-flow 3s ease infinite;
+  filter: blur(4px);
+  opacity: 0.6;
+  border-radius: 3px;
+}
+
+/* Hero Section Animations */
+@keyframes word-appear {
+  0% {
+    opacity: 0;
+    transform: translateY(30px) scale(0.8);
+    filter: blur(10px);
+  }
+  50% {
+    opacity: 0.8;
+    transform: translateY(10px) scale(0.95);
+    filter: blur(2px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+  }
+}
+
+@keyframes grid-draw {
+  0% {
+    stroke-dashoffset: 1000;
+    opacity: 0;
+  }
+  50% {
+    opacity: 0.3;
+  }
+  100% {
+    stroke-dashoffset: 0;
+    opacity: 0.15;
+  }
+}
+
+@keyframes underline-grow {
+  to {
+    width: 100%;
+  }
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0) translateX(0);
+    opacity: 0.2;
+  }
+  25% {
+    transform: translateY(-10px) translateX(5px);
+    opacity: 0.6;
+  }
+  50% {
+    transform: translateY(-5px) translateX(-3px);
+    opacity: 0.4;
+  }
+  75% {
+    transform: translateY(-15px) translateX(7px);
+    opacity: 0.8;
+  }
+}
+
+.word {
+  display: inline-block;
+  opacity: 0;
+  transition: text-shadow 0.3s ease;
+}
+
+.grid-line {
+  stroke: rgba(200, 180, 160, 0.15);
+  stroke-width: 0.5;
+  stroke-dasharray: 1000;
+  stroke-dashoffset: 1000;
+  animation: grid-draw 2s ease-out forwards;
+}
+
+.detail-dot {
+  fill: rgba(200, 180, 160, 0.3);
+  opacity: 0;
+  animation: word-appear 0.5s ease-out forwards;
+}
+
+.corner-element {
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  opacity: 0;
+  animation: word-appear 0.5s ease-out forwards;
+}
+
+.floating-element {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background: rgba(200, 180, 160, 0.3);
+  border-radius: 50%;
+  animation: float 8s ease-in-out infinite;
+  animation-play-state: paused;
+}
+
+/* Brand colored dots for grid intersections */
+.brand-dot-blue {
+  fill: #006AAA;
+  opacity: 0;
+  animation: brand-pulse-blue 3s ease-in-out infinite;
+}
+
+.brand-dot-red {
+  fill: #C00008;
+  opacity: 0;
+  animation: brand-pulse-red 3s ease-in-out infinite;
+}
+
+@keyframes brand-pulse-blue {
+  0%, 100% {
+    opacity: 0.2;
+    r: 2;
+  }
+  50% {
+    opacity: 0.6;
+    r: 4;
+  }
+}
+
+@keyframes brand-pulse-red {
+  0%, 100% {
+    opacity: 0.2;
+    r: 2;
+  }
+  50% {
+    opacity: 0.6;
+    r: 4;
+  }
 }
