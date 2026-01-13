@@ -15,6 +15,7 @@ import { HaestusFAQ } from "@/components/ui/faq-tabs";
 import { PortfolioShowcase } from "@/components/PortfolioShowcase";
 import DatabaseWithRestApi from "@/components/ui/database-with-rest-api";
 import { HowItWorks } from "@/components/HowItWorks";
+import { ProjectShowcase } from "@/components/ProjectShowcase";
 
 export default function Home() {
   return (
@@ -54,6 +55,7 @@ export default function Home() {
         <section id="showcase" className="relative">
           <SmartSitesShowcase />
         </section>
+        <ProjectShowcase />
         <TransformationBanner />
         <section className="min-h-screen py-20">
           <AnimatedGradientDemo />

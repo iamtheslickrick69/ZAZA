@@ -2,6 +2,7 @@
 
 import React, { useEffect, useState, useRef } from "react";
 import { motion, useInView, useMotionValue, useTransform } from "framer-motion";
+import { PixelCanvas } from "@/components/ui/pixel-canvas";
 
 interface BentoCardProps {
   title: string;
@@ -154,6 +155,21 @@ const BentoCard: React.FC<BentoCardProps> = ({
         }}
         transition={{ duration: 0.3 }}
       >
+        {/* Pixel Canvas Effect */}
+        <PixelCanvas
+          gap={6}
+          speed={25}
+          colors={
+            accentColor === "blue"
+              ? ["#1a3a4a", "#006AAA", "#004466"]
+              : accentColor === "red"
+              ? ["#4a1a1a", "#C00008", "#660004"]
+              : ["#1a3a4a", "#006AAA", "#C00008", "#4a1a1a"]
+          }
+          variant="default"
+          noFocus
+        />
+
         {/* Left accent border with glow on hover */}
         <motion.div
           className="absolute left-0 top-0 bottom-0 w-[3px]"

@@ -754,3 +754,265 @@ body {
 .animate-shine-pulse {
   animation: shine-pulse var(--shine-pulse-duration, 14s) infinite linear;
 }
+
+/* ========================================= */
+/* Music Portfolio Component Styles */
+/* ========================================= */
+
+.portfolio-wrapper {
+  --portfolio-font: var(--font-space-mono), 'SF Mono', 'Monaco', 'Inconsolata', 'Fira Mono', 'Droid Sans Mono', monospace;
+  --portfolio-bg: #0a0a0a;
+  --portfolio-text: #ffffff;
+  --portfolio-muted: #666666;
+  --portfolio-accent: rgb(255, 223, 0);
+
+  width: 100%;
+  min-height: 100vh;
+  background: var(--portfolio-bg);
+  color: var(--portfolio-text);
+  font-family: var(--portfolio-font);
+  position: relative;
+  overflow: hidden;
+}
+
+.portfolio-container-outer {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 4rem 2rem;
+}
+
+@media (min-width: 768px) {
+  .portfolio-container-outer {
+    padding: 6rem 4rem;
+  }
+}
+
+.portfolio-container {
+  position: relative;
+  z-index: 10;
+  max-width: 1400px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.portfolio-container.has-active .project-item:not(.active) {
+  opacity: 0.3;
+}
+
+/* Project List */
+.project-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+/* Project Item */
+.project-item {
+  display: grid;
+  grid-template-columns: 40px 1fr 1fr 120px 140px 60px;
+  gap: 1rem;
+  align-items: center;
+  padding: 1.25rem 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  cursor: pointer;
+  transition: opacity 0.3s ease, transform 0.2s ease;
+  font-size: 0.85rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+@media (max-width: 1024px) {
+  .project-item {
+    grid-template-columns: 30px 1fr 1fr 100px 100px 50px;
+    font-size: 0.75rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .project-item {
+    grid-template-columns: 30px 1fr 1fr;
+    gap: 0.75rem;
+  }
+
+  .project-item .category,
+  .project-item .label {
+    display: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .project-item {
+    grid-template-columns: 25px 1fr 50px;
+    font-size: 0.7rem;
+  }
+
+  .project-item .album {
+    display: none;
+  }
+}
+
+.project-item:hover {
+  transform: translateX(4px);
+}
+
+.project-item.active {
+  opacity: 1 !important;
+}
+
+.project-item.idle {
+  transition: opacity 0.1s ease;
+}
+
+/* Project Data */
+.project-data {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.project-data.index {
+  color: var(--portfolio-muted);
+  font-size: 0.75rem;
+}
+
+.project-data.artist {
+  font-weight: 700;
+  color: var(--portfolio-text);
+}
+
+.project-data.album {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.project-data.category,
+.project-data.label {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.project-data.year {
+  text-align: right;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+/* Background Image */
+.background-image {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 100vw;
+  height: 100vh;
+  transform: translate(-50%, -50%) scale(1);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 0;
+  pointer-events: none;
+  z-index: 1;
+  transition: opacity 0.6s ease, transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.background-image::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+}
+
+/* Corner Elements */
+.corner-elements {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 20;
+  padding: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .corner-elements {
+    padding: 2rem;
+  }
+}
+
+.corner-item {
+  position: absolute;
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.5);
+  font-family: var(--portfolio-font);
+}
+
+.corner-item a {
+  color: rgba(255, 255, 255, 0.5);
+  text-decoration: none;
+  transition: color 0.2s ease;
+  pointer-events: auto;
+}
+
+.corner-item a:hover {
+  color: var(--portfolio-text);
+}
+
+.corner-item.top-left {
+  top: 1.5rem;
+  left: 1.5rem;
+}
+
+.corner-item.top-right {
+  top: 1.5rem;
+  right: 1.5rem;
+}
+
+.corner-item.bottom-left {
+  bottom: 1.5rem;
+  left: 1.5rem;
+}
+
+.corner-item.bottom-right {
+  bottom: 1.5rem;
+  right: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .corner-item.top-left { top: 2rem; left: 2rem; }
+  .corner-item.top-right { top: 2rem; right: 2rem; }
+  .corner-item.bottom-left { bottom: 2rem; left: 2rem; }
+  .corner-item.bottom-right { bottom: 2rem; right: 2rem; }
+}
+
+.corner-square {
+  width: 8px;
+  height: 8px;
+  background: rgba(255, 255, 255, 0.3);
+}
+
+/* Time Blink Animation */
+.time-blink {
+  animation: time-blink-anim 1s step-end infinite;
+}
+
+@keyframes time-blink-anim {
+  50% {
+    opacity: 0;
+  }
+}
+
+/* Screen Reader Only */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
