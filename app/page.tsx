@@ -8,6 +8,8 @@ import { DockNav } from "@/components/DockNav";
 import { LetsWorkTogether } from "@/components/ui/lets-work-section";
 import { ScrollProgress } from "@/components/ScrollProgress";
 import SmartSitesShowcase from "@/components/ui/spatial-product-showcase";
+import { ServiceCards } from "@/components/ServiceCards";
+import { TransformationBanner } from "@/components/TransformationBanner";
 
 export default function Home() {
   return (
@@ -16,9 +18,11 @@ export default function Home() {
       <DockNav />
       <main>
         <HeroSectionAnimated />
+        <ServiceCards />
         <section id="showcase" className="relative">
           <SmartSitesShowcase />
         </section>
+        <TransformationBanner />
         <section className="min-h-screen py-20">
           <AnimatedGradientDemo />
         </section>

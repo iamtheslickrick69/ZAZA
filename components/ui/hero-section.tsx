@@ -213,36 +213,6 @@ export function HeroSectionAnimated() {
           </motion.div>
         </div>
 
-        {/* What we do - quick value props */}
-        <motion.div
-          className="mt-20 grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto text-center"
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 1.5 }}
-        >
-          <div className="p-6">
-            <div className="w-10 h-10 mx-auto mb-4 rounded-lg bg-[#006AAA]/10 flex items-center justify-center">
-              <div className="w-3 h-3 rounded-full bg-[#006AAA]"></div>
-            </div>
-            <h3 className="text-white mb-2 font-body-semibold">Design Systems</h3>
-            <p className="text-zinc-500 text-sm font-body">Scalable component libraries that grow with your brand</p>
-          </div>
-          <div className="p-6">
-            <div className="w-10 h-10 mx-auto mb-4 rounded-lg bg-[#C00008]/10 flex items-center justify-center">
-              <div className="w-3 h-3 rounded-full bg-[#C00008]"></div>
-            </div>
-            <h3 className="text-white mb-2 font-body-semibold">Web Development</h3>
-            <p className="text-zinc-500 text-sm font-body">High-performance sites built with modern technology</p>
-          </div>
-          <div className="p-6">
-            <div className="w-10 h-10 mx-auto mb-4 rounded-lg bg-gradient-to-r from-[#006AAA]/10 to-[#C00008]/10 flex items-center justify-center">
-              <div className="w-3 h-3 rounded-full bg-gradient-to-r from-[#006AAA] to-[#C00008]"></div>
-            </div>
-            <h3 className="text-white mb-2 font-body-semibold">Brand Identity</h3>
-            <p className="text-zinc-500 text-sm font-body">Visual systems that make your brand unforgettable</p>
-          </div>
-        </motion.div>
-
         {/* Scroll indicator */}
         <motion.div
           className="absolute bottom-8 left-1/2 -translate-x-1/2"
