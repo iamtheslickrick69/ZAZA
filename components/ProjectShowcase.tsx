@@ -5,12 +5,12 @@ import MusicPortfolio from "@/components/ui/music-portfolio";
 const haestusProjects = [
   {
     id: 1,
-    artist: "MERIDIAN STUDIOS",
-    album: "BRAND IDENTITY SYSTEM",
-    category: "BRANDING",
-    label: "TECH STARTUP",
+    artist: "TEAM PAYPRO",
+    album: "PAYMENT SOLUTIONS",
+    category: "WEB APP",
+    label: "FINANCE",
     year: "2024",
-    image: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=1200&q=80",
+    image: "/projects/paypro.png",
   },
   {
     id: 2,

@@ -95,18 +95,18 @@ export function MinimalFooter() {
                                 size={24}
                             />
                             <Image
-                                src="/logo/black.png"
-                                alt="Haestus"
-                                width={120}
-                                height={28}
-                                className="h-7 w-auto dark:hidden block"
-                            />
-                            <Image
                                 src="/logo/white.png"
                                 alt="Haestus"
                                 width={120}
                                 height={28}
-                                className="h-7 w-auto dark:block hidden"
+                                className="h-7 w-auto dark:hidden"
+                            />
+                            <Image
+                                src="/logo/black.png"
+                                alt="Haestus"
+                                width={120}
+                                height={28}
+                                className="h-7 w-auto hidden dark:block"
                             />
                         </a>
                         <p className="text-muted-foreground max-w-sm font-mono text-sm text-balance">

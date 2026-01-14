@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import { useTheme } from "next-themes";
 import { motion } from "framer-motion";
@@ -11,8 +11,12 @@ import { SocialIcons } from "@/components/ui/social-icons";
 import { HoneycombLoader } from "@/components/ui/honeycomb-loader";
 
 export function HeroSectionAnimated() {
-  const { theme } = useTheme();
-  const isDark = theme === "dark";
+  const { resolvedTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   useEffect(() => {
     const words = document.querySelectorAll<HTMLElement>(".word");
@@ -72,9 +76,9 @@ export function HeroSectionAnimated() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.5 }}
             >
-              AI Didn&apos;t Change the Rules.
+              The Age of Execution.
               <br />
-              <span className="text-muted-foreground">It Rewrote Them.</span>
+              <span className="text-muted-foreground lowercase">show, don&apos;t tell.</span>
             </motion.h1>
 
             {/* Subtitle */}
@@ -96,11 +100,19 @@ export function HeroSectionAnimated() {
             >
               <HoneycombLoader size={48} className="opacity-90" />
               <Image
-                src={isDark ? "/logo/white.png" : "/logo/black.png"}
+                src="/logo/white.png"
                 alt="Haestus"
                 width={200}
                 height={40}
-                className="h-10 w-auto"
+                className="h-10 w-auto dark:hidden"
+                priority
+              />
+              <Image
+                src="/logo/black.png"
+                alt="Haestus"
+                width={200}
+                height={40}
+                className="h-10 w-auto hidden dark:block"
                 priority
               />
             </motion.div>
@@ -246,7 +258,16 @@ export function HeroSectionAnimated() {
               circleText="API"
               title="We connect to any API you need"
               buttonTexts={{ first: "Haestus", second: "Your Stack" }}
-              badgeTexts={{ first: "GET", second: "POST", third: "PUT", fourth: "DELETE" }}
+              badgeTexts={{
+                first: "GET",
+                second: "POST",
+                third: "PUT",
+                fourth: "DELETE",
+                fifth: "PATCH",
+                sixth: "HEAD",
+                seventh: "WS",
+                eighth: "GQL"
+              }}
               lightColor="#006AAA"
             />
           </motion.div>

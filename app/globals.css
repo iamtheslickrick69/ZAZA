@@ -21,6 +21,13 @@
   --input: #e5e5e5;
   --ring: #171717;
   --radius: 0.5rem;
+
+  /* Theme-aware gradient and mesh variables */
+  --mesh-gradient-1: rgba(224, 231, 255, 0.4);
+  --mesh-gradient-2: rgba(253, 244, 255, 0.4);
+  --mesh-gradient-3: rgba(240, 249, 255, 0.4);
+  --shadow-color: rgba(0, 0, 0, 0.1);
+  --honeycomb-color: #C00008;
 }
 
 @theme inline {
@@ -167,6 +174,12 @@
   --border: #262626;
   --input: #262626;
   --ring: #d4d4d4;
+
+  /* Theme-aware gradient and mesh variables for dark mode */
+  --mesh-gradient-1: rgba(75, 85, 99, 0.15);
+  --mesh-gradient-2: rgba(55, 65, 81, 0.12);
+  --mesh-gradient-3: rgba(107, 114, 128, 0.15);
+  --shadow-color: rgba(0, 0, 0, 0.3);
 }
 
 body {
@@ -300,7 +313,7 @@ body {
 
 .glass-dock-item:hover {
   transform: translateY(-2px);
-  box-shadow: 0 8px 24px 0 rgba(0, 0, 0, 0.3), inset 0 2px 0 0 rgba(255, 255, 255, 0.4) !important;
+  box-shadow: 0 8px 24px 0 var(--shadow-color), inset 0 2px 0 0 rgba(255, 255, 255, 0.4) !important;
 }
 
 /* Daybreak Logo Animations */
@@ -613,7 +626,7 @@ body {
   }
 }
 
-/* Database with REST API Animations */
+/* Database with REST API Animations - 8 Endpoints */
 .database {
   offset-anchor: 10px 0px;
   animation: database-animation-path;
@@ -623,24 +636,46 @@ body {
   animation-timing-function: cubic-bezier(0.45, 0, 0.55, 1);
 }
 
+/* Blue lights - left side (4 endpoints) */
 .db-light-1 {
-  offset-path: path("M 31 10 v 15 q 0 5 5 5 h 59 q 5 0 5 5 v 25");
+  offset-path: path("M 22 10 v 15 q 0 5 5 5 h 108 q 5 0 5 5 v 20");
   animation-delay: 0s;
 }
 
 .db-light-2 {
-  offset-path: path("M 77 10 v 10 q 0 5 5 5 h 13 q 5 0 5 5 v 30");
-  animation-delay: 0.3s;
+  offset-path: path("M 62 10 v 10 q 0 5 5 5 h 63 q 5 0 5 5 v 25");
+  animation-delay: 0.2s;
 }
 
 .db-light-3 {
-  offset-path: path("M 124 10 v 10 q 0 5 -5 5 h -14 q -5 0 -5 5 v 30");
-  animation-delay: 0.6s;
+  offset-path: path("M 102 10 v 10 q 0 5 5 5 h 28 q 5 0 5 5 v 25");
+  animation-delay: 0.4s;
 }
 
 .db-light-4 {
-  offset-path: path("M 170 10 v 15 q 0 5 -5 5 h -60 q -5 0 -5 5 v 25");
-  animation-delay: 0.9s;
+  offset-path: path("M 142 10 v 15 q 0 5 -2 5 h -0 q -5 0 -5 5 v 20");
+  animation-delay: 0.6s;
+}
+
+/* Red lights - right side (4 endpoints) */
+.db-light-5 {
+  offset-path: path("M 182 10 v 15 q 0 5 -5 5 h -32 q -5 0 -5 5 v 20");
+  animation-delay: 0.8s;
+}
+
+.db-light-6 {
+  offset-path: path("M 218 10 v 10 q 0 5 -5 5 h -68 q -5 0 -5 5 v 25");
+  animation-delay: 1.0s;
+}
+
+.db-light-7 {
+  offset-path: path("M 252 10 v 10 q 0 5 -5 5 h -102 q -5 0 -5 5 v 25");
+  animation-delay: 1.2s;
+}
+
+.db-light-8 {
+  offset-path: path("M 275 10 v 15 q 0 5 -5 5 h -125 q -5 0 -5 5 v 20");
+  animation-delay: 1.4s;
 }
 
 @keyframes database-animation-path {
@@ -660,7 +695,172 @@ body {
   }
 }
 
-/* Honeycomb Loader Animation */
+/* ========================================= */
+/* EMBER CORE - 11/10 Animated Logo */
+/* ========================================= */
+
+.ember-core {
+  position: relative;
+  display: block;
+  width: 26px;
+  height: 28px;
+  transform-origin: center;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.ember-core:hover {
+  transform: scale(1.15) rotate(3deg);
+}
+
+/* Ambient glow behind the logo */
+.ember-glow {
+  position: absolute;
+  inset: -4px;
+  background: radial-gradient(circle, rgba(192, 0, 8, 0.4) 0%, transparent 70%);
+  filter: blur(6px);
+  animation: ember-glow-pulse 3s ease-in-out infinite;
+  pointer-events: none;
+}
+
+.ember-core:hover .ember-glow {
+  animation: ember-glow-intense 1s ease-in-out infinite;
+}
+
+/* Individual hexagon cells */
+.ember-hex {
+  position: absolute;
+  width: 10px;
+  height: 7px;
+  transition: all 0.3s ease;
+}
+
+.ember-inner {
+  width: 100%;
+  height: 100%;
+  background: #C00008;
+  clip-path: polygon(20% 0%, 80% 0%, 100% 50%, 80% 100%, 20% 100%, 0% 50%);
+  animation: ember-pulse 3.5s ease-in-out infinite;
+  box-shadow: 0 0 4px rgba(192, 0, 8, 0.5);
+}
+
+.ember-core:hover .ember-inner {
+  background: #E50009;
+  box-shadow: 0 0 8px rgba(255, 45, 45, 0.8);
+}
+
+/* Hexagon positions - tighter grid */
+.ember-hex-1 { left: 8px; top: 0; }
+.ember-hex-2 { left: 1px; top: 5px; }
+.ember-hex-3 { left: 15px; top: 5px; }
+.ember-hex-4 { left: 8px; top: 10px; }
+.ember-hex-5 { left: 1px; top: 15px; }
+.ember-hex-6 { left: 15px; top: 15px; }
+.ember-hex-7 { left: 8px; top: 20px; }
+
+/* Pulse wave animation - center outward */
+.ember-hex-4 .ember-inner { animation-delay: 0s; }
+.ember-hex-1 .ember-inner,
+.ember-hex-2 .ember-inner,
+.ember-hex-3 .ember-inner,
+.ember-hex-5 .ember-inner,
+.ember-hex-6 .ember-inner { animation-delay: 0.15s; }
+.ember-hex-7 .ember-inner { animation-delay: 0.3s; }
+
+/* Center hex always slightly brighter */
+.ember-hex-4 .ember-inner {
+  background: #D50008;
+  box-shadow: 0 0 6px rgba(192, 0, 8, 0.7);
+}
+
+/* Floating ember particles */
+.ember-particle {
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  background: #FF6B6B;
+  border-radius: 50%;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.ember-p1 {
+  left: 12px;
+  top: 10px;
+  animation: ember-float 4s ease-in-out infinite;
+  animation-delay: 0s;
+}
+
+.ember-p2 {
+  left: 6px;
+  top: 12px;
+  animation: ember-float 4s ease-in-out infinite;
+  animation-delay: 1.3s;
+}
+
+.ember-p3 {
+  left: 18px;
+  top: 8px;
+  animation: ember-float 4s ease-in-out infinite;
+  animation-delay: 2.6s;
+}
+
+.ember-core:hover .ember-particle {
+  animation-duration: 2s;
+}
+
+/* Keyframes */
+@keyframes ember-pulse {
+  0%, 100% {
+    opacity: 0.7;
+    transform: scale(0.95);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes ember-glow-pulse {
+  0%, 100% {
+    opacity: 0.3;
+    transform: scale(0.9);
+  }
+  50% {
+    opacity: 0.6;
+    transform: scale(1.1);
+  }
+}
+
+@keyframes ember-glow-intense {
+  0%, 100% {
+    opacity: 0.6;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.2);
+  }
+}
+
+@keyframes ember-float {
+  0% {
+    opacity: 0;
+    transform: translateY(0) scale(1);
+  }
+  20% {
+    opacity: 0.8;
+  }
+  80% {
+    opacity: 0.4;
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-12px) scale(0.5);
+  }
+}
+
+/* Legacy honeycomb support */
 .honeycomb {
   display: flex;
   flex-wrap: wrap;
@@ -681,60 +881,20 @@ body {
   height: 6px;
   background: #C00008;
   clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
-  animation: honeycomb 2.1s ease-in-out infinite;
+  animation: honeycomb-legacy 2.1s ease-in-out infinite;
 }
 
-.honeycomb div:nth-child(1) {
-  left: 7px;
-  top: 0;
-  animation-delay: 0s;
-}
+.honeycomb div:nth-child(1) { left: 7px; top: 0; animation-delay: 0s; }
+.honeycomb div:nth-child(2) { left: 0; top: 5px; animation-delay: 0.1s; }
+.honeycomb div:nth-child(3) { left: 14px; top: 5px; animation-delay: 0.2s; }
+.honeycomb div:nth-child(4) { left: 7px; top: 10px; animation-delay: 0.3s; }
+.honeycomb div:nth-child(5) { left: 0; top: 15px; animation-delay: 0.4s; }
+.honeycomb div:nth-child(6) { left: 14px; top: 15px; animation-delay: 0.5s; }
+.honeycomb div:nth-child(7) { left: 7px; top: 20px; animation-delay: 0.6s; }
 
-.honeycomb div:nth-child(2) {
-  left: 0;
-  top: 5px;
-  animation-delay: 0.1s;
-}
-
-.honeycomb div:nth-child(3) {
-  left: 14px;
-  top: 5px;
-  animation-delay: 0.2s;
-}
-
-.honeycomb div:nth-child(4) {
-  left: 7px;
-  top: 10px;
-  animation-delay: 0.3s;
-}
-
-.honeycomb div:nth-child(5) {
-  left: 0;
-  top: 15px;
-  animation-delay: 0.4s;
-}
-
-.honeycomb div:nth-child(6) {
-  left: 14px;
-  top: 15px;
-  animation-delay: 0.5s;
-}
-
-.honeycomb div:nth-child(7) {
-  left: 7px;
-  top: 20px;
-  animation-delay: 0.6s;
-}
-
-@keyframes honeycomb {
-  0%, 20%, 80%, 100% {
-    opacity: 0;
-    transform: scale(0);
-  }
-  30%, 70% {
-    opacity: 1;
-    transform: scale(1);
-  }
+@keyframes honeycomb-legacy {
+  0%, 20%, 80%, 100% { opacity: 0; transform: scale(0); }
+  30%, 70% { opacity: 1; transform: scale(1); }
 }
 
 /* Shine Border Animation */

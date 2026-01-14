@@ -2,6 +2,7 @@
 
 import React, { useEffect, useState } from 'react';
 import Image from 'next/image';
+import { useTheme } from 'next-themes';
 
 interface DaybreakTextRevealProps {
   text?: string;
@@ -10,6 +11,12 @@ interface DaybreakTextRevealProps {
 
 export function DaybreakTextReveal({ text = "Haestus", className }: DaybreakTextRevealProps) {
   const [isAnimating, setIsAnimating] = useState(false);
+  const { resolvedTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   useEffect(() => {
     // Trigger animation on mount
@@ -29,7 +36,7 @@ export function DaybreakTextReveal({ text = "Haestus", className }: DaybreakText
         }}
       >
         <span
-          className="block text-[clamp(2.5rem,10vw,7rem)] font-black tracking-tighter uppercase whitespace-nowrap text-white"
+          className="block text-[clamp(2.5rem,10vw,7rem)] font-black tracking-tighter uppercase whitespace-nowrap text-foreground"
           style={{ fontWeight: 900 }}
         >
           {text}
@@ -51,7 +58,15 @@ export function DaybreakTextReveal({ text = "Haestus", className }: DaybreakText
           alt="Haestus Logo"
           width={120}
           height={120}
-          className="w-full h-auto max-w-[100px] md:max-w-[120px]"
+          className="w-full h-auto max-w-[100px] md:max-w-[120px] dark:hidden"
+          priority
+        />
+        <Image
+          src="/logo/black.png"
+          alt="Haestus Logo"
+          width={120}
+          height={120}
+          className="w-full h-auto max-w-[100px] md:max-w-[120px] hidden dark:block"
           priority
         />
       </div>
@@ -62,7 +77,7 @@ export function DaybreakTextReveal({ text = "Haestus", className }: DaybreakText
 // Default export for demo page
 export default function DaybreakTextRevealDemo() {
   return (
-    <div className="min-h-screen flex items-center justify-center bg-[#0a0a0a] p-8">
+    <div className="min-h-screen flex items-center justify-center bg-background p-8">
       <DaybreakTextReveal text="Haestus" />
     </div>
   );

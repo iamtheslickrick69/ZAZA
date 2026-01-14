@@ -13,6 +13,10 @@ interface DatabaseWithRestApiProps {
     second: string;
     third: string;
     fourth: string;
+    fifth?: string;
+    sixth?: string;
+    seventh?: string;
+    eighth?: string;
   };
   buttonTexts?: {
     first: string;
@@ -33,16 +37,16 @@ const DatabaseWithRestApi = ({
   return (
     <div
       className={cn(
-        "relative flex h-[350px] w-full max-w-[500px] flex-col items-center",
+        "relative flex h-[420px] w-full max-w-[700px] flex-col items-center",
         className
       )}
     >
-      {/* SVG Paths  */}
+      {/* SVG Paths - 8 Endpoints */}
       <svg
         className="h-full sm:w-full text-muted"
         width="100%"
         height="100%"
-        viewBox="0 0 200 100"
+        viewBox="0 0 280 120"
       >
         <g
           stroke="currentColor"
@@ -51,10 +55,16 @@ const DatabaseWithRestApi = ({
           strokeDasharray="100 100"
           pathLength="100"
         >
-          <path d="M 31 10 v 15 q 0 5 5 5 h 59 q 5 0 5 5 v 10" />
-          <path d="M 77 10 v 10 q 0 5 5 5 h 13 q 5 0 5 5 v 10" />
-          <path d="M 124 10 v 10 q 0 5 -5 5 h -14 q -5 0 -5 5 v 10" />
-          <path d="M 170 10 v 15 q 0 5 -5 5 h -60 q -5 0 -5 5 v 10" />
+          {/* Row 1 - 4 endpoints */}
+          <path d="M 22 10 v 15 q 0 5 5 5 h 108 q 5 0 5 5 v 10" />
+          <path d="M 62 10 v 10 q 0 5 5 5 h 63 q 5 0 5 5 v 15" />
+          <path d="M 102 10 v 10 q 0 5 5 5 h 28 q 5 0 5 5 v 15" />
+          <path d="M 142 10 v 15 q 0 5 -2 5 h -0 q -5 0 -5 5 v 10" />
+          {/* Row 2 - 4 more endpoints */}
+          <path d="M 182 10 v 15 q 0 5 -5 5 h -32 q -5 0 -5 5 v 10" />
+          <path d="M 218 10 v 10 q 0 5 -5 5 h -68 q -5 0 -5 5 v 15" />
+          <path d="M 252 10 v 10 q 0 5 -5 5 h -102 q -5 0 -5 5 v 15" />
+          <path d="M 275 10 v 15 q 0 5 -5 5 h -125 q -5 0 -5 5 v 10" />
           <animate
             attributeName="stroke-dashoffset"
             from="100"
@@ -66,89 +76,123 @@ const DatabaseWithRestApi = ({
             keyTimes="0; 1"
           />
         </g>
-        {/* Blue Lights */}
+        {/* Blue Lights - 8 total */}
         <g mask="url(#db-mask-1)">
-          <circle
-            className="database db-light-1"
-            cx="0"
-            cy="0"
-            r="12"
-            fill="url(#db-blue-grad)"
-          />
+          <circle className="database db-light-1" cx="0" cy="0" r="12" fill="url(#db-blue-grad)" />
         </g>
         <g mask="url(#db-mask-2)">
-          <circle
-            className="database db-light-2"
-            cx="0"
-            cy="0"
-            r="12"
-            fill="url(#db-blue-grad)"
-          />
+          <circle className="database db-light-2" cx="0" cy="0" r="12" fill="url(#db-blue-grad)" />
         </g>
         <g mask="url(#db-mask-3)">
-          <circle
-            className="database db-light-3"
-            cx="0"
-            cy="0"
-            r="12"
-            fill="url(#db-blue-grad)"
-          />
+          <circle className="database db-light-3" cx="0" cy="0" r="12" fill="url(#db-blue-grad)" />
         </g>
         <g mask="url(#db-mask-4)">
-          <circle
-            className="database db-light-4"
-            cx="0"
-            cy="0"
-            r="12"
-            fill="url(#db-blue-grad)"
-          />
+          <circle className="database db-light-4" cx="0" cy="0" r="12" fill="url(#db-blue-grad)" />
         </g>
-        {/* Buttons */}
+        <g mask="url(#db-mask-5)">
+          <circle className="database db-light-5" cx="0" cy="0" r="12" fill="url(#db-red-grad)" />
+        </g>
+        <g mask="url(#db-mask-6)">
+          <circle className="database db-light-6" cx="0" cy="0" r="12" fill="url(#db-red-grad)" />
+        </g>
+        <g mask="url(#db-mask-7)">
+          <circle className="database db-light-7" cx="0" cy="0" r="12" fill="url(#db-red-grad)" />
+        </g>
+        <g mask="url(#db-mask-8)">
+          <circle className="database db-light-8" cx="0" cy="0" r="12" fill="url(#db-red-grad)" />
+        </g>
+        {/* Buttons - 8 total */}
         <g stroke="currentColor" fill="none" strokeWidth="0.4">
+          {/* Row 1 */}
           <g>
-            <rect className="fill-card" x="14" y="5" width="34" height="10" rx="5"></rect>
-            <DatabaseIcon x="18" y="7.5"></DatabaseIcon>
-            <text className="fill-foreground" x="28" y="12" stroke="none" fontSize="5" fontWeight="500">
+            <rect className="fill-card" x="5" y="3" width="34" height="10" rx="5"></rect>
+            <DatabaseIcon x="9" y="5.5"></DatabaseIcon>
+            <text className="fill-foreground" x="19" y="10" stroke="none" fontSize="5" fontWeight="500">
               {badgeTexts?.first || "GET"}
             </text>
           </g>
           <g>
-            <rect className="fill-card" x="60" y="5" width="34" height="10" rx="5"></rect>
-            <DatabaseIcon x="64" y="7.5"></DatabaseIcon>
-            <text className="fill-foreground" x="74" y="12" stroke="none" fontSize="5" fontWeight="500">
+            <rect className="fill-card" x="45" y="3" width="34" height="10" rx="5"></rect>
+            <DatabaseIcon x="49" y="5.5"></DatabaseIcon>
+            <text className="fill-foreground" x="59" y="10" stroke="none" fontSize="5" fontWeight="500">
               {badgeTexts?.second || "POST"}
             </text>
           </g>
           <g>
-            <rect className="fill-card" x="108" y="5" width="34" height="10" rx="5"></rect>
-            <DatabaseIcon x="112" y="7.5"></DatabaseIcon>
-            <text className="fill-foreground" x="122" y="12" stroke="none" fontSize="5" fontWeight="500">
+            <rect className="fill-card" x="85" y="3" width="34" height="10" rx="5"></rect>
+            <DatabaseIcon x="89" y="5.5"></DatabaseIcon>
+            <text className="fill-foreground" x="99" y="10" stroke="none" fontSize="5" fontWeight="500">
               {badgeTexts?.third || "PUT"}
             </text>
           </g>
           <g>
-            <rect className="fill-card" x="150" y="5" width="40" height="10" rx="5"></rect>
-            <DatabaseIcon x="154" y="7.5"></DatabaseIcon>
-            <text className="fill-foreground" x="165" y="12" stroke="none" fontSize="5" fontWeight="500">
+            <rect className="fill-card" x="125" y="3" width="34" height="10" rx="5"></rect>
+            <DatabaseIcon x="129" y="5.5"></DatabaseIcon>
+            <text className="fill-foreground" x="139" y="10" stroke="none" fontSize="5" fontWeight="500">
               {badgeTexts?.fourth || "DELETE"}
+            </text>
+          </g>
+          {/* Row 2 */}
+          <g>
+            <rect className="fill-card" x="165" y="3" width="34" height="10" rx="5"></rect>
+            <DatabaseIcon x="169" y="5.5"></DatabaseIcon>
+            <text className="fill-foreground" x="179" y="10" stroke="none" fontSize="5" fontWeight="500">
+              {badgeTexts?.fifth || "PATCH"}
+            </text>
+          </g>
+          <g>
+            <rect className="fill-card" x="205" y="3" width="30" height="10" rx="5"></rect>
+            <DatabaseIcon x="209" y="5.5"></DatabaseIcon>
+            <text className="fill-foreground" x="219" y="10" stroke="none" fontSize="5" fontWeight="500">
+              {badgeTexts?.sixth || "HEAD"}
+            </text>
+          </g>
+          <g>
+            <rect className="fill-card" x="241" y="3" width="24" height="10" rx="5"></rect>
+            <DatabaseIcon x="244" y="5.5"></DatabaseIcon>
+            <text className="fill-foreground" x="253" y="10" stroke="none" fontSize="5" fontWeight="500">
+              {badgeTexts?.seventh || "WS"}
+            </text>
+          </g>
+          <g>
+            <rect className="fill-card" x="268" y="3" width="24" height="10" rx="5"></rect>
+            <DatabaseIcon x="271" y="5.5"></DatabaseIcon>
+            <text className="fill-foreground" x="279" y="10" stroke="none" fontSize="5" fontWeight="500">
+              {badgeTexts?.eighth || "GQL"}
             </text>
           </g>
         </g>
         <defs>
           <mask id="db-mask-1">
-            <path d="M 31 10 v 15 q 0 5 5 5 h 59 q 5 0 5 5 v 10" strokeWidth="0.5" stroke="white" />
+            <path d="M 22 10 v 15 q 0 5 5 5 h 108 q 5 0 5 5 v 10" strokeWidth="0.5" stroke="white" />
           </mask>
           <mask id="db-mask-2">
-            <path d="M 77 10 v 10 q 0 5 5 5 h 13 q 5 0 5 5 v 10" strokeWidth="0.5" stroke="white" />
+            <path d="M 62 10 v 10 q 0 5 5 5 h 63 q 5 0 5 5 v 15" strokeWidth="0.5" stroke="white" />
           </mask>
           <mask id="db-mask-3">
-            <path d="M 124 10 v 10 q 0 5 -5 5 h -14 q -5 0 -5 5 v 10" strokeWidth="0.5" stroke="white" />
+            <path d="M 102 10 v 10 q 0 5 5 5 h 28 q 5 0 5 5 v 15" strokeWidth="0.5" stroke="white" />
           </mask>
           <mask id="db-mask-4">
-            <path d="M 170 10 v 15 q 0 5 -5 5 h -60 q -5 0 -5 5 v 10" strokeWidth="0.5" stroke="white" />
+            <path d="M 142 10 v 15 q 0 5 -2 5 h -0 q -5 0 -5 5 v 10" strokeWidth="0.5" stroke="white" />
+          </mask>
+          <mask id="db-mask-5">
+            <path d="M 182 10 v 15 q 0 5 -5 5 h -32 q -5 0 -5 5 v 10" strokeWidth="0.5" stroke="white" />
+          </mask>
+          <mask id="db-mask-6">
+            <path d="M 218 10 v 10 q 0 5 -5 5 h -68 q -5 0 -5 5 v 15" strokeWidth="0.5" stroke="white" />
+          </mask>
+          <mask id="db-mask-7">
+            <path d="M 252 10 v 10 q 0 5 -5 5 h -102 q -5 0 -5 5 v 15" strokeWidth="0.5" stroke="white" />
+          </mask>
+          <mask id="db-mask-8">
+            <path d="M 275 10 v 15 q 0 5 -5 5 h -125 q -5 0 -5 5 v 10" strokeWidth="0.5" stroke="white" />
           </mask>
           <radialGradient id="db-blue-grad" fx="1">
             <stop offset="0%" stopColor={lightColor || "#006AAA"} />
+            <stop offset="100%" stopColor="transparent" />
+          </radialGradient>
+          <radialGradient id="db-red-grad" fx="1">
+            <stop offset="0%" stopColor="#C00008" />
             <stop offset="100%" stopColor="transparent" />
           </radialGradient>
         </defs>

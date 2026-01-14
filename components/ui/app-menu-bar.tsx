@@ -3,210 +3,191 @@
 import { useState, useEffect } from "react";
 import { useTheme } from "next-themes";
 import { motion, AnimatePresence } from "framer-motion";
+import Image from "next/image";
+import { HoneycombLoader } from "@/components/ui/honeycomb-loader";
 import {
-  Menubar,
-  MenubarContent,
-  MenubarItem,
-  MenubarMenu,
-  MenubarSeparator,
-  MenubarTrigger,
-} from "@/components/ui/menubar";
-import {
-  Boxes,
-  Code,
-  Palette,
-  Eye,
-  FileText,
-  MessageSquare,
-  Target,
-  Rocket,
-  Trophy,
-  Mail,
-  Calendar,
   Sun,
   Moon,
+  Menu,
+  X,
 } from "lucide-react";
 
 export default function AppMenuBar() {
-  const [scrolled, setScrolled] = useState(false);
   const [mounted, setMounted] = useState(false);
-  const { theme, setTheme } = useTheme();
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const { theme, setTheme, resolvedTheme } = useTheme();
 
   useEffect(() => {
     setMounted(true);
-  }, []);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 20);
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   const toggleTheme = () => {
     setTheme(theme === "dark" ? "light" : "dark");
   };
 
-  const isDark = theme === "dark";
+  const isDark = mounted && resolvedTheme === "dark";
+
+  const navItems = [
+    { label: "Services", href: "#services" },
+    { label: "Work", href: "#work" },
+    { label: "About", href: "#about" },
+    { label: "Blog", href: "#blog" },
+  ];
 
   return (
     <motion.header
-      className="fixed top-0 left-0 right-0 z-50 flex justify-center pt-4"
+      className="fixed top-0 left-0 right-0 z-50 px-4 pt-3"
       initial={{ y: -100 }}
       animate={{ y: 0 }}
-      transition={{ duration: 0.6, ease: "easeOut" }}
+      transition={{ duration: 0.5, ease: "easeOut" }}
     >
-      {/* Frosted Glass Nav Container */}
-      <motion.nav
-        className={`flex items-center gap-2 px-2 py-2 rounded-2xl transition-all duration-300 ${
-          scrolled
-            ? "bg-background/80 backdrop-blur-xl border border-border shadow-2xl"
-            : "bg-foreground/5 backdrop-blur-md border border-border/50"
-        }`}
-        initial={{ scale: 0.9, opacity: 0 }}
-        animate={{ scale: 1, opacity: 1 }}
-        transition={{ duration: 0.4, delay: 0.2 }}
-      >
-        {/* Navigation Menu */}
-        <Menubar className="bg-transparent border-0 hidden md:flex gap-0">
-          {/* Services Menu */}
-          <MenubarMenu>
-            <MenubarTrigger className="flex items-center gap-2 px-4 py-2 text-sm text-foreground/80 hover:text-foreground hover:bg-foreground/10 rounded-xl data-[state=open]:text-foreground data-[state=open]:bg-foreground/10 cursor-pointer transition-all">
-              <Boxes className="w-4 h-4" />
-              Services
-            </MenubarTrigger>
-            <MenubarContent className="w-56 bg-background/95 backdrop-blur-md border-border mt-2">
-              <MenubarItem className="flex items-center gap-2 text-foreground hover:bg-foreground/10 cursor-pointer">
-                <Boxes className="w-4 h-4 text-[#006AAA]" />
-                Design Systems
-              </MenubarItem>
-              <MenubarItem className="flex items-center gap-2 text-foreground hover:bg-foreground/10 cursor-pointer">
-                <Code className="w-4 h-4 text-[#C00008]" />
-                Web Development
-              </MenubarItem>
-              <MenubarItem className="flex items-center gap-2 text-foreground hover:bg-foreground/10 cursor-pointer">
-                <Palette className="w-4 h-4 text-[#7C3AED]" />
-                Brand Identity
-              </MenubarItem>
-            </MenubarContent>
-          </MenubarMenu>
-
-          {/* Work Menu */}
-          <MenubarMenu>
-            <MenubarTrigger className="flex items-center gap-2 px-4 py-2 text-sm text-foreground/80 hover:text-foreground hover:bg-foreground/10 rounded-xl data-[state=open]:text-foreground data-[state=open]:bg-foreground/10 cursor-pointer transition-all">
-              <Eye className="w-4 h-4" />
-              Work
-            </MenubarTrigger>
-            <MenubarContent className="w-56 bg-background/95 backdrop-blur-md border-border mt-2">
-              <MenubarItem className="flex items-center gap-2 text-foreground hover:bg-foreground/10 cursor-pointer">
-                <Eye className="w-4 h-4" />
-                Portfolio
-              </MenubarItem>
-              <MenubarItem className="flex items-center gap-2 text-foreground hover:bg-foreground/10 cursor-pointer">
-                <FileText className="w-4 h-4" />
-                Case Studies
-              </MenubarItem>
-              <MenubarItem className="flex items-center gap-2 text-foreground hover:bg-foreground/10 cursor-pointer">
-                <MessageSquare className="w-4 h-4" />
-                Testimonials
-              </MenubarItem>
-            </MenubarContent>
-          </MenubarMenu>
-
-          {/* Process Menu */}
-          <MenubarMenu>
-            <MenubarTrigger className="flex items-center gap-2 px-4 py-2 text-sm text-foreground/80 hover:text-foreground hover:bg-foreground/10 rounded-xl data-[state=open]:text-foreground data-[state=open]:bg-foreground/10 cursor-pointer transition-all">
-              <Target className="w-4 h-4" />
-              Process
-            </MenubarTrigger>
-            <MenubarContent className="w-56 bg-background/95 backdrop-blur-md border-border mt-2">
-              <MenubarItem className="flex items-center gap-2 text-foreground hover:bg-foreground/10 cursor-pointer">
-                <Target className="w-4 h-4" />
-                Strategy
-              </MenubarItem>
-              <MenubarItem className="flex items-center gap-2 text-foreground hover:bg-foreground/10 cursor-pointer">
-                <Palette className="w-4 h-4" />
-                Design
-              </MenubarItem>
-              <MenubarItem className="flex items-center gap-2 text-foreground hover:bg-foreground/10 cursor-pointer">
-                <Rocket className="w-4 h-4" />
-                Deploy
-              </MenubarItem>
-              <MenubarSeparator className="bg-border" />
-              <MenubarItem className="flex items-center gap-2 text-foreground hover:bg-foreground/10 cursor-pointer">
-                <Trophy className="w-4 h-4 text-[#006AAA]" />
-                Win Together
-              </MenubarItem>
-            </MenubarContent>
-          </MenubarMenu>
-
-          {/* Contact Menu */}
-          <MenubarMenu>
-            <MenubarTrigger className="flex items-center gap-2 px-4 py-2 text-sm text-foreground/80 hover:text-foreground hover:bg-foreground/10 rounded-xl data-[state=open]:text-foreground data-[state=open]:bg-foreground/10 cursor-pointer transition-all">
-              <Mail className="w-4 h-4" />
-              Contact
-            </MenubarTrigger>
-            <MenubarContent className="w-56 bg-background/95 backdrop-blur-md border-border mt-2">
-              <MenubarItem className="flex items-center gap-2 text-foreground hover:bg-foreground/10 cursor-pointer">
-                <Calendar className="w-4 h-4" />
-                Book a Call
-              </MenubarItem>
-              <MenubarItem className="flex items-center gap-2 text-foreground hover:bg-foreground/10 cursor-pointer">
-                <Mail className="w-4 h-4" />
-                hello@haestus.com
-              </MenubarItem>
-            </MenubarContent>
-          </MenubarMenu>
-        </Menubar>
-
-        {/* Divider */}
-        <div className="hidden md:block w-px h-6 bg-border mx-1" />
-
-        {/* Theme Toggle Button */}
-        {mounted && (
-          <button
-            onClick={toggleTheme}
-            className="relative p-2 rounded-xl hover:bg-foreground/10 transition-all duration-300"
-            aria-label={isDark ? "Switch to light mode" : "Switch to dark mode"}
-          >
-            <AnimatePresence mode="wait" initial={false}>
-              {isDark ? (
-                <motion.div
-                  key="moon"
-                  initial={{ rotate: -90, opacity: 0, scale: 0.5 }}
-                  animate={{ rotate: 0, opacity: 1, scale: 1 }}
-                  exit={{ rotate: 90, opacity: 0, scale: 0.5 }}
-                  transition={{ duration: 0.2 }}
-                >
-                  <Moon className="w-5 h-5 text-foreground" />
-                </motion.div>
-              ) : (
-                <motion.div
-                  key="sun"
-                  initial={{ rotate: 90, opacity: 0, scale: 0.5 }}
-                  animate={{ rotate: 0, opacity: 1, scale: 1 }}
-                  exit={{ rotate: -90, opacity: 0, scale: 0.5 }}
-                  transition={{ duration: 0.2 }}
-                >
-                  <Sun className="w-5 h-5 text-foreground" />
-                </motion.div>
-              )}
-            </AnimatePresence>
-          </button>
-        )}
-
-        {/* Divider */}
-        <div className="w-px h-6 bg-border mx-1" />
-
-        {/* CTA Button */}
-        <button
-          className="px-5 py-2 text-sm font-medium rounded-2xl bg-foreground text-background hover:bg-foreground/90 transition-all"
+      {/* Ultra-Minimal Floating Card - 2x Larger */}
+      <div className="max-w-4xl mx-auto">
+        <motion.nav
+          className={`flex items-center justify-between px-6 py-4 rounded-xl transition-all duration-300 ${
+            isDark
+              ? "bg-zinc-900/80 border-zinc-800"
+              : "bg-white/60 border-zinc-200/80"
+          } backdrop-blur-md border`}
+          initial={{ scale: 0.95, opacity: 0 }}
+          animate={{ scale: 1, opacity: 1 }}
+          transition={{ duration: 0.3, delay: 0.1 }}
         >
-          Start Project
-        </button>
-      </motion.nav>
+          {/* Left - Logo */}
+          <a href="/" className="flex items-center gap-3 group flex-shrink-0 pr-6 border-r border-zinc-200 dark:border-zinc-700">
+            <HoneycombLoader size={32} className="opacity-90 group-hover:opacity-100 transition-opacity" />
+            <Image
+              src="/logo/white.png"
+              alt="Haestus"
+              width={120}
+              height={30}
+              className="h-6 w-auto dark:hidden"
+              priority
+            />
+            <Image
+              src="/logo/black.png"
+              alt="Haestus"
+              width={120}
+              height={30}
+              className="h-6 w-auto hidden dark:block"
+              priority
+            />
+          </a>
+
+          {/* Center - Navigation */}
+          <div className="hidden md:flex items-center gap-2 px-6 border-r border-zinc-200 dark:border-zinc-700">
+            {navItems.map((item) => (
+              <a
+                key={item.label}
+                href={item.href}
+                className={`px-4 py-2 text-sm font-medium rounded-lg transition-colors ${
+                  isDark
+                    ? "text-zinc-400 hover:text-white hover:bg-zinc-800"
+                    : "text-zinc-500 hover:text-zinc-900 hover:bg-zinc-100"
+                }`}
+              >
+                {item.label}
+              </a>
+            ))}
+          </div>
+
+          {/* Right - Actions */}
+          <div className="flex items-center gap-3 pl-6">
+            {/* Mobile Menu Button */}
+            <button
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              className={`md:hidden p-2 rounded-lg transition-colors ${
+                isDark ? "text-zinc-400 hover:text-white hover:bg-zinc-800" : "text-zinc-500 hover:text-zinc-900 hover:bg-zinc-100"
+              }`}
+            >
+              {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+            </button>
+
+            {/* Theme Toggle */}
+            {mounted && (
+              <button
+                onClick={toggleTheme}
+                className={`p-2 rounded-lg transition-colors ${
+                  isDark ? "text-zinc-400 hover:text-white hover:bg-zinc-800" : "text-zinc-500 hover:text-zinc-900 hover:bg-zinc-100"
+                }`}
+                aria-label={isDark ? "Switch to light mode" : "Switch to dark mode"}
+              >
+                <AnimatePresence mode="wait" initial={false}>
+                  {isDark ? (
+                    <motion.div
+                      key="moon"
+                      initial={{ rotate: -90, opacity: 0 }}
+                      animate={{ rotate: 0, opacity: 1 }}
+                      exit={{ rotate: 90, opacity: 0 }}
+                      transition={{ duration: 0.15 }}
+                    >
+                      <Moon className="w-5 h-5" />
+                    </motion.div>
+                  ) : (
+                    <motion.div
+                      key="sun"
+                      initial={{ rotate: 90, opacity: 0 }}
+                      animate={{ rotate: 0, opacity: 1 }}
+                      exit={{ rotate: -90, opacity: 0 }}
+                      transition={{ duration: 0.15 }}
+                    >
+                      <Sun className="w-5 h-5" />
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </button>
+            )}
+
+            {/* CTA Button */}
+            <button
+              className={`hidden sm:block px-5 py-2.5 text-sm font-medium rounded-lg transition-colors ${
+                isDark
+                  ? "bg-white text-zinc-900 hover:bg-zinc-100"
+                  : "bg-zinc-900 text-white hover:bg-zinc-800"
+              }`}
+            >
+              Contact
+            </button>
+          </div>
+        </motion.nav>
+
+        {/* Mobile Menu */}
+        <AnimatePresence>
+          {mobileMenuOpen && (
+            <motion.div
+              initial={{ opacity: 0, y: -8 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -8 }}
+              transition={{ duration: 0.2 }}
+              className={`md:hidden mt-2 rounded-lg border p-3 ${
+                isDark ? "bg-zinc-900/95 border-zinc-800" : "bg-white/95 border-zinc-200"
+              } backdrop-blur-md`}
+            >
+              <nav className="flex flex-col gap-1">
+                {navItems.map((item) => (
+                  <a
+                    key={item.label}
+                    href={item.href}
+                    className={`px-3 py-2 text-sm rounded-md transition-colors ${
+                      isDark ? "text-zinc-300 hover:text-white hover:bg-zinc-800" : "text-zinc-600 hover:text-zinc-900 hover:bg-zinc-100"
+                    }`}
+                    onClick={() => setMobileMenuOpen(false)}
+                  >
+                    {item.label}
+                  </a>
+                ))}
+                <button className={`mt-2 w-full px-3 py-2 text-sm font-medium rounded-md transition-colors ${
+                  isDark
+                    ? "bg-white text-zinc-900 hover:bg-zinc-100"
+                    : "bg-zinc-900 text-white hover:bg-zinc-800"
+                }`}>
+                  Contact
+                </button>
+              </nav>
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </div>
     </motion.header>
   );
 }

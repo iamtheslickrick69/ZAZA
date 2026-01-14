@@ -69,16 +69,16 @@ export function TransformationBanner() {
       {/* Modal */}
       <AnimatePresence>
         {isOpen && (
-          <>
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.3 }}
+            className='fixed inset-0 z-50 flex items-center justify-center p-4 md:p-8 lg:p-12'
+            onClick={() => setIsOpen(false)}
+          >
             {/* Backdrop */}
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.3 }}
-              className='fixed inset-0 bg-black/90 backdrop-blur-sm z-50'
-              onClick={() => setIsOpen(false)}
-            />
+            <div className='absolute inset-0 bg-background/95 dark:bg-zinc-900/95 backdrop-blur-xl' />
 
             {/* Modal Content */}
             <motion.div
@@ -86,7 +86,8 @@ export function TransformationBanner() {
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.9, y: 20 }}
               transition={{ type: 'spring', damping: 25, stiffness: 300 }}
-              className='fixed inset-4 md:inset-8 lg:inset-12 z-50 flex flex-col'
+              className='relative z-10 w-full max-w-6xl flex flex-col max-h-[90vh]'
+              onClick={(e) => e.stopPropagation()}
             >
               {/* Close Button */}
               <div className='flex justify-end mb-4'>
@@ -109,8 +110,8 @@ export function TransformationBanner() {
               </div>
 
               {/* Comparison Slider */}
-              <div className='flex-1 flex items-center justify-center'>
-                <div className='w-full max-w-6xl'>
+              <div className='flex-1 flex items-center justify-center overflow-hidden'>
+                <div className='w-full'>
                   <div className='relative w-full aspect-video rounded-2xl overflow-hidden shadow-2xl border-2 border-border'>
                     <ImageComparisonSlider
                       leftImage='/before.png'
@@ -128,7 +129,7 @@ export function TransformationBanner() {
                 </div>
               </div>
             </motion.div>
-          </>
+          </motion.div>
         )}
       </AnimatePresence>
     </>
