@@ -1,7 +1,7 @@
 "use client";
 
 import { cn } from "@/lib/utils";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 interface HoneycombLoaderProps {
   size?: number;
@@ -19,31 +19,26 @@ export const HoneycombLoader = ({
 
   return (
     <div
-      className={cn("ember-core group", className)}
+      className={cn("liquid-slant-logo group", className)}
       style={{
-        transform: `scale(${scale})`,
+        transform: `scale(${scale}) rotate(15deg)`,
         transformOrigin: 'center',
       }}
       onClick={onClick}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
-      {/* Glow layer */}
-      <div className="ember-glow" />
+      {/* Ambient glow */}
+      <div className="liquid-glow" />
 
-      {/* Hexagon cells */}
-      <div className="ember-hex ember-hex-1"><div className="ember-inner" /></div>
-      <div className="ember-hex ember-hex-2"><div className="ember-inner" /></div>
-      <div className="ember-hex ember-hex-3"><div className="ember-inner" /></div>
-      <div className="ember-hex ember-hex-4"><div className="ember-inner" /></div>
-      <div className="ember-hex ember-hex-5"><div className="ember-inner" /></div>
-      <div className="ember-hex ember-hex-6"><div className="ember-inner" /></div>
-      <div className="ember-hex ember-hex-7"><div className="ember-inner" /></div>
-
-      {/* Floating embers */}
-      <div className="ember-particle ember-p1" />
-      <div className="ember-particle ember-p2" />
-      <div className="ember-particle ember-p3" />
+      {/* Hexagon cells - wave cascade */}
+      <div className="liquid-hex liquid-hex-1"><div className="liquid-inner" /></div>
+      <div className="liquid-hex liquid-hex-2"><div className="liquid-inner" /></div>
+      <div className="liquid-hex liquid-hex-3"><div className="liquid-inner" /></div>
+      <div className="liquid-hex liquid-hex-4"><div className="liquid-inner" /></div>
+      <div className="liquid-hex liquid-hex-5"><div className="liquid-inner" /></div>
+      <div className="liquid-hex liquid-hex-6"><div className="liquid-inner" /></div>
+      <div className="liquid-hex liquid-hex-7"><div className="liquid-inner" /></div>
     </div>
   );
 };
