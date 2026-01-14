@@ -24,6 +24,7 @@ export default function Home() {
       <AppMenuBar />
       <main>
         <HeroSectionAnimated />
+        <PortfolioShowcase />
         <section id="showcase" className="relative">
           <SmartSitesShowcase />
         </section>
@@ -50,7 +51,6 @@ export default function Home() {
         <HowItWorks />
         <LetsWorkTogether />
         <SeamlessIntegrations />
-        <PortfolioShowcase />
         <section className="min-h-screen flex flex-col items-center justify-center bg-background p-4">
           <h2 className="mb-8 text-2xl font-bold text-foreground">Infinite Card Stack</h2>
           <AnimatedCardStack />
