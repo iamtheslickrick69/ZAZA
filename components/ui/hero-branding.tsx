@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
+import RuixenQueryBox from "@/components/ui/ruixen-query-box";
 
 export function HeroBranding() {
   return (
@@ -20,8 +21,19 @@ export function HeroBranding() {
             width={320}
             height={46}
             priority
+            className="brightness-0 invert"
           />
         </a>
+
+        {/* AI Chat Bar */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.6 }}
+          className="w-full"
+        >
+          <RuixenQueryBox />
+        </motion.div>
 
         {/* Subtitle */}
         <motion.p

@@ -12,8 +12,8 @@ function StackedCircularFooter() {
       <div className="container mx-auto px-4 md:px-6">
         <div className="flex flex-col items-center">
           {/* Logo */}
-          <div className="mb-8 rounded-full bg-foreground p-8">
-            <Icons.logo className="w-8 h-8 text-background" />
+          <div className="mb-8">
+            <Icons.logo className="w-16 h-16 text-foreground" />
           </div>
 
           {/* Navigation */}

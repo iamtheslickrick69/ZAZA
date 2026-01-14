@@ -79,29 +79,29 @@ export default function SmartSitesShowcase() {
             transition={{ duration: 0.7 }}
             className="relative group"
           >
-            <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-neutral-900 via-neutral-900 to-neutral-950 border border-neutral-800 p-8 md:p-10 h-full">
+            <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-orange-950/40 via-orange-900/30 to-amber-950/30 border border-orange-800/40 p-8 md:p-10 h-full">
               {/* Cracked texture */}
               <div
                 className="absolute inset-0 opacity-10"
                 style={{
-                  backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 30 L15 25 L30 35 L45 20 L60 30 M0 45 L20 50 L40 40 L60 50' stroke='%23666' fill='none' stroke-width='0.5'/%3E%3C/svg%3E")`,
+                  backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 30 L15 25 L30 35 L45 20 L60 30 M0 45 L20 50 L40 40 L60 50' stroke='%23fb923c' fill='none' stroke-width='0.5' opacity='0.3'/%3E%3C/svg%3E")`,
                 }}
               />
 
-              {/* Fog */}
-              <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-neutral-800/30 to-transparent pointer-events-none" />
+              {/* Warm glow */}
+              <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-orange-900/20 to-transparent pointer-events-none" />
 
               <div className="relative z-10">
                 {/* Badge */}
-                <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-red-950/50 border border-red-900/30 mb-6">
-                  <Skull className="w-4 h-4 text-red-500" />
-                  <span className="text-xs font-mono text-red-400 uppercase tracking-wider">The Old Way</span>
+                <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-orange-950/60 border border-orange-700/40 mb-6">
+                  <Skull className="w-4 h-4 text-orange-400" />
+                  <span className="text-xs font-mono text-orange-300 uppercase tracking-wider">The Old Way</span>
                 </div>
 
-                <h3 className="text-3xl md:text-4xl font-display text-neutral-400 mb-2">
+                <h3 className="text-3xl md:text-4xl font-display text-orange-200 mb-2">
                   Static Sites
                 </h3>
-                <p className="text-neutral-600 text-lg mb-8 font-display-light">
+                <p className="text-orange-400/70 text-lg mb-8 font-display-light">
                   R.I.P. Your Growth Potential
                 </p>
 
@@ -114,22 +114,22 @@ export default function SmartSitesShowcase() {
                       whileInView={{ opacity: 1, x: 0 }}
                       viewport={{ once: true }}
                       transition={{ delay: idx * 0.1 }}
-                      className="flex items-center gap-3 p-3 rounded-xl bg-neutral-800/30 border border-neutral-800/50 group/item hover:bg-red-950/20 hover:border-red-900/30 transition-all duration-300"
+                      className="flex items-center gap-3 p-3 rounded-xl bg-orange-950/30 border border-orange-800/40 group/item hover:bg-orange-900/40 hover:border-orange-700/50 transition-all duration-300"
                     >
-                      <div className="p-2 rounded-lg bg-red-950/30">
-                        <pain.icon className="w-4 h-4 text-red-500/70" />
+                      <div className="p-2 rounded-lg bg-orange-900/40">
+                        <pain.icon className="w-4 h-4 text-orange-400/80" />
                       </div>
-                      <span className="text-neutral-500 text-sm group-hover/item:text-red-400/70 transition-colors">
+                      <span className="text-orange-200/70 text-sm group-hover/item:text-orange-200 transition-colors">
                         {pain.label}
                       </span>
-                      <XCircle className="w-4 h-4 text-red-600/50 ml-auto" />
+                      <XCircle className="w-4 h-4 text-red-500/60 ml-auto" />
                     </motion.div>
                   ))}
                 </div>
 
                 {/* Dead CTA */}
-                <div className="mt-8 p-4 rounded-xl bg-neutral-800/20 border border-neutral-800/30 text-center">
-                  <p className="text-neutral-600 text-sm italic">
+                <div className="mt-8 p-4 rounded-xl bg-orange-950/30 border border-orange-800/30 text-center">
+                  <p className="text-orange-300/60 text-sm italic">
                     "We'll get back to you in 2-3 business weeks..."
                   </p>
                 </div>

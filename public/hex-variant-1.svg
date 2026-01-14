@@ -1,0 +1,9 @@
+<svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Variant 1: Center Dot/Node -->
+  <path d="M32 4L56 18V46L32 60L8 46V18L32 4Z"
+        stroke="white"
+        stroke-width="2.5"
+        fill="none"
+        stroke-linejoin="miter"/>
+  <circle cx="32" cy="32" r="4" fill="white"/>
+</svg>
