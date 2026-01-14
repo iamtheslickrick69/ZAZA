@@ -3,7 +3,6 @@ import { AnimatedGradientDemo } from "@/components/AnimatedGradientDemo";
 import AnimatedCardStack from "@/components/AnimatedCardStack";
 import { BackgroundBoxesDemo } from "@/components/BackgroundBoxesDemo";
 import { MinimalFooter } from "@/components/ui/minimal-footer";
-import { DockNav } from "@/components/DockNav";
 import { LetsWorkTogether } from "@/components/ui/lets-work-section";
 import { ScrollProgress } from "@/components/ScrollProgress";
 import SmartSitesShowcase from "@/components/ui/spatial-product-showcase";
@@ -22,7 +21,6 @@ export default function Home() {
     <>
       <ScrollProgress />
       <AppMenuBar />
-      <DockNav />
       <main>
         <HeroSectionAnimated />
         <section id="showcase" className="relative">
