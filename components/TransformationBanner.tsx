@@ -11,7 +11,7 @@ export function TransformationBanner() {
   return (
     <>
       {/* Compact CTA Button */}
-      <section className='relative py-12 px-6 bg-black'>
+      <section className='relative py-12 px-6 bg-background transition-colors duration-300'>
         <div className='max-w-4xl mx-auto'>
           <motion.button
             onClick={() => setIsOpen(true)}
@@ -34,7 +34,7 @@ export function TransformationBanner() {
             />
 
             {/* Inner Background */}
-            <div className='absolute inset-[2px] rounded-2xl bg-neutral-900/95 backdrop-blur-sm' />
+            <div className='absolute inset-[2px] rounded-2xl bg-card/95 backdrop-blur-sm' />
 
             {/* Hover Glow Effect */}
             <div
@@ -47,19 +47,19 @@ export function TransformationBanner() {
             {/* Content */}
             <div className='relative z-10 flex flex-col md:flex-row items-center justify-between gap-4'>
               <div className='text-center md:text-left'>
-                <h3 className='text-2xl md:text-3xl font-bold text-white mb-2'>
+                <h3 className='text-2xl md:text-3xl font-bold text-foreground mb-2'>
                   See The Transformation
                 </h3>
-                <p className='text-gray-400 text-sm md:text-base'>
+                <p className='text-muted-foreground text-sm md:text-base'>
                   From outdated to outstanding in 72 hours
                 </p>
               </div>
 
               {/* Before/After Button Indicator */}
-              <div className='flex items-center gap-3 px-6 py-3 rounded-full bg-white/5 border border-white/10 group-hover:border-white/20 transition-colors'>
-                <span className='text-gray-400 text-sm font-medium'>Before</span>
-                <ArrowLeftRight className='w-5 h-5 text-white' />
-                <span className='text-gray-400 text-sm font-medium'>After</span>
+              <div className='flex items-center gap-3 px-6 py-3 rounded-full bg-foreground/5 border border-border group-hover:border-foreground/20 transition-colors'>
+                <span className='text-muted-foreground text-sm font-medium'>Before</span>
+                <ArrowLeftRight className='w-5 h-5 text-foreground' />
+                <span className='text-muted-foreground text-sm font-medium'>After</span>
               </div>
             </div>
           </motion.button>
@@ -92,18 +92,18 @@ export function TransformationBanner() {
               <div className='flex justify-end mb-4'>
                 <button
                   onClick={() => setIsOpen(false)}
-                  className='p-2 rounded-full bg-white/10 hover:bg-white/20 transition-colors'
+                  className='p-2 rounded-full bg-foreground/10 hover:bg-foreground/20 transition-colors'
                 >
-                  <X className='w-6 h-6 text-white' />
+                  <X className='w-6 h-6 text-foreground' />
                 </button>
               </div>
 
               {/* Header */}
               <div className='text-center mb-6'>
-                <h2 className='text-3xl md:text-5xl font-bold text-white mb-2'>
+                <h2 className='text-3xl md:text-5xl font-bold text-foreground mb-2'>
                   See The Transformation
                 </h2>
-                <p className='text-lg text-gray-400'>
+                <p className='text-lg text-muted-foreground'>
                   From outdated to outstanding in 72 hours
                 </p>
               </div>
@@ -111,7 +111,7 @@ export function TransformationBanner() {
               {/* Comparison Slider */}
               <div className='flex-1 flex items-center justify-center'>
                 <div className='w-full max-w-6xl'>
-                  <div className='relative w-full aspect-video rounded-2xl overflow-hidden shadow-2xl border-2 border-neutral-700'>
+                  <div className='relative w-full aspect-video rounded-2xl overflow-hidden shadow-2xl border-2 border-border'>
                     <ImageComparisonSlider
                       leftImage='/before.png'
                       rightImage='/after.png'
@@ -122,7 +122,7 @@ export function TransformationBanner() {
                   </div>
 
                   {/* Instructions */}
-                  <p className='text-center text-gray-400 mt-4 text-sm'>
+                  <p className='text-center text-muted-foreground mt-4 text-sm'>
                     ← Drag the slider to compare →
                   </p>
                 </div>

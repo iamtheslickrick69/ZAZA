@@ -1,6 +1,5 @@
 import { HeroSectionAnimated } from "@/components/ui/hero-section";
 import { AnimatedGradientDemo } from "@/components/AnimatedGradientDemo";
-import InteractiveSelector from "@/components/ui/interactive-selector";
 import AnimatedCardStack from "@/components/AnimatedCardStack";
 import { BackgroundBoxesDemo } from "@/components/BackgroundBoxesDemo";
 import { MinimalFooter } from "@/components/ui/minimal-footer";
@@ -8,65 +7,48 @@ import { DockNav } from "@/components/DockNav";
 import { LetsWorkTogether } from "@/components/ui/lets-work-section";
 import { ScrollProgress } from "@/components/ScrollProgress";
 import SmartSitesShowcase from "@/components/ui/spatial-product-showcase";
-import { ServiceCards } from "@/components/ServiceCards";
 import { TransformationBanner } from "@/components/TransformationBanner";
 import ColorChangeCards from "@/components/ui/color-change-card";
 import { HaestusFAQ } from "@/components/ui/faq-tabs";
 import { PortfolioShowcase } from "@/components/PortfolioShowcase";
-import DatabaseWithRestApi from "@/components/ui/database-with-rest-api";
 import { HowItWorks } from "@/components/HowItWorks";
 import { ProjectShowcase } from "@/components/ProjectShowcase";
+import AppMenuBar from "@/components/ui/app-menu-bar";
+import { UniqueAccordion } from "@/components/ui/interactive-accordion";
+import { TechStackScroll } from "@/components/ui/tech-stack-scroll";
 
 export default function Home() {
   return (
     <>
       <ScrollProgress />
+      <AppMenuBar />
       <DockNav />
       <main>
         <HeroSectionAnimated />
-        <ServiceCards />
-        <section className="w-full bg-[#0a0a0a] py-20 flex flex-col items-center justify-center">
-          <div className="text-center mb-8">
-            <span
-              className="text-sm font-medium tracking-wider uppercase mb-4 block"
-              style={{
-                background: 'linear-gradient(90deg, #006AAA, #C00008)',
-                WebkitBackgroundClip: 'text',
-                WebkitTextFillColor: 'transparent'
-              }}
-            >
-              Seamless Integrations
-            </span>
-            <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-white mb-4">
-              Connect Everything
-            </h2>
-            <p className="max-w-2xl text-lg text-neutral-400 mx-auto px-4">
-              Your Smart Site integrates with any tool, platform, or API your business needs.
-            </p>
-          </div>
-          <DatabaseWithRestApi
-            circleText="API"
-            title="We connect to any API you need"
-            buttonTexts={{ first: "Haestus", second: "Your Stack" }}
-            badgeTexts={{ first: "GET", second: "POST", third: "PUT", fourth: "DELETE" }}
-            lightColor="#006AAA"
-          />
-        </section>
         <section id="showcase" className="relative">
           <SmartSitesShowcase />
         </section>
+        <section className="w-full bg-background py-20 flex flex-col items-center justify-center transition-colors duration-300">
+          <div className="w-full max-w-6xl px-6">
+            <div className="mb-12 text-center">
+              <h2 className="text-4xl md:text-5xl font-medium tracking-tight mb-4 text-foreground">How We Work</h2>
+              <p className="text-muted-foreground text-lg max-w-2xl mx-auto">From strategy to victory, we're with you every step of the way.</p>
+            </div>
+            <div className="flex justify-center">
+              <UniqueAccordion />
+            </div>
+          </div>
+        </section>
+        <TechStackScroll />
         <ProjectShowcase />
         <TransformationBanner />
         <section className="min-h-screen py-20">
           <AnimatedGradientDemo />
         </section>
-        <section className="bg-neutral-900">
+        <section className="bg-background transition-colors duration-300">
           <ColorChangeCards />
         </section>
         <HowItWorks />
-        <section className="min-h-screen">
-          <InteractiveSelector />
-        </section>
         <LetsWorkTogether />
         <PortfolioShowcase />
         <section className="min-h-screen flex flex-col items-center justify-center bg-background p-4">

@@ -380,25 +380,6 @@ const MusicPortfolio: React.FC<MusicPortfolioProps> = ({
           <div className="corner-item top-left">
             <div className="corner-square" aria-hidden="true"></div>
           </div>
-          <nav className="corner-item top-right">
-            {SOCIAL_LINKS.spotify && (
-              <>
-                <a href={SOCIAL_LINKS.spotify} target="_blank" rel="noopener noreferrer">
-                  Spotify
-                </a>
-                {' | '}
-              </>
-            )}
-            {SOCIAL_LINKS.email && (
-              <>
-                <a href={SOCIAL_LINKS.email}>Email</a>
-                {' | '}
-              </>
-            )}
-            {SOCIAL_LINKS.x && (
-              <a href={SOCIAL_LINKS.x} target="_blank" rel="noopener noreferrer">X</a>
-            )}
-          </nav>
           {coordinates && (
             <div className="corner-item bottom-left">{coordinates}</div>
           )}

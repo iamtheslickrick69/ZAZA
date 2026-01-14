@@ -145,9 +145,8 @@ const BentoCard: React.FC<BentoCardProps> = ({
     >
       {/* Card with left accent border */}
       <motion.div
-        className="relative h-full rounded-lg overflow-hidden border border-white/5 transition-all duration-300"
+        className="relative h-full rounded-lg overflow-hidden border border-border transition-all duration-300 bg-card"
         animate={{
-          backgroundColor: isHovered ? "#1a1a1a" : "#141414",
           y: isHovered ? -4 : 0,
           boxShadow: isHovered
             ? `0 12px 40px rgba(0, 0, 0, 0.4), 0 0 20px ${glowColor}`
@@ -219,7 +218,7 @@ const BentoCard: React.FC<BentoCardProps> = ({
           animate="show"
         >
           <motion.h3
-            className="text-sm md:text-base text-zinc-400 font-body mb-2"
+            className="text-sm md:text-base text-muted-foreground font-body mb-2"
             variants={item}
           >
             {title}
@@ -228,14 +227,14 @@ const BentoCard: React.FC<BentoCardProps> = ({
             className="flex items-baseline"
             variants={item}
           >
-            <span className="text-3xl sm:text-4xl md:text-5xl text-white font-display">
+            <span className="text-3xl sm:text-4xl md:text-5xl text-foreground font-display">
               {prefix}{formatNumber(animatedNum, value)}{suffix}
             </span>
             <TrendIcon />
           </motion.div>
           {subtitle && (
             <motion.p
-              className="text-sm text-zinc-500 font-body mt-3"
+              className="text-sm text-muted-foreground/70 font-body mt-3"
               variants={item}
             >
               {subtitle}
@@ -272,7 +271,7 @@ const AnimatedGradientDemo: React.FC = () => {
   return (
     <div
       ref={containerRef}
-      className="w-full bg-[#0a0a0a] py-8 md:py-16 px-4 md:px-8 relative overflow-hidden"
+      className="w-full bg-background py-8 md:py-16 px-4 md:px-8 relative overflow-hidden transition-colors duration-300"
     >
       {/* Cursor follow gradient */}
       <motion.div

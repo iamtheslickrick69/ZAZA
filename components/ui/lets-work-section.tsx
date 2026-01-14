@@ -44,7 +44,7 @@ export function LetsWorkTogether() {
   }
 
   return (
-    <section className="flex min-h-screen items-center justify-center px-6">
+    <section className="flex items-center justify-center px-6 py-20">
       <div className="relative flex flex-col items-center gap-12">
         <div
           className="absolute inset-0 z-10 flex flex-col items-center justify-center gap-8 transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)]"
@@ -105,7 +105,7 @@ export function LetsWorkTogether() {
 
             {/* Button content */}
             <div
-              className="relative flex items-center gap-3 overflow-hidden rounded-full border px-6 py-3 transition-all duration-500 sm:px-8 sm:py-4"
+              className="relative flex items-center gap-3 overflow-hidden rounded-2xl border px-6 py-3 transition-all duration-500 sm:px-8 sm:py-4"
               style={{
                 borderColor: isButtonHovered ? "var(--foreground)" : "var(--border)",
                 backgroundColor: isButtonHovered ? "var(--foreground)" : "transparent",

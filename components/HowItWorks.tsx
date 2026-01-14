@@ -83,21 +83,21 @@ function TimelineItem({
       <div className="relative">
         <div
           className={cn(
-            "rounded-full border-2 bg-[#0a0a0a] p-2.5 transition-all duration-300 group-hover:scale-110",
+            "rounded-full border-2 bg-background p-2.5 transition-all duration-300 group-hover:scale-110",
             event.borderColor
           )}
         >
           <Icon className={cn("h-5 w-5", event.color)} />
         </div>
         {!isLast && (
-          <div className="absolute left-1/2 top-12 h-full w-[2px] -translate-x-1/2 bg-neutral-800" />
+          <div className="absolute left-1/2 top-12 h-full w-[2px] -translate-x-1/2 bg-border" />
         )}
       </div>
       <div className="flex flex-1 flex-col gap-1 pb-8">
-        <p className={cn("text-lg font-semibold text-white transition-colors", event.color.replace('text-', 'group-hover:text-'))}>
+        <p className={cn("text-lg font-semibold text-foreground transition-colors", event.color.replace('text-', 'group-hover:text-'))}>
           {event.label}
         </p>
-        <p className="text-sm text-neutral-400 leading-relaxed">
+        <p className="text-sm text-muted-foreground leading-relaxed">
           {event.message}
         </p>
       </div>
@@ -107,12 +107,12 @@ function TimelineItem({
 
 export function HowItWorks() {
   return (
-    <section className="w-full bg-[#0a0a0a] py-20 px-4">
+    <section className="w-full bg-background py-20 px-4 transition-colors duration-300">
       <div className="max-w-3xl mx-auto">
         <ShineBorder
           borderWidth={2}
           borderRadius={24}
-          className="border border-neutral-800 bg-[#0a0a0a]/80 shadow-2xl backdrop-blur-md"
+          className="border border-border bg-background/80 shadow-2xl backdrop-blur-md"
           color={["#C00008", "#006AAA", "#C00008"]}
         >
           <div className="w-full py-8 px-6 md:px-12">
@@ -133,7 +133,7 @@ export function HowItWorks() {
               >
                 Our Process
               </span>
-              <h2 className="text-3xl md:text-4xl font-bold text-white">
+              <h2 className="text-3xl md:text-4xl font-bold text-foreground">
                 How It Works
               </h2>
             </motion.div>
@@ -158,17 +158,17 @@ export function HowItWorks() {
               transition={{ delay: 0.5 }}
               className="mt-8 flex flex-col items-center text-center"
             >
-              <h3 className="text-2xl md:text-3xl font-bold text-white mb-2">
+              <h3 className="text-2xl md:text-3xl font-bold text-foreground mb-2">
                 Ready to Get Started?
               </h3>
-              <p className="text-neutral-400 mb-6">
+              <p className="text-muted-foreground mb-6">
                 Let&apos;s build something amazing together.
               </p>
               <div className="flex flex-col sm:flex-row gap-3">
                 <Link href="#contact">
                   <Button
                     size="lg"
-                    className="group rounded-full px-6 bg-white text-black hover:bg-neutral-200"
+                    className="group rounded-2xl px-6 bg-foreground text-background hover:bg-foreground/90"
                   >
                     Start Your Project
                     <ChevronRight className="ml-1 h-4 w-4 transition-transform group-hover:translate-x-1" />
@@ -178,7 +178,7 @@ export function HowItWorks() {
                   <Button
                     size="lg"
                     variant="outline"
-                    className="group rounded-full px-6 border-neutral-700 text-white hover:bg-white/5"
+                    className="group rounded-2xl px-6 border-border text-foreground hover:bg-foreground/5"
                   >
                     Book a Call
                     <ChevronRight className="ml-1 h-4 w-4 transition-transform group-hover:translate-x-1" />

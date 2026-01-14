@@ -43,7 +43,7 @@ export const FAQ = ({
   return (
     <section
       className={cn(
-        "relative overflow-hidden bg-[#0a0a0a] px-4 py-20 text-white",
+        "relative overflow-hidden bg-background px-4 py-20 text-foreground transition-colors duration-300",
         className
       )}
       {...props}
@@ -121,10 +121,10 @@ const FAQTabs = ({
           whileHover={{ scale: 1.02 }}
           whileTap={{ scale: 0.98 }}
           className={cn(
-            "relative overflow-hidden whitespace-nowrap rounded-xl border px-4 py-2.5 text-sm font-medium transition-all duration-300 flex items-center gap-2",
+            "relative overflow-hidden whitespace-nowrap rounded-2xl border px-4 py-2.5 text-sm font-medium transition-all duration-300 flex items-center gap-2",
             isSelected
               ? "border-transparent text-white shadow-lg"
-              : "border-neutral-700 bg-neutral-900/50 text-neutral-400 hover:text-white hover:border-neutral-600"
+              : "border-border bg-card/50 text-muted-foreground hover:text-foreground hover:border-foreground/30"
           )}
           style={{
             boxShadow: isSelected ? `0 8px 30px ${BRAND_BLUE}40` : undefined
@@ -134,8 +134,8 @@ const FAQTabs = ({
           <span className="relative z-10">{label}</span>
           {/* Question count badge */}
           <span className={cn(
-            "ml-1 px-1.5 py-0.5 text-xs rounded-full transition-colors",
-            isSelected ? "bg-white/20" : "bg-neutral-800 text-neutral-500"
+            "ml-1 px-1.5 py-0.5 text-xs rounded-lg transition-colors",
+            isSelected ? "bg-white/20" : "bg-muted text-muted-foreground"
           )}>
             {questionCount}
           </span>
@@ -202,8 +202,8 @@ const FAQItemCard = ({ question, answer }: FAQItem) => {
       className={cn(
         "rounded-2xl border transition-all duration-300 cursor-pointer",
         isOpen
-          ? "bg-neutral-800/50 border-neutral-700 shadow-xl"
-          : "bg-neutral-900/50 border-neutral-800 hover:border-neutral-700 hover:shadow-lg"
+          ? "bg-card/50 border-border shadow-xl"
+          : "bg-card/30 border-border hover:border-foreground/20 hover:shadow-lg"
       )}
       style={{
         boxShadow: isOpen ? `0 10px 40px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.05)` : undefined
@@ -216,7 +216,7 @@ const FAQItemCard = ({ question, answer }: FAQItem) => {
         <span
           className={cn(
             "text-base md:text-lg font-medium transition-colors",
-            isOpen ? "text-white" : "text-neutral-300"
+            isOpen ? "text-foreground" : "text-foreground/80"
           )}
         >
           {question}
@@ -229,13 +229,13 @@ const FAQItemCard = ({ question, answer }: FAQItem) => {
           transition={{ duration: 0.2, type: "spring", stiffness: 300 }}
           className={cn(
             "flex-shrink-0 p-1 rounded-full transition-colors",
-            isOpen ? "bg-white/10" : "bg-neutral-800"
+            isOpen ? "bg-foreground/10" : "bg-muted"
           )}
         >
           <Plus
             className={cn(
               "h-5 w-5 transition-colors",
-              isOpen ? "text-white" : "text-neutral-500"
+              isOpen ? "text-foreground" : "text-muted-foreground"
             )}
           />
         </motion.span>
@@ -249,7 +249,7 @@ const FAQItemCard = ({ question, answer }: FAQItem) => {
         transition={{ duration: 0.3, ease: [0.04, 0.62, 0.23, 0.98] }}
         className="overflow-hidden"
       >
-        <p className="px-5 pb-5 text-neutral-400 leading-relaxed">{answer}</p>
+        <p className="px-5 pb-5 text-muted-foreground leading-relaxed">{answer}</p>
       </motion.div>
     </motion.div>
   );

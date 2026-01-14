@@ -106,30 +106,30 @@ const DatabaseWithRestApi = ({
         {/* Buttons */}
         <g stroke="currentColor" fill="none" strokeWidth="0.4">
           <g>
-            <rect fill="#18181B" x="14" y="5" width="34" height="10" rx="5"></rect>
+            <rect className="fill-card" x="14" y="5" width="34" height="10" rx="5"></rect>
             <DatabaseIcon x="18" y="7.5"></DatabaseIcon>
-            <text x="28" y="12" fill="white" stroke="none" fontSize="5" fontWeight="500">
+            <text className="fill-foreground" x="28" y="12" stroke="none" fontSize="5" fontWeight="500">
               {badgeTexts?.first || "GET"}
             </text>
           </g>
           <g>
-            <rect fill="#18181B" x="60" y="5" width="34" height="10" rx="5"></rect>
+            <rect className="fill-card" x="60" y="5" width="34" height="10" rx="5"></rect>
             <DatabaseIcon x="64" y="7.5"></DatabaseIcon>
-            <text x="74" y="12" fill="white" stroke="none" fontSize="5" fontWeight="500">
+            <text className="fill-foreground" x="74" y="12" stroke="none" fontSize="5" fontWeight="500">
               {badgeTexts?.second || "POST"}
             </text>
           </g>
           <g>
-            <rect fill="#18181B" x="108" y="5" width="34" height="10" rx="5"></rect>
+            <rect className="fill-card" x="108" y="5" width="34" height="10" rx="5"></rect>
             <DatabaseIcon x="112" y="7.5"></DatabaseIcon>
-            <text x="122" y="12" fill="white" stroke="none" fontSize="5" fontWeight="500">
+            <text className="fill-foreground" x="122" y="12" stroke="none" fontSize="5" fontWeight="500">
               {badgeTexts?.third || "PUT"}
             </text>
           </g>
           <g>
-            <rect fill="#18181B" x="150" y="5" width="40" height="10" rx="5"></rect>
+            <rect className="fill-card" x="150" y="5" width="40" height="10" rx="5"></rect>
             <DatabaseIcon x="154" y="7.5"></DatabaseIcon>
-            <text x="165" y="12" fill="white" stroke="none" fontSize="5" fontWeight="500">
+            <text className="fill-foreground" x="165" y="12" stroke="none" fontSize="5" fontWeight="500">
               {badgeTexts?.fourth || "DELETE"}
             </text>
           </g>
@@ -156,41 +156,41 @@ const DatabaseWithRestApi = ({
       {/* Main Box */}
       <div className="absolute bottom-10 flex w-full flex-col items-center">
         <div className="absolute -bottom-4 h-[100px] w-[62%] rounded-lg bg-accent/30" />
-        <div className="absolute -top-3 z-20 flex items-center justify-center rounded-lg border border-neutral-800 bg-[#101112] px-2 py-1 sm:-top-4 sm:py-1.5">
+        <div className="absolute -top-3 z-20 flex items-center justify-center rounded-lg border border-border bg-card px-2 py-1 sm:-top-4 sm:py-1.5">
           <SparklesIcon className="size-3 text-[#006AAA]" />
-          <span className="ml-2 text-[10px] text-white">
+          <span className="ml-2 text-[10px] text-foreground">
             {title || "We connect to any API you need"}
           </span>
         </div>
-        <div className="absolute -bottom-8 z-30 grid h-[60px] w-[60px] place-items-center rounded-full border-t border-neutral-800 bg-[#141516] font-semibold text-xs text-white">
+        <div className="absolute -bottom-8 z-30 grid h-[60px] w-[60px] place-items-center rounded-full border-t border-border bg-card font-semibold text-xs text-foreground">
           {circleText || "API"}
         </div>
-        <div className="relative z-10 flex h-[150px] w-full items-center justify-center overflow-hidden rounded-lg border border-neutral-800 bg-[#0a0a0a] shadow-md">
-          <div className="absolute bottom-8 left-12 z-10 h-7 rounded-full bg-[#101112] px-3 text-xs border border-neutral-800 flex items-center gap-2 text-white">
+        <div className="relative z-10 flex h-[150px] w-full items-center justify-center overflow-hidden rounded-lg border border-border bg-background shadow-md">
+          <div className="absolute bottom-8 left-12 z-10 h-7 rounded-full bg-card px-3 text-xs border border-border flex items-center gap-2 text-foreground">
             <HeartHandshakeIcon className="size-4 text-[#C00008]" />
             <span>{buttonTexts?.first || "Haestus"}</span>
           </div>
-          <div className="absolute right-16 z-10 hidden h-7 rounded-full bg-[#101112] px-3 text-xs sm:flex border border-neutral-800 items-center gap-2 text-white">
+          <div className="absolute right-16 z-10 hidden h-7 rounded-full bg-card px-3 text-xs sm:flex border border-border items-center gap-2 text-foreground">
             <Folder className="size-4 text-[#006AAA]" />
             <span>{buttonTexts?.second || "Your Stack"}</span>
           </div>
           <motion.div
-            className="absolute -bottom-14 h-[100px] w-[100px] rounded-full border-t border-neutral-800 bg-accent/5"
+            className="absolute -bottom-14 h-[100px] w-[100px] rounded-full border-t border-border bg-accent/5"
             animate={{ scale: [0.98, 1.02, 0.98, 1, 1, 1, 1, 1, 1] }}
             transition={{ duration: 2, repeat: Infinity }}
           />
           <motion.div
-            className="absolute -bottom-20 h-[145px] w-[145px] rounded-full border-t border-neutral-800 bg-accent/5"
+            className="absolute -bottom-20 h-[145px] w-[145px] rounded-full border-t border-border bg-accent/5"
             animate={{ scale: [1, 1, 1, 0.98, 1.02, 0.98, 1, 1, 1] }}
             transition={{ duration: 2, repeat: Infinity }}
           />
           <motion.div
-            className="absolute -bottom-[100px] h-[190px] w-[190px] rounded-full border-t border-neutral-800 bg-accent/5"
+            className="absolute -bottom-[100px] h-[190px] w-[190px] rounded-full border-t border-border bg-accent/5"
             animate={{ scale: [1, 1, 1, 1, 1, 0.98, 1.02, 0.98, 1, 1] }}
             transition={{ duration: 2, repeat: Infinity }}
           />
           <motion.div
-            className="absolute -bottom-[120px] h-[235px] w-[235px] rounded-full border-t border-neutral-800 bg-accent/5"
+            className="absolute -bottom-[120px] h-[235px] w-[235px] rounded-full border-t border-border bg-accent/5"
             animate={{ scale: [1, 1, 1, 1, 1, 1, 0.98, 1.02, 0.98, 1] }}
             transition={{ duration: 2, repeat: Infinity }}
           />
@@ -212,10 +212,11 @@ const DatabaseIcon = ({ x = "0", y = "0" }: { x: string; y: string }) => {
       height="5"
       viewBox="0 0 24 24"
       fill="none"
-      stroke="white"
+      stroke="currentColor"
       strokeWidth="2"
       strokeLinecap="round"
       strokeLinejoin="round"
+      className="text-foreground"
     >
       <ellipse cx="12" cy="5" rx="9" ry="3" />
       <path d="M3 5V19A9 3 0 0 0 21 19V5" />

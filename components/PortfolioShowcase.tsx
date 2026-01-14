@@ -57,7 +57,7 @@ const portfolioItems: CardItem[] = [
 
 export function PortfolioShowcase() {
   return (
-    <section className="w-full bg-[#0a0a0a] py-20 px-4">
+    <section className="w-full bg-background py-20 px-4 transition-colors duration-300">
       <div className="flex w-full flex-col items-center justify-center space-y-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -76,10 +76,10 @@ export function PortfolioShowcase() {
           >
             Our Work
           </span>
-          <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-white mb-4">
+          <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-foreground mb-4">
             Projects That Deliver Results
           </h2>
-          <p className="max-w-2xl text-lg text-neutral-400">
+          <p className="max-w-2xl text-lg text-muted-foreground">
             Explore our portfolio of Smart Sites and AI-powered solutions. Hover or click to see what we&apos;ve built.
           </p>
         </motion.div>
