@@ -15,6 +15,7 @@ import { ProjectShowcase } from "@/components/ProjectShowcase";
 import AppMenuBar from "@/components/ui/app-menu-bar";
 import { UniqueAccordion } from "@/components/ui/interactive-accordion";
 import { TechStackScroll } from "@/components/ui/tech-stack-scroll";
+import { SeamlessIntegrations } from "@/components/ui/seamless-integrations";
 
 export default function Home() {
   return (
@@ -48,6 +49,7 @@ export default function Home() {
         </section>
         <HowItWorks />
         <LetsWorkTogether />
+        <SeamlessIntegrations />
         <PortfolioShowcase />
         <section className="min-h-screen flex flex-col items-center justify-center bg-background p-4">
           <h2 className="mb-8 text-2xl font-bold text-foreground">Infinite Card Stack</h2>
