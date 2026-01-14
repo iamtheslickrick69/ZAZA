@@ -65,19 +65,11 @@ export default function AppMenuBar() {
           <a href="/" className="flex items-center gap-3 group flex-shrink-0 pr-6 border-r border-zinc-200 dark:border-zinc-700">
             <HoneycombLoader size={32} className="opacity-90 group-hover:opacity-100 transition-opacity" />
             <Image
-              src="/logo/white.png"
+              src="/logo/haestus.png"
               alt="Haestus"
               width={120}
               height={30}
-              className="h-6 w-auto dark:hidden"
-              priority
-            />
-            <Image
-              src="/logo/black.png"
-              alt="Haestus"
-              width={120}
-              height={30}
-              className="h-6 w-auto hidden dark:block"
+              className="h-6 w-auto"
               priority
             />
           </a>

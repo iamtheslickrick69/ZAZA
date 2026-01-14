@@ -99,19 +99,11 @@ export function HeroSectionAnimated() {
             >
               <HoneycombLoader size={48} className="opacity-90" />
               <Image
-                src="/logo/white.png"
+                src="/logo/haestus.png"
                 alt="Haestus"
                 width={200}
                 height={40}
-                className="h-10 w-auto dark:hidden"
-                priority
-              />
-              <Image
-                src="/logo/black.png"
-                alt="Haestus"
-                width={200}
-                height={40}
-                className="h-10 w-auto hidden dark:block"
+                className="h-10 w-auto"
                 priority
               />
             </motion.div>

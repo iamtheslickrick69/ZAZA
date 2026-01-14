@@ -48,7 +48,7 @@ export function MinimalHeader() {
           <a href="/" className="flex items-center gap-2 group flex-shrink-0">
             <HoneycombLoader size={28} className="opacity-90 group-hover:opacity-100 transition-opacity" />
             <Image
-              src="/logo/white.png"
+              src="/logo/haestus.png"
               alt="Haestus"
               width={100}
               height={24}

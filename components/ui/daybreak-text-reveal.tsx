@@ -54,19 +54,11 @@ export function DaybreakTextReveal({ text = "Haestus", className }: DaybreakText
         }}
       >
         <Image
-          src="/logo/white.png"
+          src="/logo/haestus.png"
           alt="Haestus Logo"
           width={120}
           height={120}
-          className="w-full h-auto max-w-[100px] md:max-w-[120px] dark:hidden"
-          priority
-        />
-        <Image
-          src="/logo/black.png"
-          alt="Haestus Logo"
-          width={120}
-          height={120}
-          className="w-full h-auto max-w-[100px] md:max-w-[120px] hidden dark:block"
+          className="w-full h-auto max-w-[100px] md:max-w-[120px]"
           priority
         />
       </div>
