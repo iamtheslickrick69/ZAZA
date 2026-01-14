@@ -9,13 +9,15 @@ import SmartSitesShowcase from "@/components/ui/spatial-product-showcase";
 import { TransformationBanner } from "@/components/TransformationBanner";
 import ColorChangeCards from "@/components/ui/color-change-card";
 import { HaestusFAQ } from "@/components/ui/faq-tabs";
-import { PortfolioShowcase } from "@/components/PortfolioShowcase";
 import { HowItWorks } from "@/components/HowItWorks";
 import { ProjectShowcase } from "@/components/ProjectShowcase";
 import AppMenuBar from "@/components/ui/app-menu-bar";
 import { UniqueAccordion } from "@/components/ui/interactive-accordion";
 import { TechStackScroll } from "@/components/ui/tech-stack-scroll";
 import { SeamlessIntegrations } from "@/components/ui/seamless-integrations";
+import { HeroBranding } from "@/components/ui/hero-branding";
+import { HowWeWorkShowcase } from "@/components/ui/how-we-work-showcase";
+import { StackedCircularFooter } from "@/components/ui/stacked-circular-footer";
 
 export default function Home() {
   return (
@@ -23,22 +25,13 @@ export default function Home() {
       <ScrollProgress />
       <AppMenuBar />
       <main>
+        <HeroBranding />
         <HeroSectionAnimated />
-        <PortfolioShowcase />
+        <StackedCircularFooter />
         <section id="showcase" className="relative">
           <SmartSitesShowcase />
         </section>
-        <section className="w-full bg-background py-20 flex flex-col items-center justify-center transition-colors duration-300">
-          <div className="w-full max-w-6xl px-6">
-            <div className="mb-12 text-center">
-              <h2 className="text-4xl md:text-5xl font-medium tracking-tight mb-4 text-foreground">How We Work</h2>
-              <p className="text-muted-foreground text-lg max-w-2xl mx-auto">From strategy to victory, we're with you every step of the way.</p>
-            </div>
-            <div className="flex justify-center">
-              <UniqueAccordion />
-            </div>
-          </div>
-        </section>
+        <HowWeWorkShowcase />
         <TechStackScroll />
         <ProjectShowcase />
         <TransformationBanner />

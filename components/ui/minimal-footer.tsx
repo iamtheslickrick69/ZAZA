@@ -7,7 +7,6 @@ import {
     YoutubeIcon,
 } from 'lucide-react';
 import Image from 'next/image';
-import { HoneycombLoader } from '@/components/ui/honeycomb-loader';
 
 export function MinimalFooter() {
     const year = new Date().getFullYear();
@@ -90,16 +89,12 @@ export function MinimalFooter() {
                 <div className="bg-border absolute inset-x-0 h-px w-full" />
                 <div className="grid max-w-4xl grid-cols-6 gap-6 p-4">
                     <div className="col-span-6 flex flex-col gap-5 md:col-span-4">
-                        <a href="/" className="w-max flex items-center gap-2">
-                            <HoneycombLoader
-                                size={24}
-                            />
+                        <a href="/" className="w-max">
                             <Image
-                                src="/logo/haestus.png"
-                                alt="Haestus"
-                                width={120}
-                                height={28}
-                                className="h-7 w-auto"
+                                src="/haestus1.png"
+                                alt="HAESTUS"
+                                width={160}
+                                height={23}
                             />
                         </a>
                         <p className="text-muted-foreground max-w-sm font-mono text-sm text-balance">

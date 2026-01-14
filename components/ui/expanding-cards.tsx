@@ -89,7 +89,7 @@ export const ExpandingCards = React.forwardRef<
             )}
             style={{
               boxShadow: isActive
-                ? '0 0 30px rgba(0, 106, 170, 0.3), 0 0 60px rgba(192, 0, 8, 0.2)'
+                ? '0 0 30px rgba(107, 114, 128, 0.3), 0 0 60px rgba(107, 114, 128, 0.2)'
                 : undefined
             }}
             onMouseEnter={() => handleInteraction(index)}

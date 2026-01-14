@@ -7,7 +7,7 @@ export const BoxesCore = ({ className, ...rest }: { className?: string }) => {
   const rows = new Array(150).fill(1);
   const cols = new Array(100).fill(1);
 
-  // Using brand colors: Blue #006AAA and Red #C00008
+  // Using brand colors: Blue #6b7280 and Red #6b7280
   const colors = [
     "rgb(0 106 170)",      // Blue primary
     "rgb(0 80 128)",       // Blue darker

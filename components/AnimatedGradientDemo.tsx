@@ -102,14 +102,14 @@ const BentoCard: React.FC<BentoCardProps> = ({
   };
 
   const borderColor =
-    accentColor === "blue" ? "#006AAA" :
-    accentColor === "red" ? "#C00008" :
-    "linear-gradient(180deg, #006AAA, #C00008)";
+    accentColor === "blue" ? "#6b7280" :
+    accentColor === "red" ? "#6b7280" :
+    "linear-gradient(180deg, #6b7280, #6b7280)";
 
   const glowColor =
-    accentColor === "blue" ? "rgba(0, 106, 170, 0.5)" :
-    accentColor === "red" ? "rgba(192, 0, 8, 0.5)" :
-    "rgba(0, 106, 170, 0.3)";
+    accentColor === "blue" ? "rgba(107, 114, 128, 0.5)" :
+    accentColor === "red" ? "rgba(107, 114, 128, 0.5)" :
+    "rgba(107, 114, 128, 0.3)";
 
   const TrendIcon = () => {
     if (trend === "up") {
@@ -160,10 +160,10 @@ const BentoCard: React.FC<BentoCardProps> = ({
           speed={25}
           colors={
             accentColor === "blue"
-              ? ["#1a3a4a", "#006AAA", "#004466"]
+              ? ["#1a3a4a", "#6b7280", "#004466"]
               : accentColor === "red"
-              ? ["#4a1a1a", "#C00008", "#660004"]
-              : ["#1a3a4a", "#006AAA", "#C00008", "#4a1a1a"]
+              ? ["#4a1a1a", "#6b7280", "#660004"]
+              : ["#1a3a4a", "#6b7280", "#6b7280", "#4a1a1a"]
           }
           variant="default"
           noFocus
@@ -174,7 +174,7 @@ const BentoCard: React.FC<BentoCardProps> = ({
           className="absolute left-0 top-0 bottom-0 w-[3px]"
           style={{
             background: accentColor === "gradient"
-              ? "linear-gradient(180deg, #006AAA, #C00008)"
+              ? "linear-gradient(180deg, #6b7280, #6b7280)"
               : borderColor,
           }}
           animate={{
@@ -190,7 +190,7 @@ const BentoCard: React.FC<BentoCardProps> = ({
           className="absolute left-0 top-0 h-[3px]"
           style={{
             background: accentColor === "gradient"
-              ? "linear-gradient(90deg, #006AAA, #C00008)"
+              ? "linear-gradient(90deg, #6b7280, #6b7280)"
               : borderColor,
           }}
           initial={{ width: 0 }}
@@ -204,10 +204,10 @@ const BentoCard: React.FC<BentoCardProps> = ({
           animate={{ opacity: isHovered ? 0.5 : 0.3 }}
           style={{
             background: accentColor === "blue"
-              ? "radial-gradient(ellipse at top left, rgba(0, 106, 170, 0.15), transparent 50%)"
+              ? "radial-gradient(ellipse at top left, rgba(107, 114, 128, 0.15), transparent 50%)"
               : accentColor === "red"
-              ? "radial-gradient(ellipse at top left, rgba(192, 0, 8, 0.15), transparent 50%)"
-              : "radial-gradient(ellipse at top left, rgba(0, 106, 170, 0.1), rgba(192, 0, 8, 0.1), transparent 60%)",
+              ? "radial-gradient(ellipse at top left, rgba(107, 114, 128, 0.15), transparent 50%)"
+              : "radial-gradient(ellipse at top left, rgba(107, 114, 128, 0.1), rgba(107, 114, 128, 0.1), transparent 60%)",
           }}
         />
 
@@ -282,7 +282,7 @@ const AnimatedGradientDemo: React.FC = () => {
         }}
         transition={{ type: "spring", damping: 30, stiffness: 200 }}
         style={{
-          background: "radial-gradient(circle, rgba(0, 106, 170, 0.06) 0%, rgba(192, 0, 8, 0.04) 40%, transparent 70%)",
+          background: "radial-gradient(circle, rgba(107, 114, 128, 0.06) 0%, rgba(107, 114, 128, 0.04) 40%, transparent 70%)",
         }}
       />
 

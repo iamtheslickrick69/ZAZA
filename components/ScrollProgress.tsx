@@ -17,7 +17,7 @@ export function ScrollProgress() {
       className="fixed top-0 left-0 right-0 h-1 z-50 origin-left"
       style={{
         scaleX,
-        backgroundImage: 'linear-gradient(90deg, #006AAA 0%, #C00008 50%, #006AAA 100%)',
+        backgroundImage: 'linear-gradient(90deg, #6b7280 0%, #6b7280 50%, #6b7280 100%)',
         backgroundSize: '200% 100%',
       }}
     >
@@ -41,7 +41,7 @@ export function ScrollProgress() {
       <motion.div
         className="absolute inset-0 blur-sm"
         style={{
-          backgroundImage: 'linear-gradient(90deg, #006AAA 0%, #C00008 50%, #006AAA 100%)',
+          backgroundImage: 'linear-gradient(90deg, #6b7280 0%, #6b7280 50%, #6b7280 100%)',
           opacity: 0.6,
         }}
       />

@@ -113,7 +113,7 @@ export function HowItWorks() {
           borderWidth={2}
           borderRadius={24}
           className="border border-border bg-background/80 shadow-2xl backdrop-blur-md"
-          color={["#C00008", "#006AAA", "#C00008"]}
+          color={["#6b7280", "#6b7280", "#6b7280"]}
         >
           <div className="w-full py-8 px-6 md:px-12">
             {/* Header */}
@@ -126,7 +126,7 @@ export function HowItWorks() {
               <span
                 className="text-sm font-medium tracking-wider uppercase mb-4 block"
                 style={{
-                  background: 'linear-gradient(90deg, #006AAA, #C00008)',
+                  background: 'linear-gradient(90deg, #6b7280, #6b7280)',
                   WebkitBackgroundClip: 'text',
                   WebkitTextFillColor: 'transparent'
                 }}

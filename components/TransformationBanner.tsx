@@ -27,7 +27,7 @@ export function TransformationBanner() {
             <div
               className='absolute inset-0 rounded-2xl'
               style={{
-                background: 'linear-gradient(90deg, #006AAA, #C00008, #006AAA, #C00008)',
+                background: 'linear-gradient(90deg, #6b7280, #6b7280, #6b7280, #6b7280)',
                 backgroundSize: '300% 100%',
                 animation: 'gradient-flow 4s ease infinite',
               }}
@@ -40,7 +40,7 @@ export function TransformationBanner() {
             <div
               className='absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500'
               style={{
-                background: 'radial-gradient(circle at center, rgba(0, 106, 170, 0.15), transparent 70%)',
+                background: 'radial-gradient(circle at center, rgba(107, 114, 128, 0.15), transparent 70%)',
               }}
             />
 

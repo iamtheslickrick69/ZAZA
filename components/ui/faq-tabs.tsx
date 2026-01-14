@@ -25,8 +25,8 @@ interface FAQProps {
 }
 
 // Brand colors
-const BRAND_RED = '#C00008';
-const BRAND_BLUE = '#006AAA';
+const BRAND_RED = '#6b7280';
+const BRAND_BLUE = '#6b7280';
 
 // Main reusable FAQ component
 export const FAQ = ({

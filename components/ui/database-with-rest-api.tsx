@@ -188,11 +188,11 @@ const DatabaseWithRestApi = ({
             <path d="M 275 10 v 15 q 0 5 -5 5 h -125 q -5 0 -5 5 v 10" strokeWidth="0.5" stroke="white" />
           </mask>
           <radialGradient id="db-blue-grad" fx="1">
-            <stop offset="0%" stopColor={lightColor || "#006AAA"} />
+            <stop offset="0%" stopColor={lightColor || "#6b7280"} />
             <stop offset="100%" stopColor="transparent" />
           </radialGradient>
           <radialGradient id="db-red-grad" fx="1">
-            <stop offset="0%" stopColor="#C00008" />
+            <stop offset="0%" stopColor="#6b7280" />
             <stop offset="100%" stopColor="transparent" />
           </radialGradient>
         </defs>
@@ -201,7 +201,7 @@ const DatabaseWithRestApi = ({
       <div className="absolute bottom-10 flex w-full flex-col items-center">
         <div className="absolute -bottom-4 h-[100px] w-[62%] rounded-lg bg-accent/30" />
         <div className="absolute -top-3 z-20 flex items-center justify-center rounded-lg border border-border bg-card px-2 py-1 sm:-top-4 sm:py-1.5">
-          <SparklesIcon className="size-3 text-[#006AAA]" />
+          <SparklesIcon className="size-3 text-[#6b7280]" />
           <span className="ml-2 text-[10px] text-foreground">
             {title || "We connect to any API you need"}
           </span>
@@ -211,11 +211,11 @@ const DatabaseWithRestApi = ({
         </div>
         <div className="relative z-10 flex h-[150px] w-full items-center justify-center overflow-hidden rounded-lg border border-border bg-background shadow-md">
           <div className="absolute bottom-8 left-12 z-10 h-7 rounded-full bg-card px-3 text-xs border border-border flex items-center gap-2 text-foreground">
-            <HeartHandshakeIcon className="size-4 text-[#C00008]" />
+            <HeartHandshakeIcon className="size-4 text-[#6b7280]" />
             <span>{buttonTexts?.first || "Haestus"}</span>
           </div>
           <div className="absolute right-16 z-10 hidden h-7 rounded-full bg-card px-3 text-xs sm:flex border border-border items-center gap-2 text-foreground">
-            <Folder className="size-4 text-[#006AAA]" />
+            <Folder className="size-4 text-[#6b7280]" />
             <span>{buttonTexts?.second || "Your Stack"}</span>
           </div>
           <motion.div

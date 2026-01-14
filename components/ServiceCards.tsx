@@ -10,25 +10,25 @@ const services = [
     id: 1,
     title: 'Smart Sites / AGI',
     description: 'Websites powered by artificial general intelligence that learn and adapt',
-    dotColor: '#006AAA',
-    pixelColorsLight: ['#93c5fd', '#3b82f6', '#006AAA'],
-    pixelColorsDark: ['#1a3a4a', '#006AAA', '#004466'],
+    dotColor: '#6b7280',
+    pixelColorsLight: ['#93c5fd', '#3b82f6', '#6b7280'],
+    pixelColorsDark: ['#1a3a4a', '#6b7280', '#004466'],
   },
   {
     id: 2,
     title: 'AI Implementation',
     description: 'Custom AI solutions that automate workflows and multiply output',
-    dotColor: '#C00008',
-    pixelColorsLight: ['#fca5a5', '#ef4444', '#C00008'],
-    pixelColorsDark: ['#4a1a1a', '#C00008', '#660004'],
+    dotColor: '#6b7280',
+    pixelColorsLight: ['#fca5a5', '#ef4444', '#6b7280'],
+    pixelColorsDark: ['#4a1a1a', '#6b7280', '#660004'],
   },
   {
     id: 3,
     title: 'Apps That Think',
     description: 'AI-native iOS & Android apps that learn user behavior and get smarter over time',
     dotColor: 'gradient',
-    pixelColorsLight: ['#93c5fd', '#006AAA', '#C00008', '#fca5a5'],
-    pixelColorsDark: ['#1a3a4a', '#006AAA', '#C00008', '#4a1a1a'],
+    pixelColorsLight: ['#93c5fd', '#6b7280', '#6b7280', '#fca5a5'],
+    pixelColorsDark: ['#1a3a4a', '#6b7280', '#6b7280', '#4a1a1a'],
   },
 ];
 
@@ -89,7 +89,7 @@ export function ServiceCards() {
                       className='absolute inset-0 rounded-full blur-md opacity-50'
                       style={{
                         background: service.dotColor === 'gradient'
-                          ? 'linear-gradient(135deg, #006AAA, #C00008)'
+                          ? 'linear-gradient(135deg, #6b7280, #6b7280)'
                           : service.dotColor
                       }}
                     />
@@ -98,7 +98,7 @@ export function ServiceCards() {
                       className='relative w-2 h-2 rounded-full'
                       style={{
                         background: service.dotColor === 'gradient'
-                          ? 'linear-gradient(135deg, #006AAA, #C00008)'
+                          ? 'linear-gradient(135deg, #6b7280, #6b7280)'
                           : service.dotColor
                       }}
                     />

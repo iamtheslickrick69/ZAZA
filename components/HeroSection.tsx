@@ -117,8 +117,8 @@ export default function HeroSection() {
           <div className="absolute inset-0 hidden dark:block opacity-20"
             style={{
               backgroundImage: `
-                linear-gradient(to right, rgba(0, 106, 170, 0.15) 1px, transparent 1px),
-                linear-gradient(to bottom, rgba(192, 0, 8, 0.15) 1px, transparent 1px)
+                linear-gradient(to right, rgba(107, 114, 128, 0.15) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(107, 114, 128, 0.15) 1px, transparent 1px)
               `,
               backgroundSize: '80px 80px'
             }}
@@ -127,8 +127,8 @@ export default function HeroSection() {
           <div className="absolute inset-0 dark:hidden opacity-10"
             style={{
               backgroundImage: `
-                linear-gradient(to right, rgba(0, 106, 170, 0.1) 1px, transparent 1px),
-                linear-gradient(to bottom, rgba(192, 0, 8, 0.1) 1px, transparent 1px)
+                linear-gradient(to right, rgba(107, 114, 128, 0.1) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(107, 114, 128, 0.1) 1px, transparent 1px)
               `,
               backgroundSize: '80px 80px'
             }}
@@ -151,7 +151,7 @@ export default function HeroSection() {
               <motion.span
                 className="absolute inset-0 bg-clip-text text-transparent opacity-40"
                 style={{
-                  backgroundImage: 'linear-gradient(90deg, transparent 0%, transparent 20%, #006AAA 40%, #C00008 60%, #006AAA 80%, transparent 100%)',
+                  backgroundImage: 'linear-gradient(90deg, transparent 0%, transparent 20%, #6b7280 40%, #6b7280 60%, #6b7280 80%, transparent 100%)',
                   backgroundSize: '300% 100%',
                 }}
                 animate={{
@@ -189,7 +189,7 @@ export default function HeroSection() {
                   <motion.div
                     className="absolute -inset-[3px] rounded-[14px] z-0"
                     style={{
-                      backgroundImage: 'linear-gradient(90deg, #006AAA, #C00008, #006AAA, #C00008, #006AAA)',
+                      backgroundImage: 'linear-gradient(90deg, #6b7280, #6b7280, #6b7280, #6b7280, #6b7280)',
                       backgroundSize: '400% 100%',
                     }}
                     animate={{
@@ -205,7 +205,7 @@ export default function HeroSection() {
                   <motion.div
                     className="absolute -inset-[3px] rounded-[14px] z-0 blur-lg"
                     style={{
-                      backgroundImage: 'linear-gradient(90deg, #006AAA, #C00008, #006AAA)',
+                      backgroundImage: 'linear-gradient(90deg, #6b7280, #6b7280, #6b7280)',
                       backgroundSize: '200% 100%',
                     }}
                     animate={{
@@ -227,7 +227,7 @@ export default function HeroSection() {
                   <motion.div
                     className="absolute -inset-[3px] rounded-[14px] z-0"
                     style={{
-                      backgroundImage: 'linear-gradient(90deg, #C00008, #006AAA, #C00008, #006AAA, #C00008)',
+                      backgroundImage: 'linear-gradient(90deg, #6b7280, #6b7280, #6b7280, #6b7280, #6b7280)',
                       backgroundSize: '400% 100%',
                     }}
                     animate={{
@@ -243,7 +243,7 @@ export default function HeroSection() {
                   <motion.div
                     className="absolute -inset-[3px] rounded-[14px] z-0 blur-lg"
                     style={{
-                      backgroundImage: 'linear-gradient(90deg, #C00008, #006AAA, #C00008)',
+                      backgroundImage: 'linear-gradient(90deg, #6b7280, #6b7280, #6b7280)',
                       backgroundSize: '200% 100%',
                     }}
                     animate={{

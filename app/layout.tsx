@@ -29,8 +29,8 @@ export const metadata: Metadata = {
   title: "Haestus | AI-Powered Design & Development",
   description: "We build digital experiences for visionary brands. Design systems, web development, and brand identity powered by AI.",
   icons: {
-    icon: '/icon.png',
-    apple: '/icon.png',
+    icon: '/favicon.svg',
+    apple: '/favicon.svg',
   },
 };
 

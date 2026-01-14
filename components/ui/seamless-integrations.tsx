@@ -17,7 +17,7 @@ export function SeamlessIntegrations() {
           <motion.span
             className="text-sm font-medium tracking-wider uppercase mb-4 block"
             style={{
-              background: 'linear-gradient(90deg, #006AAA, #C00008)',
+              background: 'linear-gradient(90deg, #6b7280, #6b7280)',
               WebkitBackgroundClip: 'text',
               WebkitTextFillColor: 'transparent'
             }}
@@ -67,7 +67,7 @@ export function SeamlessIntegrations() {
               seventh: "WS",
               eighth: "GQL"
             }}
-            lightColor="#006AAA"
+            lightColor="#6b7280"
           />
         </motion.div>
       </motion.div>

@@ -4,7 +4,7 @@ import React, { useRef, useState, useEffect } from "react";
 import { motion, useAnimationFrame } from "framer-motion";
 import { useTheme } from "next-themes";
 
-// Curated tech stack - 12 icons for seamless loop
+// Curated tech stack - 11 icons for seamless loop
 const TECH_STACK = [
   { name: "Haestus", src: "/icons/haestus-icon.png", invert: false },
   { name: "Claude", src: "https://cdn.simpleicons.org/anthropic", invert: true },
@@ -17,7 +17,6 @@ const TECH_STACK = [
   { name: "TypeScript", src: "https://cdn.simpleicons.org/typescript/3178C6", invert: false },
   { name: "React", src: "https://cdn.simpleicons.org/react/61DAFB", invert: false },
   { name: "Figma", src: "https://cdn.simpleicons.org/figma/F24E1E", invert: false },
-  { name: "OpenAI", src: "https://cdn.simpleicons.org/openai/000000", invert: true },
 ];
 
 export function TechStackScroll() {
@@ -25,20 +24,27 @@ export function TechStackScroll() {
   const [mounted, setMounted] = useState(false);
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
   const [offset, setOffset] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
+  const lastTimeRef = useRef(0);
 
   const isDark = mounted && resolvedTheme === "dark";
-  const iconSize = 56;
-  const gap = 16;
+  const iconSize = 64; // Larger icons
+  const gap = 32; // More spacing
   const totalWidth = (iconSize + gap) * TECH_STACK.length;
 
   useEffect(() => {
     setMounted(true);
   }, []);
 
-  // Smooth infinite scroll animation
+  // Smooth infinite scroll animation with pause on hover
   useAnimationFrame((time) => {
-    setOffset((time * 0.03) % totalWidth);
+    if (isPaused) {
+      lastTimeRef.current = time - (offset / 0.012);
+      return;
+    }
+    const elapsed = time - lastTimeRef.current;
+    setOffset((elapsed * 0.012) % totalWidth); // Slower speed
   });
 
   // Calculate scale based on distance from hovered icon
@@ -54,17 +60,22 @@ export function TechStackScroll() {
   // Double the icons for seamless loop
   const doubledStack = [...TECH_STACK, ...TECH_STACK];
 
+  // Container width for ~6 icons: (iconSize + gap) * 6 = (64 + 32) * 6 = 576px
+  const containerWidth = (iconSize + gap) * 6;
+
   return (
     <section className="relative py-16 overflow-hidden bg-background transition-colors duration-300">
-      <div className="relative max-w-2xl mx-auto px-6">
+      <div className="relative mx-auto px-6" style={{ maxWidth: containerWidth + 48 }}>
         {/* Liquid Glass Dock Container */}
         <div
-          className={`relative mx-auto rounded-2xl p-3 ${
+          className={`relative mx-auto rounded-2xl p-4 ${
             isDark
               ? "bg-white/5 border border-white/10 shadow-[0_8px_32px_rgba(0,0,0,0.4),inset_0_1px_0_rgba(255,255,255,0.1)]"
               : "bg-white/70 border border-white/50 shadow-[0_8px_32px_rgba(0,0,0,0.1),inset_0_1px_0_rgba(255,255,255,0.8)]"
           } backdrop-blur-xl`}
           style={{ overflow: "hidden" }}
+          onMouseEnter={() => setIsPaused(true)}
+          onMouseLeave={() => setIsPaused(false)}
         >
           {/* Inner glow */}
           <div className={`absolute inset-0 rounded-2xl ${
@@ -80,8 +91,8 @@ export function TechStackScroll() {
             style={{ height: iconSize + 24 }}
           >
             <motion.div
-              className="flex items-end gap-4 absolute"
-              style={{ x: -offset }}
+              className="flex items-end absolute"
+              style={{ x: -offset, gap: gap }}
             >
               {doubledStack.map((tech, index) => {
                 const actualIndex = index % TECH_STACK.length;
@@ -100,15 +111,15 @@ export function TechStackScroll() {
                     <div
                       className={`flex items-center justify-center rounded-xl transition-all duration-200 cursor-pointer ${
                         isDark
-                          ? "bg-zinc-800/80 border border-zinc-700/50 shadow-lg"
-                          : "bg-white border border-zinc-200/80 shadow-md"
+                          ? "bg-transparent border border-zinc-700/30 shadow-lg"
+                          : "bg-transparent border border-zinc-200/50 shadow-md"
                       }`}
                       style={{ width: iconSize, height: iconSize }}
                     >
                       <img
                         src={tech.src}
                         alt={tech.name}
-                        className={`w-8 h-8 object-contain ${
+                        className={`w-9 h-9 object-contain ${
                           tech.invert && isDark ? "invert" : ""
                         }`}
                         title={tech.name}
@@ -134,8 +145,8 @@ export function TechStackScroll() {
         </div>
 
         {/* Soft edge fades */}
-        <div className="absolute left-0 top-0 h-full w-24 bg-gradient-to-r from-background via-background/80 to-transparent pointer-events-none z-10" />
-        <div className="absolute right-0 top-0 h-full w-24 bg-gradient-to-l from-background via-background/80 to-transparent pointer-events-none z-10" />
+        <div className="absolute left-0 top-0 h-full w-16 bg-gradient-to-r from-background to-transparent pointer-events-none z-10" />
+        <div className="absolute right-0 top-0 h-full w-16 bg-gradient-to-l from-background to-transparent pointer-events-none z-10" />
       </div>
     </section>
   );

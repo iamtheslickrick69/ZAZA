@@ -99,7 +99,7 @@ export function MissionModal({ isOpen, onClose, originRect }: MissionModalProps)
               {/* Light Card with subtle shadow */}
               <div className="relative bg-[#FAFAFA] rounded-2xl shadow-2xl overflow-hidden">
                 {/* Subtle top accent line */}
-                <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-[#006AAA] via-[#C00008] to-[#006AAA]" />
+                <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-[#6b7280] via-[#6b7280] to-[#6b7280]" />
 
                 <div className="relative p-8 md:p-10 max-h-[85vh] overflow-y-auto">
 
@@ -120,7 +120,7 @@ export function MissionModal({ isOpen, onClose, originRect }: MissionModalProps)
                       animate={{ opacity: 1, scale: 1 }}
                       transition={{ delay: 0.1, type: "spring", stiffness: 300 }}
                     >
-                      <SparkIcon size={48} color="#C00008" />
+                      <SparkIcon size={48} color="#6b7280" />
                     </motion.div>
 
                     {/* Title */}
@@ -158,7 +158,7 @@ export function MissionModal({ isOpen, onClose, originRect }: MissionModalProps)
                           animate={{ opacity: 1, x: 0 }}
                           transition={{ delay: 0.3 + idx * 0.05 }}
                         >
-                          <div className="w-1.5 h-1.5 rounded-full bg-[#C00008] mt-2 flex-shrink-0" />
+                          <div className="w-1.5 h-1.5 rounded-full bg-[#6b7280] mt-2 flex-shrink-0" />
                           <div>
                             <h4 className="text-neutral-800 font-body-semibold text-sm">
                               {principle.title}
@@ -206,8 +206,8 @@ export function MissionModal({ isOpen, onClose, originRect }: MissionModalProps)
                         onClick={onClose}
                         className="inline-flex items-center gap-2 px-6 py-3 rounded-full text-white text-sm font-medium transition-all hover:gap-3 hover:shadow-lg"
                         style={{
-                          background: '#C00008',
-                          boxShadow: '0 4px 20px rgba(192, 0, 8, 0.25)',
+                          background: '#6b7280',
+                          boxShadow: '0 4px 20px rgba(107, 114, 128, 0.25)',
                         }}
                       >
                         <span>See What We Build</span>
