@@ -7,7 +7,6 @@ import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { ServiceCards } from "@/components/ServiceCards";
 import DatabaseWithRestApi from "@/components/ui/database-with-rest-api";
-import { SocialIcons } from "@/components/ui/social-icons";
 import { HoneycombLoader } from "@/components/ui/honeycomb-loader";
 
 export function HeroSectionAnimated() {
@@ -273,16 +272,6 @@ export function HeroSectionAnimated() {
           </motion.div>
         </motion.div>
 
-        {/* SECTION 3: Social Icons at Bottom */}
-        <motion.div
-          className="flex justify-center mb-12"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-        >
-          <SocialIcons />
-        </motion.div>
       </div>
     </div>
   );

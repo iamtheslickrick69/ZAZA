@@ -10,7 +10,15 @@ import {
   Moon,
   Menu,
   X,
+  Github,
 } from "lucide-react";
+
+// X (Twitter) icon component
+const XIcon = ({ className }: { className?: string }) => (
+  <svg viewBox="0 0 24 24" className={className} fill="currentColor">
+    <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+  </svg>
+);
 
 export default function AppMenuBar() {
   const [mounted, setMounted] = useState(false);
@@ -92,7 +100,31 @@ export default function AppMenuBar() {
           </div>
 
           {/* Right - Actions */}
-          <div className="flex items-center gap-3 pl-6">
+          <div className="flex items-center gap-2 pl-6">
+            {/* Social Links */}
+            <a
+              href="https://github.com/haaborhaea"
+              target="_blank"
+              rel="noopener noreferrer"
+              className={`hidden sm:flex p-2 rounded-lg transition-colors ${
+                isDark ? "text-zinc-400 hover:text-white hover:bg-zinc-800" : "text-zinc-500 hover:text-zinc-900 hover:bg-zinc-100"
+              }`}
+              aria-label="GitHub"
+            >
+              <Github className="w-5 h-5" />
+            </a>
+            <a
+              href="https://x.com/haaborhaea"
+              target="_blank"
+              rel="noopener noreferrer"
+              className={`hidden sm:flex p-2 rounded-lg transition-colors ${
+                isDark ? "text-zinc-400 hover:text-white hover:bg-zinc-800" : "text-zinc-500 hover:text-zinc-900 hover:bg-zinc-100"
+              }`}
+              aria-label="X (Twitter)"
+            >
+              <XIcon className="w-5 h-5" />
+            </a>
+
             {/* Mobile Menu Button */}
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
