@@ -103,7 +103,7 @@ export default function AppMenuBar() {
           <div className="flex items-center gap-2 pl-6">
             {/* Social Links */}
             <a
-              href="https://github.com/haaborhaea"
+              href="https://github.com/haestus"
               target="_blank"
               rel="noopener noreferrer"
               className={`hidden sm:flex p-2 rounded-lg transition-colors ${
@@ -114,7 +114,7 @@ export default function AppMenuBar() {
               <Github className="w-5 h-5" />
             </a>
             <a
-              href="https://x.com/haaborhaea"
+              href="https://x.com/haestus"
               target="_blank"
               rel="noopener noreferrer"
               className={`hidden sm:flex p-2 rounded-lg transition-colors ${
