@@ -3,10 +3,11 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 import RuixenQueryBox from "@/components/ui/ruixen-query-box";
+import { SparklesCore } from "@/components/ui/sparkles";
 
 export function HeroBranding() {
   return (
-    <section className="relative pt-32 pb-16 bg-background">
+    <section className="relative pt-32 pb-6">
       <motion.div
         className="max-w-4xl mx-auto flex flex-col items-center text-center px-6"
         initial={{ opacity: 0, y: 20 }}
@@ -35,23 +36,21 @@ export function HeroBranding() {
           <RuixenQueryBox />
         </motion.div>
 
-        {/* Subtitle */}
-        <motion.p
-          className="text-lg md:text-xl text-muted-foreground font-light tracking-wide"
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.5 }}
-        >
-          Design Systems & Digital Experiences for Visionary Brands
-        </motion.p>
-
-        {/* Decorative Line */}
-        <motion.div
-          className="w-12 h-px bg-foreground/20 mt-8"
-          initial={{ scaleX: 0 }}
-          animate={{ scaleX: 1 }}
-          transition={{ duration: 0.8, delay: 0.7 }}
-        />
+        {/* Sparkles underneath the text box */}
+        <div className="relative w-full h-24 -mt-4">
+          <SparklesCore
+            id="hero-sparkles"
+            background="transparent"
+            minSize={0.3}
+            maxSize={1}
+            particleDensity={50}
+            className="w-full h-full"
+            particleColor="#FFFFFF"
+            speed={0.4}
+          />
+          {/* Fade mask at top to blend with chat box */}
+          <div className="absolute inset-x-0 top-0 h-8 bg-gradient-to-b from-background to-transparent pointer-events-none" />
+        </div>
       </motion.div>
     </section>
   );

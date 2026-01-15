@@ -35,8 +35,8 @@ export function HeroSectionAnimated() {
       </svg>
 
       {/* Main Split Container */}
-      <div className="relative z-10 min-h-screen flex items-center">
-        <div className="w-full max-w-[1600px] mx-auto px-6 md:px-12 py-20">
+      <div className="relative z-10 flex items-center">
+        <div className="w-full max-w-[1600px] mx-auto px-6 md:px-12 py-12">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center relative">
             {/* Center Divider Line */}
             <div className="hidden lg:block absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 h-[70%] w-px bg-gradient-to-b from-transparent via-border to-transparent" />

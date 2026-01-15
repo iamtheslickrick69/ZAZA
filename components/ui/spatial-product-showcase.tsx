@@ -4,30 +4,30 @@ import { motion } from 'framer-motion';
 import {
   Clock,
   XCircle,
-  AlertTriangle,
-  UserX,
+  Warning,
+  UserMinus,
   Rocket,
-  Zap,
-  DollarSign,
+  Lightning,
+  CurrencyDollar,
   Ghost,
-  Bot,
+  Robot,
   Wrench,
-  TrendingUp,
+  TrendUp,
   Brain,
   Skull,
-  Sparkles,
-  CheckCircle2,
+  Sparkle,
+  CheckCircle,
   ArrowUpRight,
   Timer,
   PiggyBank,
-} from 'lucide-react';
+} from '@phosphor-icons/react';
 
 // Pain points - SHARPER copy with specifics
 const oldWayPains = [
   { label: '3-6 months just to go live', icon: Clock },
-  { label: '$150/hr for a text edit', icon: DollarSign },
-  { label: 'Developers ghost you for weeks', icon: UserX },
-  { label: 'Every tiny change = support ticket', icon: AlertTriangle },
+  { label: '$150/hr for a text edit', icon: CurrencyDollar },
+  { label: 'Developers ghost you for weeks', icon: UserMinus },
+  { label: 'Every tiny change = support ticket', icon: Warning },
   { label: 'Zero SEO, zero leads, zero ROI', icon: Ghost },
   { label: 'Site collects dust while competitors win', icon: XCircle },
 ];
@@ -36,10 +36,10 @@ const oldWayPains = [
 const newWayBenefits = [
   { label: 'AI trained on YOUR customers & data', icon: Brain },
   { label: 'Never touch code again. Ever.', icon: Wrench },
-  { label: '50+ custom AI features built for you', icon: Bot },
-  { label: 'AI writes SEO blogs while you sleep', icon: TrendingUp },
+  { label: '50+ custom AI features built for you', icon: Robot },
+  { label: 'AI writes SEO blogs while you sleep', icon: TrendUp },
   { label: 'Live in 7 days, not 7 months', icon: Rocket },
-  { label: 'Learns & improves autonomously', icon: Zap },
+  { label: 'Learns & improves autonomously', icon: Lightning },
 ];
 
 // Stats for the results bar
@@ -79,29 +79,50 @@ export default function SmartSitesShowcase() {
             transition={{ duration: 0.7 }}
             className="relative group"
           >
-            <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-orange-950/40 via-orange-900/30 to-amber-950/30 border border-orange-800/40 p-8 md:p-10 h-full">
+            <div
+              className="relative overflow-hidden rounded-3xl p-8 md:p-10 h-full"
+              style={{
+                background: 'linear-gradient(to bottom right, rgba(255, 140, 66, 0.25), rgba(255, 140, 66, 0.15), rgba(255, 140, 66, 0.1))',
+                borderWidth: '1px',
+                borderStyle: 'solid',
+                borderColor: 'rgba(255, 140, 66, 0.3)',
+              }}
+            >
               {/* Cracked texture */}
               <div
                 className="absolute inset-0 opacity-10"
                 style={{
-                  backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 30 L15 25 L30 35 L45 20 L60 30 M0 45 L20 50 L40 40 L60 50' stroke='%23fb923c' fill='none' stroke-width='0.5' opacity='0.3'/%3E%3C/svg%3E")`,
+                  backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 30 L15 25 L30 35 L45 20 L60 30 M0 45 L20 50 L40 40 L60 50' stroke='%23FF8C42' fill='none' stroke-width='0.5' opacity='0.3'/%3E%3C/svg%3E")`,
                 }}
               />
 
               {/* Warm glow */}
-              <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-orange-900/20 to-transparent pointer-events-none" />
+              <div
+                className="absolute bottom-0 left-0 right-0 h-32 pointer-events-none"
+                style={{
+                  background: 'linear-gradient(to top, rgba(255, 140, 66, 0.15), transparent)',
+                }}
+              />
 
               <div className="relative z-10">
                 {/* Badge */}
-                <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-orange-950/60 border border-orange-700/40 mb-6">
-                  <Skull className="w-4 h-4 text-orange-400" />
-                  <span className="text-xs font-mono text-orange-300 uppercase tracking-wider">The Old Way</span>
+                <div
+                  className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full mb-6"
+                  style={{
+                    backgroundColor: 'rgba(255, 140, 66, 0.2)',
+                    borderWidth: '1px',
+                    borderStyle: 'solid',
+                    borderColor: 'rgba(255, 140, 66, 0.4)',
+                  }}
+                >
+                  <Skull className="w-4 h-4" weight="thin" style={{ color: '#FF8C42' }} />
+                  <span className="text-xs font-mono uppercase tracking-wider" style={{ color: '#FF8C42' }}>The Old Way</span>
                 </div>
 
-                <h3 className="text-3xl md:text-4xl font-display text-orange-200 mb-2">
+                <h3 className="text-3xl md:text-4xl font-display mb-2" style={{ color: '#FFB380' }}>
                   Static Sites
                 </h3>
-                <p className="text-orange-400/70 text-lg mb-8 font-display-light">
+                <p className="text-lg mb-8 font-display-light" style={{ color: 'rgba(255, 140, 66, 0.7)' }}>
                   R.I.P. Your Growth Potential
                 </p>
 
@@ -114,22 +135,36 @@ export default function SmartSitesShowcase() {
                       whileInView={{ opacity: 1, x: 0 }}
                       viewport={{ once: true }}
                       transition={{ delay: idx * 0.1 }}
-                      className="flex items-center gap-3 p-3 rounded-xl bg-orange-950/30 border border-orange-800/40 group/item hover:bg-orange-900/40 hover:border-orange-700/50 transition-all duration-300"
+                      className="flex items-center gap-3 p-3 rounded-xl group/item transition-all duration-300"
+                      style={{
+                        backgroundColor: 'rgba(255, 140, 66, 0.15)',
+                        borderWidth: '1px',
+                        borderStyle: 'solid',
+                        borderColor: 'rgba(255, 140, 66, 0.3)',
+                      }}
                     >
-                      <div className="p-2 rounded-lg bg-orange-900/40">
-                        <pain.icon className="w-4 h-4 text-orange-400/80" />
+                      <div className="p-2 rounded-lg" style={{ backgroundColor: 'rgba(255, 140, 66, 0.25)' }}>
+                        <pain.icon className="w-4 h-4" weight="thin" style={{ color: 'rgba(255, 140, 66, 0.8)' }} />
                       </div>
-                      <span className="text-orange-200/70 text-sm group-hover/item:text-orange-200 transition-colors">
+                      <span className="text-sm transition-colors" style={{ color: 'rgba(255, 179, 128, 0.8)' }}>
                         {pain.label}
                       </span>
-                      <XCircle className="w-4 h-4 text-red-500/60 ml-auto" />
+                      <XCircle className="w-4 h-4 ml-auto" weight="thin" style={{ color: 'rgba(239, 68, 68, 0.6)' }} />
                     </motion.div>
                   ))}
                 </div>
 
                 {/* Dead CTA */}
-                <div className="mt-8 p-4 rounded-xl bg-orange-950/30 border border-orange-800/30 text-center">
-                  <p className="text-orange-300/60 text-sm italic">
+                <div
+                  className="mt-8 p-4 rounded-xl text-center"
+                  style={{
+                    backgroundColor: 'rgba(255, 140, 66, 0.15)',
+                    borderWidth: '1px',
+                    borderStyle: 'solid',
+                    borderColor: 'rgba(255, 140, 66, 0.25)',
+                  }}
+                >
+                  <p className="text-sm italic" style={{ color: 'rgba(255, 140, 66, 0.6)' }}>
                     "We'll get back to you in 2-3 business weeks..."
                   </p>
                 </div>
@@ -149,7 +184,7 @@ export default function SmartSitesShowcase() {
             <motion.div
               className="absolute -inset-[1px] rounded-3xl opacity-75"
               style={{
-                background: 'linear-gradient(90deg, #10b981, #06b6d4, #10b981)',
+                background: 'linear-gradient(90deg, #004a58, #00556a, #004a58)',
                 backgroundSize: '200% 100%',
               }}
               animate={{
@@ -158,15 +193,22 @@ export default function SmartSitesShowcase() {
               transition={{ duration: 3, repeat: Infinity, ease: 'linear' }}
             />
 
-            <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-emerald-950/40 via-neutral-900 to-cyan-950/30 p-8 md:p-10 h-full">
+            <div
+              className="relative overflow-hidden rounded-3xl p-8 md:p-10 h-full"
+              style={{
+                background: 'linear-gradient(to bottom right, rgba(0, 74, 88, 0.3), rgba(0, 85, 106, 0.2), rgba(0, 74, 88, 0.15))',
+              }}
+            >
               {/* Animated glow orbs */}
               <motion.div
-                className="absolute top-0 right-0 w-96 h-96 bg-emerald-500/10 rounded-full blur-3xl pointer-events-none"
+                className="absolute top-0 right-0 w-96 h-96 rounded-full blur-3xl pointer-events-none"
+                style={{ backgroundColor: 'rgba(0, 85, 106, 0.15)' }}
                 animate={{ scale: [1, 1.2, 1], opacity: [0.1, 0.2, 0.1] }}
                 transition={{ duration: 4, repeat: Infinity }}
               />
               <motion.div
-                className="absolute bottom-0 left-0 w-64 h-64 bg-cyan-500/10 rounded-full blur-3xl pointer-events-none"
+                className="absolute bottom-0 left-0 w-64 h-64 rounded-full blur-3xl pointer-events-none"
+                style={{ backgroundColor: 'rgba(0, 74, 88, 0.15)' }}
                 animate={{ scale: [1, 1.3, 1], opacity: [0.1, 0.15, 0.1] }}
                 transition={{ duration: 5, repeat: Infinity, delay: 1 }}
               />
@@ -176,8 +218,8 @@ export default function SmartSitesShowcase() {
                 {[...Array(8)].map((_, i) => (
                   <motion.div
                     key={i}
-                    className="absolute w-1 h-1 bg-emerald-400 rounded-full"
-                    style={{ left: `${15 + i * 12}%`, top: `${8 + (i % 4) * 25}%` }}
+                    className="absolute w-1 h-1 rounded-full"
+                    style={{ left: `${15 + i * 12}%`, top: `${8 + (i % 4) * 25}%`, backgroundColor: '#00a8cc' }}
                     animate={{ opacity: [0.2, 1, 0.2], scale: [1, 2, 1], y: [0, -10, 0] }}
                     transition={{ duration: 2 + i * 0.3, repeat: Infinity, delay: i * 0.2 }}
                   />
@@ -187,20 +229,26 @@ export default function SmartSitesShowcase() {
               <div className="relative z-10">
                 {/* Badge */}
                 <motion.div
-                  className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-emerald-950/50 border border-emerald-500/30 mb-6"
+                  className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full mb-6"
+                  style={{
+                    backgroundColor: 'rgba(0, 85, 106, 0.3)',
+                    borderWidth: '1px',
+                    borderStyle: 'solid',
+                    borderColor: 'rgba(0, 168, 204, 0.4)',
+                  }}
                   animate={{
-                    boxShadow: ['0 0 20px rgba(16, 185, 129, 0)', '0 0 30px rgba(16, 185, 129, 0.4)', '0 0 20px rgba(16, 185, 129, 0)'],
+                    boxShadow: ['0 0 20px rgba(0, 168, 204, 0)', '0 0 30px rgba(0, 168, 204, 0.4)', '0 0 20px rgba(0, 168, 204, 0)'],
                   }}
                   transition={{ duration: 2, repeat: Infinity }}
                 >
-                  <Sparkles className="w-4 h-4 text-emerald-400" />
-                  <span className="text-xs font-mono text-emerald-400 uppercase tracking-wider">The New Way</span>
+                  <Sparkle className="w-4 h-4" weight="thin" style={{ color: '#00a8cc' }} />
+                  <span className="text-xs font-mono uppercase tracking-wider" style={{ color: '#00a8cc' }}>The New Way</span>
                 </motion.div>
 
                 <h3 className="text-3xl md:text-4xl font-display text-white mb-2">
                   AGI Sites
                 </h3>
-                <p className="text-emerald-400/70 text-lg mb-8 font-display-light">
+                <p className="text-lg mb-8 font-display-light" style={{ color: 'rgba(0, 168, 204, 0.8)' }}>
                   Your 24/7 Digital Employee
                 </p>
 
@@ -213,22 +261,34 @@ export default function SmartSitesShowcase() {
                       whileInView={{ opacity: 1, x: 0 }}
                       viewport={{ once: true }}
                       transition={{ delay: idx * 0.1 + 0.3 }}
-                      className="flex items-center gap-3 p-3 rounded-xl bg-emerald-950/20 border border-emerald-800/30 group/item hover:bg-emerald-900/30 hover:border-emerald-500/40 transition-all duration-300"
+                      className="flex items-center gap-3 p-3 rounded-xl group/item transition-all duration-300"
+                      style={{
+                        backgroundColor: 'rgba(0, 85, 106, 0.2)',
+                        borderWidth: '1px',
+                        borderStyle: 'solid',
+                        borderColor: 'rgba(0, 168, 204, 0.3)',
+                      }}
                     >
-                      <div className="p-2 rounded-lg bg-emerald-900/50">
-                        <benefit.icon className="w-4 h-4 text-emerald-400" />
+                      <div className="p-2 rounded-lg" style={{ backgroundColor: 'rgba(0, 85, 106, 0.4)' }}>
+                        <benefit.icon className="w-4 h-4" weight="thin" style={{ color: '#00a8cc' }} />
                       </div>
                       <span className="text-neutral-300 text-sm group-hover/item:text-white transition-colors">
                         {benefit.label}
                       </span>
-                      <CheckCircle2 className="w-4 h-4 text-emerald-500 ml-auto" />
+                      <CheckCircle className="w-4 h-4 ml-auto" weight="thin" style={{ color: '#00a8cc' }} />
                     </motion.div>
                   ))}
                 </div>
 
                 {/* Results Stats Bar */}
                 <motion.div
-                  className="mt-6 p-4 rounded-xl bg-emerald-950/30 border border-emerald-700/30"
+                  className="mt-6 p-4 rounded-xl"
+                  style={{
+                    backgroundColor: 'rgba(0, 85, 106, 0.25)',
+                    borderWidth: '1px',
+                    borderStyle: 'solid',
+                    borderColor: 'rgba(0, 168, 204, 0.3)',
+                  }}
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
@@ -238,10 +298,10 @@ export default function SmartSitesShowcase() {
                     {stats.map((stat) => (
                       <div key={stat.label} className="text-center">
                         <div className="flex items-center justify-center gap-1 mb-1">
-                          <stat.icon className="w-3 h-3 text-emerald-400" />
+                          <stat.icon className="w-3 h-3" weight="thin" style={{ color: '#00a8cc' }} />
                           <span className="text-xl md:text-2xl font-bold text-white">{stat.value}</span>
                         </div>
-                        <span className="text-xs text-emerald-400/70">{stat.label}</span>
+                        <span className="text-xs" style={{ color: 'rgba(0, 168, 204, 0.7)' }}>{stat.label}</span>
                       </div>
                     ))}
                   </div>
@@ -249,7 +309,10 @@ export default function SmartSitesShowcase() {
 
                 {/* CTA with shine */}
                 <motion.button
-                  className="mt-6 w-full p-4 rounded-xl bg-gradient-to-r from-emerald-600 to-cyan-600 text-white font-semibold flex items-center justify-center gap-2 hover:from-emerald-500 hover:to-cyan-500 transition-all duration-300 relative overflow-hidden"
+                  className="mt-6 w-full p-4 rounded-xl text-white font-semibold flex items-center justify-center gap-2 transition-all duration-300 relative overflow-hidden"
+                  style={{
+                    background: 'linear-gradient(to right, #004a58, #00556a)',
+                  }}
                   whileHover={{ scale: 1.02, y: -2 }}
                   whileTap={{ scale: 0.98 }}
                   onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
@@ -259,7 +322,7 @@ export default function SmartSitesShowcase() {
                     animate={{ x: ['-100%', '100%'] }}
                     transition={{ duration: 2, repeat: Infinity, repeatDelay: 3 }}
                   />
-                  <Bot className="w-5 h-5 relative z-10" />
+                  <Robot className="w-5 h-5 relative z-10" weight="thin" />
                   <span className="relative z-10">Meet Your AI Team</span>
                 </motion.button>
               </div>

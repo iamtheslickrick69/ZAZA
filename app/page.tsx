@@ -17,20 +17,25 @@ import { HowWeWorkShowcase } from "@/components/ui/how-we-work-showcase";
 import { StackedCircularFooter } from "@/components/ui/stacked-circular-footer";
 import { Testimonial } from "@/components/ui/clean-testimonial";
 import { CTAButton } from "@/components/ui/cta-button";
-
+import ClientBeforeAfter from "@/components/ui/client-before-after";
+import { LaunchTimeline } from "@/components/ui/launch-timeline";
+import { AIFeaturesGrid } from "@/components/ui/ai-features-grid";
 export default function Home() {
   return (
     <>
       <ScrollProgress />
       <BottomNavBar stickyTop={true} />
       <main>
-        <section id="home">
+        <section id="home" className="relative">
           <HeroBranding />
           <HeroSectionAnimated />
+          <ClientBeforeAfter />
+          <LaunchTimeline />
           <StackedCircularFooter />
         </section>
         <section id="showcase" className="relative">
           <SmartSitesShowcase />
+          <AIFeaturesGrid />
         </section>
         <section id="about">
           <HowWeWorkShowcase />
