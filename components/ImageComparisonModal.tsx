@@ -132,7 +132,7 @@ export function ImageComparisonModal({ isOpen, onClose, initialView }: ImageComp
             <div
               className="absolute inset-0 backdrop-blur-2xl"
               style={{
-                background: 'linear-gradient(135deg, rgba(250,250,250,0.97) 0%, rgba(240,242,245,0.98) 50%, rgba(250,250,250,0.97) 100%)',
+                background: 'linear-gradient(135deg, rgba(10,10,10,0.97) 0%, rgba(20,20,25,0.98) 50%, rgba(10,10,10,0.97) 100%)',
               }}
             />
             {/* Film grain texture */}
@@ -212,20 +212,20 @@ export function ImageComparisonModal({ isOpen, onClose, initialView }: ImageComp
                   >
                     {current.label}
                   </motion.span>
-                  <span className="text-neutral-300">—</span>
-                  <span className="text-neutral-800 font-display text-lg">
+                  <span className="text-neutral-600">—</span>
+                  <span className="text-neutral-200 font-display text-lg">
                     {current.title}
                   </span>
                 </motion.div>
 
                 {/* Close Button */}
                 <motion.button
-                  className="p-2.5 rounded-full bg-white/80 hover:bg-white shadow-lg hover:shadow-xl transition-all"
+                  className="p-2.5 rounded-full bg-neutral-800/80 hover:bg-neutral-700 shadow-lg hover:shadow-xl transition-all"
                   onClick={onClose}
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                 >
-                  <X className="w-5 h-5 text-neutral-500 hover:text-neutral-700 transition-colors" />
+                  <X className="w-5 h-5 text-neutral-400 hover:text-neutral-200 transition-colors" />
                 </motion.button>
               </div>
 
@@ -234,13 +234,13 @@ export function ImageComparisonModal({ isOpen, onClose, initialView }: ImageComp
                 ref={containerRef}
                 className="relative rounded-[28px] overflow-hidden cursor-grab active:cursor-grabbing"
                 style={{
-                  background: 'linear-gradient(165deg, rgba(255,255,255,0.95), rgba(255,255,255,0.85))',
+                  background: 'linear-gradient(165deg, rgba(30,30,30,0.95), rgba(20,20,20,0.85))',
                   boxShadow: `
-                    0 0 0 1px rgba(255,255,255,0.8),
-                    0 2px 4px rgba(0,0,0,0.02),
-                    0 8px 16px rgba(0,0,0,0.04),
-                    0 24px 48px rgba(0,0,0,0.08),
-                    0 48px 96px rgba(0,0,0,0.06)
+                    0 0 0 1px rgba(255,255,255,0.1),
+                    0 2px 4px rgba(0,0,0,0.2),
+                    0 8px 16px rgba(0,0,0,0.3),
+                    0 24px 48px rgba(0,0,0,0.4),
+                    0 48px 96px rgba(0,0,0,0.3)
                   `,
                 }}
                 onMouseMove={handleMouseMove}
@@ -268,8 +268,8 @@ export function ImageComparisonModal({ isOpen, onClose, initialView }: ImageComp
                   onClick={() => setCurrentView('before')}
                   className={`absolute left-5 top-1/2 -translate-y-1/2 z-30 p-3.5 rounded-full transition-all ${
                     isBefore
-                      ? 'bg-neutral-100 text-neutral-300 cursor-default'
-                      : 'bg-white text-neutral-600 cursor-pointer shadow-xl hover:shadow-2xl'
+                      ? 'bg-neutral-800 text-neutral-600 cursor-default'
+                      : 'bg-neutral-700 text-neutral-300 cursor-pointer shadow-xl hover:shadow-2xl hover:bg-neutral-600'
                   }`}
                   disabled={isBefore}
                   whileHover={!isBefore ? { scale: 1.08, x: -2 } : {}}
@@ -283,8 +283,8 @@ export function ImageComparisonModal({ isOpen, onClose, initialView }: ImageComp
                   onClick={() => setCurrentView('after')}
                   className={`absolute right-5 top-1/2 -translate-y-1/2 z-30 p-3.5 rounded-full transition-all ${
                     !isBefore
-                      ? 'bg-neutral-100 text-neutral-300 cursor-default'
-                      : 'bg-white text-neutral-600 cursor-pointer shadow-xl hover:shadow-2xl'
+                      ? 'bg-neutral-800 text-neutral-600 cursor-default'
+                      : 'bg-neutral-700 text-neutral-300 cursor-pointer shadow-xl hover:shadow-2xl hover:bg-neutral-600'
                   }`}
                   disabled={!isBefore}
                   whileHover={isBefore ? { scale: 1.08, x: 2 } : {}}
@@ -369,7 +369,7 @@ export function ImageComparisonModal({ isOpen, onClose, initialView }: ImageComp
 
               {/* Keyboard Hint */}
               <motion.div
-                className="mt-4 text-center text-neutral-400 text-xs font-nav tracking-wide"
+                className="mt-4 text-center text-neutral-500 text-xs font-nav tracking-wide"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.5 }}

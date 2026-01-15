@@ -82,7 +82,7 @@ export function MinimalHeader() {
             </button>
 
             {/* CTA Button */}
-            <button className="hidden sm:block bg-white text-zinc-900 px-5 py-2 text-sm font-semibold rounded-full hover:bg-zinc-100 transition-colors uppercase tracking-wide">
+            <button className="hidden sm:block bg-foreground text-background px-5 py-2 text-sm font-semibold rounded-full hover:bg-foreground/90 transition-colors uppercase tracking-wide">
               Contact
             </button>
           </div>
@@ -108,7 +108,7 @@ export function MinimalHeader() {
                   {item.hasDropdown && <ChevronDown className="w-4 h-4 opacity-60" />}
                 </a>
               ))}
-              <button className="mt-2 w-full bg-white text-zinc-900 px-5 py-3 text-sm font-semibold rounded-xl hover:bg-zinc-100 transition-colors uppercase tracking-wide">
+              <button className="mt-2 w-full bg-foreground text-background px-5 py-3 text-sm font-semibold rounded-xl hover:bg-foreground/90 transition-colors uppercase tracking-wide">
                 Contact
               </button>
             </nav>

@@ -100,7 +100,7 @@ export const ImageComparisonSlider = React.forwardRef<
 
         {/* Divider Line */}
         <div
-          className="absolute top-0 h-full w-0.5 bg-white pointer-events-none"
+          className="absolute top-0 h-full w-0.5 bg-foreground pointer-events-none"
           style={{
             left: `${position}%`,
             boxShadow: isLocked ? '0 0 10px rgba(255,255,255,0.8)' : 'none'
@@ -111,14 +111,14 @@ export const ImageComparisonSlider = React.forwardRef<
         <div
           className={cn(
             "absolute top-1/2 -translate-y-1/2 -translate-x-1/2 pointer-events-none",
-            "w-10 h-10 rounded-full bg-white shadow-lg",
+            "w-10 h-10 rounded-full bg-foreground shadow-lg",
             "flex items-center justify-center",
             isLocked && "scale-110"
           )}
           style={{ left: `${position}%` }}
         >
-          <ChevronLeft className="h-4 w-4 text-neutral-600" />
-          <ChevronRight className="h-4 w-4 text-neutral-600" />
+          <ChevronLeft className="h-4 w-4 text-background" />
+          <ChevronRight className="h-4 w-4 text-background" />
         </div>
       </div>
     );

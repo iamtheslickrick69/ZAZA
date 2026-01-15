@@ -97,7 +97,7 @@ export default function RuixenQueryBox() {
                       "px-4 py-2.5 rounded-3xl max-w-[75%] shadow-md",
                       msg.role === 'user'
                         ? "bg-gradient-to-br from-blue-500 to-blue-600 text-white rounded-br-md"
-                        : "bg-white/95 text-gray-900 rounded-bl-md backdrop-blur-sm"
+                        : "bg-card/95 text-foreground rounded-bl-md backdrop-blur-sm"
                     )}
                   >
                     <p className="text-sm leading-relaxed whitespace-pre-wrap">{msg.content}</p>
@@ -113,20 +113,20 @@ export default function RuixenQueryBox() {
                 animate={{ opacity: 1, y: 0 }}
                 className="flex justify-start"
               >
-                <div className="bg-white/95 backdrop-blur-sm px-4 py-3 rounded-3xl rounded-bl-md shadow-md flex items-center gap-2">
+                <div className="bg-card/95 backdrop-blur-sm px-4 py-3 rounded-3xl rounded-bl-md shadow-md flex items-center gap-2">
                   <div className="flex gap-1">
                     <motion.div
-                      className="w-2 h-2 bg-gray-400 rounded-full"
+                      className="w-2 h-2 bg-muted-foreground rounded-full"
                       animate={{ y: [0, -8, 0] }}
                       transition={{ duration: 0.6, repeat: Infinity, delay: 0 }}
                     />
                     <motion.div
-                      className="w-2 h-2 bg-gray-400 rounded-full"
+                      className="w-2 h-2 bg-muted-foreground rounded-full"
                       animate={{ y: [0, -8, 0] }}
                       transition={{ duration: 0.6, repeat: Infinity, delay: 0.2 }}
                     />
                     <motion.div
-                      className="w-2 h-2 bg-gray-400 rounded-full"
+                      className="w-2 h-2 bg-muted-foreground rounded-full"
                       animate={{ y: [0, -8, 0] }}
                       transition={{ duration: 0.6, repeat: Infinity, delay: 0.4 }}
                     />
@@ -181,7 +181,7 @@ export default function RuixenQueryBox() {
                 "p-3 rounded-full transition-all shadow-md flex-shrink-0",
                 inputValue.trim() && !isLoading
                   ? "bg-gradient-to-br from-blue-500 to-blue-600 text-white hover:scale-105 hover:shadow-lg"
-                  : "bg-gray-300 text-gray-500 cursor-not-allowed"
+                  : "bg-muted text-muted-foreground cursor-not-allowed"
               )}
             >
               {isLoading ? (

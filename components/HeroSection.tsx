@@ -144,7 +144,7 @@ export default function HeroSection() {
               transition={{ duration: 0.8 }}
             >
               {/* Base text */}
-              <span className="text-gray-800 dark:text-white">
+              <span className="text-foreground">
                 Haestus: Design Systems for the Visionary Web
               </span>
               {/* Soft, graceful shimmer overlay */}
@@ -166,7 +166,7 @@ export default function HeroSection() {
                 Haestus: Design Systems for the Visionary Web
               </motion.span>
             </motion.h1>
-            <p className="mt-4 text-lg text-gray-500 dark:text-gray-400">
+            <p className="mt-4 text-lg text-muted-foreground">
                 The age of AI is the rematch between David and Goliath.<br />
                 and we&apos;re crafting slingshots
             </p>
@@ -218,7 +218,7 @@ export default function HeroSection() {
                       repeat: Infinity,
                     }}
                   />
-                  <Button asChild size="lg" className="relative z-10 rounded-xl px-5 text-base bg-white/95 text-black hover:bg-white border-0 backdrop-blur-sm">
+                  <Button asChild size="lg" className="relative z-10 rounded-xl px-5 text-base bg-foreground text-background hover:bg-foreground/90 border-0 backdrop-blur-sm">
                     <span className="text-nowrap">Start Building</span>
                   </Button>
                 </div>
@@ -259,7 +259,7 @@ export default function HeroSection() {
                   <Button
                     asChild
                     size="lg"
-                    className="relative z-10 rounded-xl px-5 text-base bg-white text-black hover:bg-black hover:text-white border-0"
+                    className="relative z-10 rounded-xl px-5 text-base bg-background text-foreground hover:bg-foreground hover:text-background border border-border"
                   >
                     <span className="text-nowrap">Request a demo</span>
                   </Button>

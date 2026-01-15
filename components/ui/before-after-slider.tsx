@@ -135,18 +135,18 @@ export function BeforeAfterSlider({
           onTouchStart={handleMouseDown}
         >
           {/* Vertical Line */}
-          <div className='absolute inset-0 bg-white shadow-2xl' />
+          <div className='absolute inset-0 bg-foreground shadow-2xl' />
 
           {/* Handle Circle */}
           <motion.div
-            className='absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-16 h-16 bg-white rounded-full shadow-2xl flex items-center justify-center border-4 border-gray-200'
+            className='absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-16 h-16 bg-foreground rounded-full shadow-2xl flex items-center justify-center border-4 border-border'
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.95 }}
           >
             {/* Arrows */}
             <div className='flex items-center gap-1'>
               <svg
-                className='w-4 h-4 text-gray-600'
+                className='w-4 h-4 text-background'
                 fill='none'
                 stroke='currentColor'
                 viewBox='0 0 24 24'
@@ -159,7 +159,7 @@ export function BeforeAfterSlider({
                 />
               </svg>
               <svg
-                className='w-4 h-4 text-gray-600'
+                className='w-4 h-4 text-background'
                 fill='none'
                 stroke='currentColor'
                 viewBox='0 0 24 24'
@@ -180,7 +180,7 @@ export function BeforeAfterSlider({
       <motion.p
         initial={{ opacity: 1 }}
         animate={{ opacity: isDragging ? 0 : 1 }}
-        className='text-center text-sm text-gray-500 mt-4'
+        className='text-center text-sm text-muted-foreground mt-4'
       >
         ← Drag to compare →
       </motion.p>
