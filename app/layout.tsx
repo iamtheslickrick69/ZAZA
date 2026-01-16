@@ -36,6 +36,28 @@ export const metadata: Metadata = {
     apple: '/anvil.png',
     shortcut: '/anvil.png',
   },
+  openGraph: {
+    title: "Haestus | AI-Powered Design & Development",
+    description: "We build digital experiences for visionary brands. Design systems, web development, and brand identity powered by AI.",
+    url: "https://haestus.dev",
+    siteName: "Haestus",
+    images: [
+      {
+        url: '/og-image.png',
+        width: 1200,
+        height: 630,
+        alt: 'Haestus - AI-Powered Design & Development',
+      },
+    ],
+    locale: 'en_US',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: "Haestus | AI-Powered Design & Development",
+    description: "We build digital experiences for visionary brands. Design systems, web development, and brand identity powered by AI.",
+    images: ['/og-image.png'],
+  },
 };
 
 export default function RootLayout({
