@@ -20,7 +20,7 @@ interface Metric {
   label: string;
   beforeValue: string;
   afterValue: string;
-  icon: React.ElementType;
+  icon: React.ComponentType<{ size?: number; strokeWidth?: number; style?: React.CSSProperties }>;
 }
 
 const CLIENT_DATA = {

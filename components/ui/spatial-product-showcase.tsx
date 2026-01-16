@@ -45,7 +45,7 @@ const FeaturePill = ({
   variant,
 }: {
   label: string;
-  icon: React.ElementType;
+  icon: React.ComponentType<any>;
   variant: 'pain' | 'benefit';
 }) => {
   const isPain = variant === 'pain';

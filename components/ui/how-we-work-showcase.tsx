@@ -9,7 +9,7 @@ interface Step {
   number: string;
   title: string;
   description: string;
-  icon: React.ElementType;
+  icon: React.ComponentType<{ className?: string; strokeWidth?: number; style?: React.CSSProperties }>;
   image: string;
 }
 
