@@ -27,7 +27,7 @@ const spaceMono = Space_Mono({
 
 export const metadata: Metadata = {
   title: "Haestus | AI-Powered Design & Development",
-  description: "We build digital experiences for visionary brands. Design systems, web development, and brand identity powered by AI.",
+  description: "AI Powered, Relationship Driven",
   icons: {
     icon: [
       { url: '/anvil.png', sizes: '32x32', type: 'image/png' },
@@ -38,7 +38,7 @@ export const metadata: Metadata = {
   },
   openGraph: {
     title: "Haestus | AI-Powered Design & Development",
-    description: "We build digital experiences for visionary brands. Design systems, web development, and brand identity powered by AI.",
+    description: "AI Powered, Relationship Driven",
     url: "https://haestus.dev",
     siteName: "Haestus",
     images: [
@@ -55,7 +55,7 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: "Haestus | AI-Powered Design & Development",
-    description: "We build digital experiences for visionary brands. Design systems, web development, and brand identity powered by AI.",
+    description: "AI Powered, Relationship Driven",
     images: ['/og-image.png'],
   },
 };
