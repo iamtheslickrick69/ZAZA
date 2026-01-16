@@ -101,6 +101,7 @@ const MetricBadge = ({
 }) => {
   const value = mode === 'before' ? metric.beforeValue : metric.afterValue;
   const colors = COLORS[mode];
+  const Icon = metric.icon;
 
   return (
     <div
@@ -112,7 +113,7 @@ const MetricBadge = ({
         borderColor: 'rgba(255,255,255,0.1)',
       }}
     >
-      <metric.icon size={16} style={{ color: colors.accent }} strokeWidth={1.5} />
+      <Icon size={16} style={{ color: colors.accent }} strokeWidth={1.5} />
       <span
         className="font-mono text-base font-bold"
         style={{ color: colors.accent }}
