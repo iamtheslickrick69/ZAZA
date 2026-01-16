@@ -52,7 +52,7 @@ const TimeDisplay: React.FC<TimeDisplayProps> = ({ CONFIG = {} }) => {
   }, [CONFIG.timeZone, CONFIG.timeUpdateInterval]);
 
   return (
-    <time className="corner-item bottom-right" id="current-time">
+    <time className="corner-item top-right" id="current-time">
       {time.hours}<span className="time-blink">:</span>{time.minutes} {time.dayPeriod}
     </time>
   );

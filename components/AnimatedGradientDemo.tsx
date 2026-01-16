@@ -101,16 +101,6 @@ const BentoCard: React.FC<BentoCardProps> = ({
     show: { opacity: 1, y: 0, transition: { duration: 0.5 } },
   };
 
-  const borderColor =
-    accentColor === "blue" ? "#6b7280" :
-    accentColor === "red" ? "#6b7280" :
-    "linear-gradient(180deg, #6b7280, #6b7280)";
-
-  const glowColor =
-    accentColor === "blue" ? "rgba(107, 114, 128, 0.5)" :
-    accentColor === "red" ? "rgba(107, 114, 128, 0.5)" :
-    "rgba(107, 114, 128, 0.3)";
-
   const TrendIcon = () => {
     if (trend === "up") {
       return (
@@ -149,65 +139,27 @@ const BentoCard: React.FC<BentoCardProps> = ({
         animate={{
           y: isHovered ? -4 : 0,
           boxShadow: isHovered
-            ? `0 12px 40px rgba(0, 0, 0, 0.4), 0 0 20px ${glowColor}`
+            ? "0 12px 40px rgba(0, 0, 0, 0.4), 0 0 20px rgba(255, 255, 255, 0.2)"
             : "0 4px 24px rgba(0, 0, 0, 0.3)",
         }}
         transition={{ duration: 0.3 }}
       >
-        {/* Pixel Canvas Effect */}
+        {/* Pixel Canvas Effect - Orange colors from "The Old Way" */}
         <PixelCanvas
           gap={6}
-          speed={25}
-          colors={
-            accentColor === "blue"
-              ? ["#1a3a4a", "#6b7280", "#004466"]
-              : accentColor === "red"
-              ? ["#4a1a1a", "#6b7280", "#660004"]
-              : ["#1a3a4a", "#6b7280", "#6b7280", "#4a1a1a"]
-          }
+          speed={35}
+          colors={["#FF8C42", "#FFB380", "#cc6b30"]}
           variant="default"
           noFocus
         />
 
-        {/* Left accent border with glow on hover */}
-        <motion.div
-          className="absolute left-0 top-0 bottom-0 w-[3px]"
-          style={{
-            background: accentColor === "gradient"
-              ? "linear-gradient(180deg, #6b7280, #6b7280)"
-              : borderColor,
-          }}
-          animate={{
-            boxShadow: isHovered
-              ? `0 0 15px ${glowColor}, 0 0 30px ${glowColor}`
-              : "none",
-          }}
-          transition={{ duration: 0.3 }}
-        />
-
-        {/* Animated top border on hover */}
-        <motion.div
-          className="absolute left-0 top-0 h-[3px]"
-          style={{
-            background: accentColor === "gradient"
-              ? "linear-gradient(90deg, #6b7280, #6b7280)"
-              : borderColor,
-          }}
-          initial={{ width: 0 }}
-          animate={{ width: isHovered ? "100%" : 0 }}
-          transition={{ duration: 0.3 }}
-        />
 
         {/* Subtle gradient overlay for depth */}
         <motion.div
           className="absolute inset-0 transition-opacity duration-300"
           animate={{ opacity: isHovered ? 0.5 : 0.3 }}
           style={{
-            background: accentColor === "blue"
-              ? "radial-gradient(ellipse at top left, rgba(107, 114, 128, 0.15), transparent 50%)"
-              : accentColor === "red"
-              ? "radial-gradient(ellipse at top left, rgba(107, 114, 128, 0.15), transparent 50%)"
-              : "radial-gradient(ellipse at top left, rgba(107, 114, 128, 0.1), rgba(107, 114, 128, 0.1), transparent 60%)",
+            background: "radial-gradient(ellipse at top left, rgba(255, 140, 66, 0.1), transparent 60%)",
           }}
         />
 
@@ -282,7 +234,7 @@ const AnimatedGradientDemo: React.FC = () => {
         }}
         transition={{ type: "spring", damping: 30, stiffness: 200 }}
         style={{
-          background: "radial-gradient(circle, rgba(107, 114, 128, 0.06) 0%, rgba(107, 114, 128, 0.04) 40%, transparent 70%)",
+          background: "radial-gradient(circle, rgba(255, 255, 255, 0.04) 0%, rgba(255, 140, 66, 0.02) 40%, transparent 70%)",
         }}
       />
 

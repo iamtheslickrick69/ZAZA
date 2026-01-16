@@ -1,8 +1,8 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import {
   Home,
   Briefcase,
@@ -11,9 +11,12 @@ import {
   Mail,
   Calendar,
   ArrowRight,
+  Lock,
 } from "lucide-react";
+import { getCalApi } from "@calcom/embed-react";
 
 import { cn } from "@/lib/utils";
+import { VaultModal } from "./vault-modal";
 
 const navItems = [
   { label: "Home", icon: Home, href: "/" },
@@ -21,9 +24,8 @@ const navItems = [
   { label: "About", icon: Info, href: "#about" },
   { label: "Services", icon: Wrench, href: "#showcase" },
   { label: "Contact", icon: Mail, href: "#contact" },
+  { label: "Vault", icon: Lock, href: "/vault" },
 ];
-
-const MOBILE_LABEL_WIDTH = 72;
 
 type BottomNavBarProps = {
   className?: string;
@@ -37,8 +39,38 @@ export function BottomNavBar({
   stickyTop = true,
 }: BottomNavBarProps) {
   const [activeIndex, setActiveIndex] = useState(defaultIndex);
+  const [vaultModalOpen, setVaultModalOpen] = useState(false);
 
-  const handleClick = (idx: number, href: string) => {
+  // Initialize Cal.com
+  useEffect(() => {
+    (async function () {
+      const cal = await getCalApi();
+      cal("ui", {
+        styles: { branding: { brandColor: "#00a8cc" } },
+        hideEventTypeDetails: false,
+        layout: "month_view"
+      });
+    })();
+  }, []);
+
+  const handleConnect = async () => {
+    const cal = await getCalApi();
+    cal("modal", {
+      calLink: "rocky-bunker-n2hayf/15min",
+      config: {
+        layout: "month_view",
+        theme: "dark"
+      }
+    });
+  };
+
+  const handleClick = (idx: number, href: string, label: string) => {
+    // If clicking Vault, open modal instead of navigating
+    if (label === "Vault") {
+      setVaultModalOpen(true);
+      return;
+    }
+
     setActiveIndex(idx);
 
     // Smooth scroll to section
@@ -53,6 +85,7 @@ export function BottomNavBar({
   };
 
   return (
+    <>
     <motion.nav
       initial={{ scale: 0.9, opacity: 0, y: -20 }}
       animate={{ scale: 1, opacity: 1, y: 0 }}
@@ -60,7 +93,7 @@ export function BottomNavBar({
       role="navigation"
       aria-label="Top Navigation"
       className={cn(
-        "bg-card/95 dark:bg-card/95 backdrop-blur-xl border border-border dark:border-sidebar-border rounded-full flex items-center p-2 shadow-2xl space-x-1 min-w-[320px] max-w-[95vw] h-[52px]",
+        "bg-card/95 dark:bg-card/95 backdrop-blur-xl border border-border dark:border-sidebar-border rounded-2xl flex items-center p-2 shadow-2xl space-x-1 min-w-[320px] max-w-[95vw] h-[52px]",
         stickyTop && "fixed inset-x-0 top-4 mx-auto z-50 w-fit",
         className,
       )}
@@ -74,77 +107,76 @@ export function BottomNavBar({
             key={item.label}
             whileTap={{ scale: 0.97 }}
             className={cn(
-              "flex items-center gap-0 px-3 py-2 rounded-full transition-colors duration-200 relative h-10 min-w-[44px] min-h-[40px] max-h-[44px]",
+              "flex items-center gap-2 px-3 py-2 rounded-full transition-colors duration-200 relative h-10 min-h-[40px] max-h-[44px]",
               isActive
-                ? "bg-primary/10 dark:bg-primary/15 text-primary dark:text-primary gap-2"
+                ? "bg-[#00a8cc]/10 dark:bg-[#00a8cc]/15 text-[#00a8cc]"
                 : "bg-transparent text-muted-foreground dark:text-muted-foreground hover:bg-muted dark:hover:bg-muted",
               "focus:outline-none focus-visible:ring-0",
             )}
-            onClick={() => handleClick(idx, item.href)}
+            onClick={() => handleClick(idx, item.href, item.label)}
             aria-label={item.label}
             type="button"
           >
-            <Icon
-              size={22}
-              strokeWidth={2}
-              aria-hidden
-              className="transition-colors duration-200"
-            />
+            {/* Icon only shows when active */}
+            <AnimatePresence mode="wait">
+              {isActive && (
+                <motion.span
+                  initial={{ width: 0, opacity: 0 }}
+                  animate={{ width: "auto", opacity: 1 }}
+                  exit={{ width: 0, opacity: 0 }}
+                  transition={{ duration: 0.2 }}
+                  className="overflow-hidden"
+                >
+                  <Icon
+                    size={20}
+                    strokeWidth={2}
+                    aria-hidden
+                    className="transition-colors duration-200 text-[#00a8cc]"
+                  />
+                </motion.span>
+              )}
+            </AnimatePresence>
 
-            <motion.div
-              initial={false}
-              animate={{
-                width: isActive ? `${MOBILE_LABEL_WIDTH}px` : "0px",
-                opacity: isActive ? 1 : 0,
-                marginLeft: isActive ? "8px" : "0px",
-              }}
-              transition={{
-                width: { type: "spring", stiffness: 350, damping: 32 },
-                opacity: { duration: 0.19 },
-                marginLeft: { duration: 0.19 },
-              }}
-              className={cn("overflow-hidden flex items-center max-w-[72px]")}
+            {/* Label always shows */}
+            <span
+              className={cn(
+                "font-medium text-sm whitespace-nowrap select-none transition-colors duration-200",
+                isActive ? "text-[#00a8cc]" : "text-muted-foreground",
+              )}
             >
-              <span
-                className={cn(
-                  "font-medium text-xs whitespace-nowrap select-none transition-opacity duration-200 overflow-hidden text-ellipsis text-[clamp(0.625rem,0.5263rem+0.5263vw,1rem)] leading-[1.9]",
-                  isActive ? "text-primary dark:text-primary" : "opacity-0",
-                )}
-                title={item.label}
-              >
-                {item.label}
-              </span>
-            </motion.div>
+              {item.label}
+            </span>
           </motion.button>
         );
       })}
 
-      {/* Book a Call Button */}
+      {/* Connect Button */}
       <motion.button
         whileHover={{ scale: 1.02 }}
         whileTap={{ scale: 0.98 }}
-        onClick={() => {
-          // Scroll to booking section
-          const element = document.querySelector('#book');
-          if (element) {
-            element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-          }
-        }}
+        onClick={handleConnect}
         className={cn(
-          "flex items-center gap-2 px-4 py-2 rounded-full transition-all duration-200 h-10",
+          "flex items-center gap-2 px-4 py-2 rounded-xl transition-all duration-200 h-10",
           "bg-foreground dark:bg-foreground text-background dark:text-background",
           "border border-foreground/20",
           "hover:bg-foreground/90 dark:hover:bg-foreground/90",
           "ml-2 font-medium text-sm whitespace-nowrap"
         )}
-        aria-label="Book a call"
+        aria-label="Connect"
         type="button"
       >
         <Calendar size={18} strokeWidth={2} />
-        <span>Book a call</span>
+        <span>Connect</span>
         <ArrowRight size={18} strokeWidth={2} />
       </motion.button>
     </motion.nav>
+
+    {/* Vault Authentication Modal */}
+    <VaultModal
+      isOpen={vaultModalOpen}
+      onClose={() => setVaultModalOpen(false)}
+    />
+    </>
   );
 }
 

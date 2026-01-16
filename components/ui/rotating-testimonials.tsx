@@ -38,10 +38,10 @@ export function RotatingTestimonials() {
           {/* Avatar */}
           <div className="relative size-24 rounded-full overflow-hidden bg-muted ring-3 ring-border shadow-xl">
             <Image
-              src="/ricky.png"
+              src="/slick.png"
               alt="Rocky Bunker"
               fill
-              className="object-cover"
+              className="object-cover grayscale"
             />
           </div>
 

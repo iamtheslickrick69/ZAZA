@@ -8,12 +8,12 @@ import { Facebook, Instagram, Linkedin, Twitter } from "lucide-react"
 
 function StackedCircularFooter() {
   return (
-    <section className="bg-background py-16">
+    <section className="bg-background py-8">
       <div className="container mx-auto px-4 md:px-6">
         <div className="flex flex-col items-center">
           {/* Logo */}
           <div className="mb-8">
-            <Icons.logo className="w-16 h-16 text-foreground" />
+            <Icons.logo className="w-16 h-16" />
           </div>
 
           {/* Navigation */}

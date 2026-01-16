@@ -14,53 +14,44 @@ const haestusProjects = [
   },
   {
     id: 2,
-    artist: "PULSE FINANCE",
-    album: "WEB APPLICATION",
-    category: "WEB DEV",
-    label: "FINTECH",
-    year: "2024",
-    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1200&q=80",
+    artist: "MAW",
+    album: "MARKETING & DESIGN",
+    category: "BRANDING",
+    label: "MARKETING",
+    year: "2025",
+    image: "/wake2.png",
   },
   {
     id: 3,
-    artist: "VERTEX GAMING",
-    album: "DESIGN SYSTEM & UI KIT",
-    category: "DESIGN SYSTEM",
-    label: "ENTERTAINMENT",
-    year: "2024",
-    image: "https://images.unsplash.com/photo-1542751371-adc38448a05e?w=1200&q=80",
+    artist: "BEEHIVE RENTALS",
+    album: "EQUIPMENT RENTALS",
+    category: "WEB DEV",
+    label: "RENTALS",
+    year: "2026",
+    image: "/beehive.png",
   },
   {
     id: 4,
-    artist: "NOVA HEALTH",
-    album: "MOBILE APP INTERFACE",
-    category: "PRODUCT",
-    label: "HEALTHCARE",
-    year: "2023",
-    image: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=1200&q=80",
+    artist: "RAIN ROOFING",
+    album: "ROOFING COMPANY",
+    category: "WEB DEV",
+    label: "CONSTRUCTION",
+    year: "2026",
+    image: "/rain.png",
   },
   {
     id: 5,
-    artist: "CIPHER SECURITY",
-    album: "DASHBOARD & ANALYTICS",
-    category: "WEB DEV",
-    label: "CYBERSECURITY",
-    year: "2023",
-    image: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=1200&q=80",
-  },
-  {
-    id: 6,
-    artist: "ECHO RECORDS",
-    album: "E-COMMERCE PLATFORM",
-    category: "WEB DEV",
-    label: "MUSIC INDUSTRY",
-    year: "2023",
-    image: "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=1200&q=80",
+    artist: "LOOPSYNC",
+    album: "AI SAAS",
+    category: "WEB APP",
+    label: "TECHNOLOGY",
+    year: "2026",
+    image: "/loop.png",
   },
 ];
 
 const config = {
-  timeZone: "America/Los_Angeles",
+  timeZone: "America/Denver",
   timeUpdateInterval: 1000,
   idleDelay: 4000,
   debounceDelay: 100
@@ -75,7 +66,7 @@ const socialLinks = {
 const location = {
   latitude: "34.0522° N",
   longitude: "118.2437° W",
-  display: true
+  display: false
 };
 
 export function ProjectShowcase() {

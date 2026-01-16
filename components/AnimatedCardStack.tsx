@@ -10,19 +10,19 @@ interface Card {
 
 const cardData = {
   1: {
-    title: "Dithered Flowers",
-    description: "Digital Nostalgia",
-    image: "https://cdn.cosmos.so/c4ab6b73-e14f-455b-b402-ef3db0708854?format=jpeg",
+    title: "Mountain Peaks",
+    description: "Alpine Majesty",
+    image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&q=80",
   },
   2: {
-    title: "Color Blur",
-    description: "Abstract Hues",
-    image: "https://cdn.cosmos.so/4c494ddd-a067-4bd0-bdb5-5be384ba4f20?format=jpeg",
+    title: "Ocean Horizon",
+    description: "Coastal Serenity",
+    image: "https://images.unsplash.com/photo-1505142468610-359e7d316be0?w=800&q=80",
   },
   3: {
-    title: "Metal Reflection",
-    description: "Industrial Sheen",
-    image: "https://cdn.cosmos.so/c24a0353-afd3-43e1-89b2-bbe03a3f6712?format=jpeg",
+    title: "Forest Path",
+    description: "Nature's Embrace",
+    image: "https://images.unsplash.com/photo-1448375240586-882707db888b?w=800&q=80",
   },
 }
 
@@ -129,12 +129,18 @@ export default function AnimatedCardStack() {
   const [isAnimating, setIsAnimating] = useState(false)
   const [nextId, setNextId] = useState(4)
 
-  const handleAnimate = () => {
+  const handleNext = () => {
     setIsAnimating(true)
-
     const nextContentType = ((cards[2].contentType % 3) + 1) as 1 | 2 | 3
-
     setCards([...cards.slice(1), { id: nextId, contentType: nextContentType }])
+    setNextId((prev) => prev + 1)
+    setIsAnimating(false)
+  }
+
+  const handlePrev = () => {
+    setIsAnimating(true)
+    const prevContentType = ((cards[0].contentType - 2 + 3) % 3 + 1) as 1 | 2 | 3
+    setCards([{ id: nextId, contentType: prevContentType }, ...cards.slice(0, 2)])
     setNextId((prev) => prev + 1)
     setIsAnimating(false)
   }
@@ -149,12 +155,24 @@ export default function AnimatedCardStack() {
         </AnimatePresence>
       </div>
 
-      <div className="relative z-10 -mt-px flex w-full items-center justify-center border-t border-border bg-card py-4">
+      <div className="relative z-10 flex items-center justify-center gap-4 py-4">
         <button
-          onClick={handleAnimate}
-          className="flex h-9 cursor-pointer select-none items-center justify-center gap-1 overflow-hidden rounded-lg border border-border bg-secondary px-3 font-medium text-secondary-foreground transition-all hover:bg-secondary/80 active:scale-[0.98]"
+          onClick={handlePrev}
+          className="flex h-10 w-10 cursor-pointer select-none items-center justify-center rounded-full text-muted-foreground transition-all hover:text-foreground hover:bg-muted active:scale-95"
+          aria-label="Previous"
         >
-          Animate
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <path d="M15 18l-6-6 6-6" />
+          </svg>
+        </button>
+        <button
+          onClick={handleNext}
+          className="flex h-10 w-10 cursor-pointer select-none items-center justify-center rounded-full text-muted-foreground transition-all hover:text-foreground hover:bg-muted active:scale-95"
+          aria-label="Next"
+        >
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <path d="M9 18l6-6-6-6" />
+          </svg>
         </button>
       </div>
     </div>

@@ -22,31 +22,31 @@ import {
   PiggyBank,
 } from '@phosphor-icons/react';
 
-// Pain points - SHARPER copy with specifics
+// Pain points - BUILD THE PAIN
 const oldWayPains = [
-  { label: '3-6 months just to go live', icon: Clock },
-  { label: '$150/hr for a text edit', icon: CurrencyDollar },
-  { label: 'Developers ghost you for weeks', icon: UserMinus },
-  { label: 'Every tiny change = support ticket', icon: Warning },
-  { label: 'Zero SEO, zero leads, zero ROI', icon: Ghost },
-  { label: 'Site collects dust while competitors win', icon: XCircle },
+  { label: 'Your developer charges $150 to change a comma', icon: CurrencyDollar },
+  { label: "You're paying Google $3,000/mo to compete with Amazon", icon: Warning },
+  { label: 'Last blog post: March 2022', icon: Clock },
+  { label: "Your 'contact us' form goes to an inbox nobody checks", icon: Ghost },
+  { label: 'Competitor launched last month. Already outranks you.', icon: UserMinus },
+  { label: 'You paid for a website. You got a digital business card.', icon: XCircle },
 ];
 
-// Benefits - BOLDER copy with specifics
+// Benefits - CREATE FOMO
 const newWayBenefits = [
-  { label: 'AI trained on YOUR customers & data', icon: Brain },
-  { label: 'Never touch code again. Ever.', icon: Wrench },
-  { label: '50+ custom AI features built for you', icon: Robot },
-  { label: 'AI writes SEO blogs while you sleep', icon: TrendUp },
-  { label: 'Live in 7 days, not 7 months', icon: Rocket },
-  { label: 'Learns & improves autonomously', icon: Lightning },
+  { label: 'Customer asks at 2am. AI closes the sale by 2:01am.', icon: Robot },
+  { label: 'ChatGPT recommends your competitor. Unless you fix that.', icon: Brain },
+  { label: 'Your AI knows your pricing, FAQs, objections. Handles all of it.', icon: Lightning },
+  { label: 'Change your headline yourself. Takes 11 seconds.', icon: Wrench },
+  { label: 'Launched Monday. Ranked by Friday.', icon: Rocket },
+  { label: 'Every visitor conversation makes it smarter. Forever.', icon: TrendUp },
 ];
 
 // Stats for the results bar
 const stats = [
-  { label: 'More leads', value: '340%', icon: ArrowUpRight },
-  { label: 'Faster launch', value: '12x', icon: Timer },
-  { label: 'Maintenance cost', value: '$0', icon: PiggyBank },
+  { label: 'More leads', value: '4x', icon: ArrowUpRight },
+  { label: 'Days to live', value: '7', icon: Timer },
+  { label: 'To rank', value: '$0', icon: PiggyBank },
 ];
 
 export default function SmartSitesShowcase() {
@@ -123,7 +123,7 @@ export default function SmartSitesShowcase() {
                   Static Sites
                 </h3>
                 <p className="text-lg mb-8 font-display-light" style={{ color: 'rgba(255, 140, 66, 0.7)' }}>
-                  R.I.P. Your Growth Potential
+                  The $50,000 Mistake You're Still Paying For
                 </p>
 
                 {/* Pain Points */}
@@ -165,7 +165,7 @@ export default function SmartSitesShowcase() {
                   }}
                 >
                   <p className="text-sm italic" style={{ color: 'rgba(255, 140, 66, 0.6)' }}>
-                    "We'll get back to you in 2-3 business weeks..."
+                    "Let me check with my developer and get back to you next quarter..."
                   </p>
                 </div>
               </div>
@@ -246,10 +246,10 @@ export default function SmartSitesShowcase() {
                 </motion.div>
 
                 <h3 className="text-3xl md:text-4xl font-display text-white mb-2">
-                  AGI Sites
+                  Smart Sites
                 </h3>
                 <p className="text-lg mb-8 font-display-light" style={{ color: 'rgba(0, 168, 204, 0.8)' }}>
-                  Your 24/7 Digital Employee
+                  While You Read This, One Just Closed a Deal
                 </p>
 
                 {/* Benefits */}
@@ -323,7 +323,7 @@ export default function SmartSitesShowcase() {
                     transition={{ duration: 2, repeat: Infinity, repeatDelay: 3 }}
                   />
                   <Robot className="w-5 h-5 relative z-10" weight="thin" />
-                  <span className="relative z-10">Meet Your AI Team</span>
+                  <span className="relative z-10">See It Work in 60 Seconds</span>
                 </motion.button>
               </div>
             </div>

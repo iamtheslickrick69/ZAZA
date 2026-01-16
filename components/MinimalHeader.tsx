@@ -31,6 +31,7 @@ export function MinimalHeader() {
     { label: 'Work', href: '#work', hasDropdown: true },
     { label: 'About', href: '#about', hasDropdown: false },
     { label: 'Blog', href: '#blog', hasDropdown: false },
+    { label: 'Vault', href: '/vault', hasDropdown: false },
   ];
 
   return (

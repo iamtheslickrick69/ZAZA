@@ -19,6 +19,7 @@ import {
   Gauge,
   Sparkle,
 } from "@phosphor-icons/react";
+import { PixelCanvas } from "./pixel-canvas";
 
 const features = [
   {
@@ -112,18 +113,18 @@ const Feature = ({
   return (
     <div
       className={cn(
-        "flex flex-col lg:border-r py-10 relative group/feature border-neutral-800",
+        "flex flex-col lg:border-r py-10 relative group/feature border-neutral-800 overflow-hidden",
         (index === 0 || index === 4) && "lg:border-l border-neutral-800",
         index < 4 && "lg:border-b border-neutral-800"
       )}
     >
-      {/* Hover gradient - top row fades up, bottom row fades down */}
-      {index < 4 && (
-        <div className="opacity-0 group-hover/feature:opacity-100 transition duration-200 absolute inset-0 h-full w-full bg-gradient-to-t from-[#004a58]/30 to-transparent pointer-events-none" />
-      )}
-      {index >= 4 && (
-        <div className="opacity-0 group-hover/feature:opacity-100 transition duration-200 absolute inset-0 h-full w-full bg-gradient-to-b from-[#004a58]/30 to-transparent pointer-events-none" />
-      )}
+      {/* Pixel Canvas Effect */}
+      <PixelCanvas
+        colors={["#004a58", "#00a8cc", "#006d7a"]}
+        gap={6}
+        speed={40}
+        noFocus
+      />
 
       {/* Icon */}
       <div className="mb-4 relative z-10 px-10 text-neutral-400 group-hover/feature:text-[#00a8cc] transition-colors duration-200">

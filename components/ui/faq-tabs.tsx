@@ -1,9 +1,78 @@
 "use client";
 
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { Plus, Globe, DollarSign, Bot, HeadphonesIcon, LucideIcon } from 'lucide-react';
 import { cn } from '@/lib/utils';
+
+/** Noise overlay component */
+interface NoiseProps {
+  patternRefreshInterval?: number;
+  patternAlpha?: number;
+}
+
+const Noise: React.FC<NoiseProps> = ({
+  patternRefreshInterval = 2,
+  patternAlpha = 15,
+}) => {
+  const grainRef = useRef<HTMLCanvasElement | null>(null);
+
+  useEffect(() => {
+    const canvas = grainRef.current;
+    if (!canvas) return;
+
+    const ctx = canvas.getContext("2d", { alpha: true });
+    if (!ctx) return;
+
+    let frame = 0;
+    let animationId = 0;
+    const canvasSize = 1024;
+
+    const resize = () => {
+      if (!canvas) return;
+      canvas.width = canvasSize;
+      canvas.height = canvasSize;
+      canvas.style.width = "100%";
+      canvas.style.height = "100%";
+    };
+
+    const drawGrain = () => {
+      const imageData = ctx.createImageData(canvasSize, canvasSize);
+      const data = imageData.data;
+      for (let i = 0; i < data.length; i += 4) {
+        const value = Math.random() * 255;
+        data[i] = value;
+        data[i + 1] = value;
+        data[i + 2] = value;
+        data[i + 3] = patternAlpha;
+      }
+      ctx.putImageData(imageData, 0, 0);
+    };
+
+    const loop = () => {
+      if (frame % patternRefreshInterval === 0) drawGrain();
+      frame++;
+      animationId = window.requestAnimationFrame(loop);
+    };
+
+    window.addEventListener("resize", resize);
+    resize();
+    loop();
+
+    return () => {
+      window.removeEventListener("resize", resize);
+      window.cancelAnimationFrame(animationId);
+    };
+  }, [patternRefreshInterval, patternAlpha]);
+
+  return (
+    <canvas
+      ref={grainRef}
+      className="pointer-events-none absolute inset-0 w-full h-full"
+      style={{ imageRendering: "pixelated" }}
+    />
+  );
+};
 
 // Types
 interface FAQItem {
@@ -43,22 +112,24 @@ export const FAQ = ({
   return (
     <section
       className={cn(
-        "relative overflow-hidden bg-background px-4 py-20 text-foreground transition-colors duration-300",
+        "relative overflow-hidden bg-black px-4 py-20 text-foreground transition-colors duration-300",
         className
       )}
       {...props}
     >
-      <FAQHeader title={title} subtitle={subtitle} />
-      <FAQTabs
-        categories={categories}
-        selected={selectedCategory}
-        setSelected={setSelectedCategory}
-        faqData={faqData}
-      />
-      <FAQList
-        faqData={faqData}
-        selected={selectedCategory}
-      />
+      <div className="relative z-10">
+        <FAQHeader title={title} subtitle={subtitle} />
+        <FAQTabs
+          categories={categories}
+          selected={selectedCategory}
+          setSelected={setSelectedCategory}
+          faqData={faqData}
+        />
+        <FAQList
+          faqData={faqData}
+          selected={selectedCategory}
+        />
+      </div>
     </section>
   );
 };
@@ -68,12 +139,7 @@ const FAQHeader = ({ title, subtitle }: { title: string; subtitle: string }) => 
     <motion.span
       initial={{ opacity: 0, y: -10 }}
       animate={{ opacity: 1, y: 0 }}
-      className="mb-4 text-sm font-medium tracking-wider uppercase"
-      style={{
-        background: `linear-gradient(90deg, ${BRAND_BLUE}, ${BRAND_RED})`,
-        WebkitBackgroundClip: 'text',
-        WebkitTextFillColor: 'transparent'
-      }}
+      className="mb-4 text-sm font-medium tracking-wider uppercase text-gray-400"
     >
       {subtitle}
     </motion.span>
@@ -81,15 +147,10 @@ const FAQHeader = ({ title, subtitle }: { title: string; subtitle: string }) => 
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay: 0.1 }}
-      className="mb-12 text-4xl md:text-5xl font-bold text-center"
+      className="mb-12 text-4xl md:text-5xl font-bold text-center text-white"
     >
       {title}
     </motion.h2>
-    {/* Gradient glow */}
-    <span
-      className="absolute -top-[300px] left-[50%] z-0 h-[500px] w-[700px] -translate-x-[50%] rounded-full blur-3xl opacity-30"
-      style={{ background: `radial-gradient(circle, ${BRAND_BLUE}40, ${BRAND_RED}20, transparent)` }}
-    />
   </div>
 );
 
@@ -121,38 +182,21 @@ const FAQTabs = ({
           whileHover={{ scale: 1.02 }}
           whileTap={{ scale: 0.98 }}
           className={cn(
-            "relative overflow-hidden whitespace-nowrap rounded-2xl border px-4 py-2.5 text-sm font-medium transition-all duration-300 flex items-center gap-2",
+            "relative overflow-hidden whitespace-nowrap rounded-full border px-4 py-2.5 text-sm font-medium transition-all duration-300 flex items-center gap-2",
             isSelected
-              ? "border-transparent text-white shadow-lg"
-              : "border-border bg-card/50 text-muted-foreground hover:text-foreground hover:border-foreground/30"
+              ? "border-transparent bg-gray-600 text-white"
+              : "border-gray-700 bg-transparent text-gray-400 hover:text-white hover:border-gray-500"
           )}
-          style={{
-            boxShadow: isSelected ? `0 8px 30px ${BRAND_BLUE}40` : undefined
-          }}
         >
-          <Icon className="w-4 h-4" />
+          <Icon className="w-4 h-4 relative z-10" />
           <span className="relative z-10">{label}</span>
           {/* Question count badge */}
           <span className={cn(
-            "ml-1 px-1.5 py-0.5 text-xs rounded-lg transition-colors",
-            isSelected ? "bg-white/20" : "bg-muted text-muted-foreground"
+            "ml-1 px-1.5 py-0.5 text-xs rounded-lg transition-colors relative z-10",
+            isSelected ? "bg-gray-500 text-white" : "bg-gray-800 text-gray-400"
           )}>
             {questionCount}
           </span>
-          <AnimatePresence>
-            {isSelected && (
-              <motion.span
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                transition={{ duration: 0.3 }}
-                className="absolute inset-0 z-0"
-                style={{
-                  background: `linear-gradient(135deg, ${BRAND_BLUE}, ${BRAND_RED})`
-                }}
-              />
-            )}
-          </AnimatePresence>
         </motion.button>
       );
     })}
@@ -202,12 +246,9 @@ const FAQItemCard = ({ question, answer }: FAQItem) => {
       className={cn(
         "rounded-2xl border transition-all duration-300 cursor-pointer",
         isOpen
-          ? "bg-card/50 border-border shadow-xl"
-          : "bg-card/30 border-border hover:border-foreground/20 hover:shadow-lg"
+          ? "bg-gray-900/80 border-gray-700 shadow-xl"
+          : "bg-gray-900/50 border-gray-800 hover:border-gray-700"
       )}
-      style={{
-        boxShadow: isOpen ? `0 10px 40px var(--shadow-color), inset 0 1px 0 rgba(255,255,255,0.05)` : undefined
-      }}
     >
       <button
         onClick={() => setIsOpen(!isOpen)}
@@ -216,7 +257,7 @@ const FAQItemCard = ({ question, answer }: FAQItem) => {
         <span
           className={cn(
             "text-base md:text-lg font-medium transition-colors",
-            isOpen ? "text-foreground" : "text-foreground/80"
+            isOpen ? "text-white" : "text-gray-200"
           )}
         >
           {question}
@@ -228,14 +269,14 @@ const FAQItemCard = ({ question, answer }: FAQItem) => {
           }}
           transition={{ duration: 0.2, type: "spring", stiffness: 300 }}
           className={cn(
-            "flex-shrink-0 p-1 rounded-full transition-colors",
-            isOpen ? "bg-foreground/10" : "bg-muted"
+            "flex-shrink-0 p-1.5 rounded-full transition-colors",
+            isOpen ? "bg-gray-700" : "bg-gray-800"
           )}
         >
           <Plus
             className={cn(
               "h-5 w-5 transition-colors",
-              isOpen ? "text-foreground" : "text-muted-foreground"
+              isOpen ? "text-white" : "text-gray-400"
             )}
           />
         </motion.span>
@@ -249,7 +290,7 @@ const FAQItemCard = ({ question, answer }: FAQItem) => {
         transition={{ duration: 0.3, ease: [0.04, 0.62, 0.23, 0.98] }}
         className="overflow-hidden"
       >
-        <p className="px-5 pb-5 text-muted-foreground leading-relaxed">{answer}</p>
+        <p className="px-5 pb-5 text-gray-400 leading-relaxed">{answer}</p>
       </motion.div>
     </motion.div>
   );

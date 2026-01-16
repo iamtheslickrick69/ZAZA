@@ -1074,7 +1074,15 @@ body {
 }
 
 .portfolio-container.has-active .project-item:not(.active) {
-  opacity: 0.3;
+  opacity: 0.2;
+}
+
+.portfolio-container .project-item.active {
+  transform: translateX(8px);
+}
+
+.portfolio-container .project-item.active .artist {
+  color: #00a8cc;
 }
 
 /* Project List */
@@ -1189,14 +1197,19 @@ body {
   opacity: 0;
   pointer-events: none;
   z-index: 1;
-  transition: opacity 0.6s ease, transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transition: opacity 0.5s ease, transform 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
 .background-image::after {
   content: '';
   position: absolute;
   inset: 0;
-  background: rgba(0, 0, 0, 0.25);
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.7) 0%,
+    rgba(0, 0, 0, 0.5) 50%,
+    rgba(0, 0, 0, 0.7) 100%
+  );
 }
 
 /* Corner Elements */

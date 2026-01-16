@@ -1,7 +1,7 @@
 "use client";
 
 import { cn } from "@/lib/utils";
-import { useState } from "react";
+import Image from "next/image";
 
 interface HoneycombLoaderProps {
   size?: number;
@@ -14,31 +14,22 @@ export const HoneycombLoader = ({
   className,
   onClick
 }: HoneycombLoaderProps) => {
-  const scale = size / 40;
-  const [isHovered, setIsHovered] = useState(false);
-
   return (
     <div
-      className={cn("liquid-slant-logo group", className)}
+      className={cn("relative group", className)}
       style={{
-        transform: `scale(${scale}) rotate(15deg)`,
-        transformOrigin: 'center',
+        width: size,
+        height: size,
       }}
       onClick={onClick}
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
     >
-      {/* Ambient glow */}
-      <div className="liquid-glow" />
-
-      {/* Hexagon cells - wave cascade */}
-      <div className="liquid-hex liquid-hex-1"><div className="liquid-inner" /></div>
-      <div className="liquid-hex liquid-hex-2"><div className="liquid-inner" /></div>
-      <div className="liquid-hex liquid-hex-3"><div className="liquid-inner" /></div>
-      <div className="liquid-hex liquid-hex-4"><div className="liquid-inner" /></div>
-      <div className="liquid-hex liquid-hex-5"><div className="liquid-inner" /></div>
-      <div className="liquid-hex liquid-hex-6"><div className="liquid-inner" /></div>
-      <div className="liquid-hex liquid-hex-7"><div className="liquid-inner" /></div>
+      <Image
+        src="/anvil.png"
+        alt="Haestus"
+        width={size}
+        height={size}
+        className="w-full h-full object-contain transition-transform duration-300 group-hover:scale-110"
+      />
     </div>
   );
 };

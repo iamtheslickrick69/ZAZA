@@ -1,21 +1,14 @@
 type IconProps = React.HTMLAttributes<SVGElement>
 
+type LogoProps = React.ImgHTMLAttributes<HTMLImageElement>
+
 export const Icons = {
-  logo: (props: IconProps) => (
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none" {...props}>
-      {/* Nested Hexagon - Outer */}
-      <path d="M32 4L56 18V46L32 60L8 46V18L32 4Z"
-        stroke="currentColor"
-        strokeWidth="2.5"
-        fill="none"
-        strokeLinejoin="miter"/>
-      {/* Nested Hexagon - Inner */}
-      <path d="M32 18L44 25V39L32 46L20 39V25L32 18Z"
-        stroke="currentColor"
-        strokeWidth="2"
-        fill="none"
-        strokeLinejoin="miter"/>
-    </svg>
+  logo: (props: LogoProps) => (
+    <img
+      src="/anvil.png"
+      alt="Haestus"
+      {...props}
+    />
   ),
   twitter: (props: IconProps) => (
     <svg

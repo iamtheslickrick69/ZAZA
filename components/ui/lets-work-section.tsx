@@ -50,45 +50,16 @@ export function LetsWorkTogether() {
       </div>
 
       <div className="relative flex flex-col items-center gap-10">
-        {/* Available badge */}
-        <motion.div
-          className="flex items-center gap-3"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-        >
-          <span className="relative flex size-2">
-            <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75" />
-            <span className="relative inline-flex size-2 rounded-full bg-emerald-500" />
-          </span>
-          <span className="text-sm font-medium tracking-widest uppercase text-muted-foreground">
-            Available for projects
-          </span>
-        </motion.div>
-
-        {/* Main headline */}
-        <motion.h2
-          className="text-center text-5xl font-light tracking-tight text-foreground sm:text-6xl md:text-7xl lg:text-8xl"
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.1 }}
-        >
-          <span className="block">Let&apos;s work</span>
-          <span className="block text-muted-foreground/60">together</span>
-        </motion.h2>
-
         {/* Book a call button */}
         <motion.button
           onClick={handleBookCall}
           onMouseEnter={() => setIsButtonHovered(true)}
           onMouseLeave={() => setIsButtonHovered(false)}
-          className="group relative flex items-center gap-4 mt-4 cursor-pointer"
+          className="group relative flex items-center gap-4 cursor-pointer"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.2 }}
+          transition={{ duration: 0.6 }}
         >
           {/* Left line */}
           <div
@@ -143,29 +114,6 @@ export function LetsWorkTogether() {
             }}
           />
         </motion.button>
-
-        {/* Subtitle */}
-        <motion.p
-          className="max-w-md text-center text-sm leading-relaxed text-muted-foreground mt-4"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.3 }}
-        >
-          Have a project in mind? I&apos;d love to hear about it. Let&apos;s create something exceptional together.
-        </motion.p>
-
-        {/* Email as secondary option */}
-        <motion.a
-          href="mailto:hello@haestus.com"
-          className="text-xs tracking-widest uppercase text-muted-foreground/60 hover:text-foreground transition-colors duration-300"
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.4 }}
-        >
-          hello@haestus.com
-        </motion.a>
       </div>
     </section>
   )
