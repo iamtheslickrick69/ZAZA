@@ -14,9 +14,12 @@ export function SeamlessIntegrations() {
         transition={{ duration: 0.8 }}
       >
         {/* Title at top */}
-        <div className="text-center mb-8">
+        <div className="text-center mb-8 flex flex-col items-center">
+          <span className="inline-block px-4 py-1.5 rounded-full border border-foreground/10 bg-foreground/5 text-xs uppercase tracking-widest text-muted-foreground mb-4">
+            Answer Engine Optimization
+          </span>
           <motion.h2
-            className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-foreground"
+            className="text-3xl md:text-4xl font-display text-foreground mb-3"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -24,6 +27,9 @@ export function SeamlessIntegrations() {
           >
             AEO is the new SEO
           </motion.h2>
+          <p className="text-muted-foreground text-sm md:text-base max-w-xl">
+            Get found by AI search engines before your competition does.
+          </p>
         </div>
 
         {/* Icons + YOUR SITE container */}
@@ -51,16 +57,6 @@ export function SeamlessIntegrations() {
           />
         </motion.div>
 
-        {/* Subtitle at bottom */}
-        <motion.p
-          className="max-w-2xl text-base md:text-lg text-muted-foreground mx-auto text-center mt-4"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.5 }}
-        >
-          AI has completely changed the game. Make platforms redirect back to you instead of your competition.
-        </motion.p>
       </motion.div>
     </section>
   );

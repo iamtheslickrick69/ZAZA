@@ -139,7 +139,7 @@ const FAQHeader = ({ title, subtitle }: { title: string; subtitle: string }) => 
     <motion.span
       initial={{ opacity: 0, y: -10 }}
       animate={{ opacity: 1, y: 0 }}
-      className="mb-4 text-sm font-medium tracking-wider uppercase text-gray-400"
+      className="inline-block px-4 py-1.5 rounded-full border border-white/10 bg-white/5 text-xs uppercase tracking-widest text-neutral-400 mb-4"
     >
       {subtitle}
     </motion.span>
@@ -147,10 +147,18 @@ const FAQHeader = ({ title, subtitle }: { title: string; subtitle: string }) => 
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay: 0.1 }}
-      className="mb-12 text-4xl md:text-5xl font-bold text-center text-white"
+      className="text-3xl md:text-4xl font-display text-center text-white mb-3"
     >
       {title}
     </motion.h2>
+    <motion.p
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ delay: 0.2 }}
+      className="text-neutral-400 text-sm md:text-base max-w-xl text-center mb-12"
+    >
+      Got questions? We've got answers. Find everything you need below.
+    </motion.p>
   </div>
 );
 
@@ -296,113 +304,100 @@ const FAQItemCard = ({ question, answer }: FAQItem) => {
   );
 };
 
-// Pre-configured FAQ for Haestus
+// Pre-configured FAQ for Haestus - Now "Ask Slick" CTA
 export const HaestusFAQ = () => {
-  const categories: Record<string, FAQCategory> = {
-    "smart-sites": { label: "Smart Sites", icon: Globe },
-    "pricing": { label: "Pricing & Process", icon: DollarSign },
-    "ai": { label: "AI & Integrations", icon: Bot },
-    "support": { label: "Support & Updates", icon: HeadphonesIcon },
-  };
-
-  const faqData: Record<string, FAQItem[]> = {
-    "smart-sites": [
-      {
-        question: "What exactly is a Smart Site?",
-        answer: "A Smart Site is an AI-powered website that acts as your 24/7 digital employee. Unlike static websites that just sit there, Smart Sites are trained on YOUR business—they learn, adapt, and work around the clock to engage visitors, answer questions, and drive conversions."
-      },
-      {
-        question: "How is this different from a regular website?",
-        answer: "Traditional websites are like digital brochures—static and lifeless. Smart Sites use AGI (Artificial General Intelligence) trained specifically on your business. They can hold conversations, recommend products, write personalized content, and get smarter every single day."
-      },
-      {
-        question: "How fast can I get my Smart Site launched?",
-        answer: "Most Smart Sites launch within days, not months. We've streamlined the entire process so you're not waiting around. While traditional agencies take 3-6 months, we get you live and generating results in a fraction of the time."
-      },
-      {
-        question: "Do I need technical skills to manage it?",
-        answer: "Absolutely not. We handle everything—updates, maintenance, new features. You focus on running your business, we focus on making your website work harder for you. No tickets, no waiting, no developer hostage situations."
-      },
-      {
-        question: "Will my Smart Site work on mobile devices?",
-        answer: "100%. Every Smart Site is built mobile-first with responsive design that looks stunning on any device. Whether your visitors are on desktop, tablet, or phone, the experience is seamless."
-      }
-    ],
-    "pricing": [
-      {
-        question: "How much does a Smart Site cost?",
-        answer: "Pricing depends on your specific needs and the complexity of AI features required. We offer flexible packages starting from basic Smart Sites to full enterprise solutions. Book a call and we'll give you a transparent quote with no hidden fees."
-      },
-      {
-        question: "Are there ongoing monthly fees?",
-        answer: "Yes, Smart Sites include a monthly subscription that covers hosting, AI operations, continuous updates, and support. Think of it as having a full-time digital employee for a fraction of the cost of hiring someone."
-      },
-      {
-        question: "What's included in the monthly fee?",
-        answer: "Everything. Hosting, SSL, AI model costs, content updates, security patches, performance optimization, and priority support. We don't nickel-and-dime you for every little change."
-      },
-      {
-        question: "Do you offer payment plans?",
-        answer: "Yes, we offer flexible payment options to fit your budget. We can discuss monthly, quarterly, or annual billing during our consultation call."
-      },
-      {
-        question: "What's your refund policy?",
-        answer: "We're confident you'll love your Smart Site. If for any reason you're not satisfied within the first 30 days, we'll work with you to make it right or provide a refund. Your success is our success."
-      }
-    ],
-    "ai": [
-      {
-        question: "What AI features are included?",
-        answer: "Smart Sites can include AI-powered chat, automated content generation, SEO optimization, lead qualification, personalized recommendations, and custom AI features built specifically for your business needs."
-      },
-      {
-        question: "Can you integrate with my existing tools?",
-        answer: "Absolutely. We integrate with virtually any API—CRMs, payment processors, booking systems, inventory management, email platforms, and more. If it has an API, we can connect it."
-      },
-      {
-        question: "How does the AI learn about my business?",
-        answer: "We train the AI on your specific business data—your products, services, FAQs, brand voice, and customer interactions. It's not generic AI; it's YOUR AI, speaking in YOUR voice."
-      },
-      {
-        question: "Is my business data secure?",
-        answer: "100%. We use enterprise-grade security, encrypted connections, and never share your data with third parties. Your business information stays private and protected."
-      },
-      {
-        question: "Can the AI handle customer support?",
-        answer: "Yes! The AI can answer common questions, qualify leads, book appointments, and handle support inquiries 24/7. Complex issues can be seamlessly escalated to your team."
-      }
-    ],
-    "support": [
-      {
-        question: "What kind of support do you provide?",
-        answer: "Priority support via email and chat, typically responding within hours, not days. For urgent issues, we have expedited response times. We're partners in your success, not just vendors."
-      },
-      {
-        question: "Who handles updates and maintenance?",
-        answer: "We do—completely. Content updates, feature additions, security patches, performance optimization. You tell us what you need, we make it happen. No tickets, no waiting weeks."
-      },
-      {
-        question: "What if I need a new feature added?",
-        answer: "Just ask. We continuously evolve your Smart Site based on your needs. New AI features, integrations, pages—we build what you need to stay ahead of your competition."
-      },
-      {
-        question: "Do you provide training?",
-        answer: "Yes, we provide comprehensive onboarding and training so you understand how to get the most out of your Smart Site. Plus, we're always available for questions."
-      },
-      {
-        question: "What happens if something breaks?",
-        answer: "We monitor your site 24/7 and typically catch and fix issues before you even notice them. If something does go wrong, we're on it immediately—no finger-pointing, just solutions."
-      }
-    ]
+  const handleOpenChat = () => {
+    // Dispatch custom event to open the chat widget
+    window.dispatchEvent(new CustomEvent('openChatWidget'));
   };
 
   return (
-    <FAQ
-      title="Frequently Asked Questions"
-      subtitle="Everything you need to know"
-      categories={categories}
-      faqData={faqData}
-    />
+    <section className="relative overflow-hidden bg-black px-4 py-20 text-foreground">
+      <div className="relative z-10 flex flex-col items-center justify-center max-w-3xl mx-auto">
+        {/* Badge */}
+        <motion.span
+          initial={{ opacity: 0, y: -10 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="inline-block px-4 py-1.5 rounded-full border border-white/10 bg-white/5 text-xs uppercase tracking-widest text-neutral-400 mb-8"
+        >
+          Need Help?
+        </motion.span>
+
+        {/* Slick AI Icon with subtle glow */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.9 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.1 }}
+          className="relative mb-8"
+        >
+          <div className="relative">
+            <img
+              src="/slickai.png"
+              alt="Slick AI"
+              className="w-24 h-24 object-contain"
+            />
+            {/* Subtle animated glow */}
+            <motion.div
+              className="absolute inset-0 rounded-full -z-10"
+              animate={{
+                scale: [1, 1.2, 1],
+                opacity: [0.3, 0.5, 0.3],
+              }}
+              transition={{
+                duration: 3,
+                repeat: Infinity,
+                ease: "easeInOut",
+              }}
+              style={{
+                background: 'radial-gradient(circle, rgba(14, 165, 233, 0.4) 0%, transparent 70%)',
+              }}
+            />
+          </div>
+        </motion.div>
+
+        {/* Title */}
+        <motion.h2
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.2 }}
+          className="text-4xl md:text-5xl font-display text-center text-white mb-4"
+        >
+          Ask Slick
+        </motion.h2>
+
+        {/* Subtitle */}
+        <motion.p
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.3 }}
+          className="text-neutral-400 text-base md:text-lg text-center mb-10 max-w-xl"
+        >
+          Get instant answers about Smart Sites, pricing, and more
+        </motion.p>
+
+        {/* CTA Button */}
+        <motion.button
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.4 }}
+          whileHover={{ scale: 1.05, y: -2 }}
+          whileTap={{ scale: 0.98 }}
+          onClick={handleOpenChat}
+          className="group relative inline-flex items-center gap-3 px-8 py-4 rounded-xl font-semibold text-base transition-all overflow-hidden bg-sky-500 text-white shadow-lg shadow-sky-500/30 hover:shadow-sky-500/50"
+        >
+          <Bot className="w-5 h-5" strokeWidth={2} />
+          <span>Start Chatting</span>
+          <svg className="w-5 h-5 transition-transform group-hover:translate-x-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+            <path d="M5 12h14M12 5l7 7-7 7" />
+          </svg>
+        </motion.button>
+      </div>
+    </section>
   );
 };
 

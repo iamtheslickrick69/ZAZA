@@ -98,15 +98,15 @@ function CinematicStep({ step, index }: { step: Step; index: number }) {
 
           {/* Icon */}
           <motion.div
-            className="p-3 md:p-4 rounded-2xl"
             animate={{
-              backgroundColor: isHovered ? "rgba(255,255,255,0.15)" : "rgba(255,255,255,0.05)",
               scale: isHovered ? 1.1 : 1,
+              filter: isHovered ? "drop-shadow(0 0 8px rgba(255,255,255,0.4))" : "none",
             }}
             transition={{ duration: 0.3 }}
           >
             <Icon
-              className="w-6 h-6 md:w-8 md:h-8"
+              className="w-5 h-5 md:w-6 md:h-6"
+              strokeWidth={1}
               style={{ color: isHovered ? "#ffffff" : "#525252" }}
             />
           </motion.div>
@@ -192,15 +192,15 @@ export function HowWeWorkShowcase() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="mb-8 px-8 md:px-16 flex items-end justify-between"
+          className="mb-8 px-8 md:px-16 text-center"
         >
-          <div>
-            <span className="text-xs font-mono text-zinc-600 tracking-widest">[ OUR PROCESS ]</span>
-            <h2 className="text-3xl md:text-4xl font-display text-white mt-2">
-              How We Work
-            </h2>
-          </div>
-          <p className="hidden md:block text-zinc-600 text-sm max-w-xs text-right">
+          <span className="inline-block px-4 py-1.5 rounded-full border border-white/10 bg-white/5 text-xs uppercase tracking-widest text-neutral-400 mb-4">
+            Our Process
+          </span>
+          <h2 className="text-3xl md:text-4xl font-display text-white mb-3">
+            How We Work
+          </h2>
+          <p className="text-neutral-400 text-sm md:text-base">
             From strategy to victory, we're with you every step.
           </p>
         </motion.div>

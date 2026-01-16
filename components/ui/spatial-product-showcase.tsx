@@ -3,345 +3,277 @@
 import { motion } from 'framer-motion';
 import {
   Clock,
-  XCircle,
   Warning,
   UserMinus,
   Rocket,
   Lightning,
   CurrencyDollar,
-  Ghost,
-  Robot,
   Wrench,
   TrendUp,
   Brain,
   Skull,
   Sparkle,
-  CheckCircle,
-  ArrowUpRight,
-  Timer,
-  PiggyBank,
+  Prohibit,
+  X,
+  Robot,
 } from '@phosphor-icons/react';
 
-// Pain points - BUILD THE PAIN
+// Pain points - compact labels
 const oldWayPains = [
-  { label: 'Your developer charges $150 to change a comma', icon: CurrencyDollar },
-  { label: "You're paying Google $3,000/mo to compete with Amazon", icon: Warning },
-  { label: 'Last blog post: March 2022', icon: Clock },
-  { label: "Your 'contact us' form goes to an inbox nobody checks", icon: Ghost },
-  { label: 'Competitor launched last month. Already outranks you.', icon: UserMinus },
-  { label: 'You paid for a website. You got a digital business card.', icon: XCircle },
+  { label: 'Months to launch', icon: Clock },
+  { label: 'Hostage to devs', icon: UserMinus },
+  { label: 'Every edit = ticket', icon: Warning },
+  { label: 'Pay per change', icon: CurrencyDollar },
+  { label: 'No SEO or leads', icon: Prohibit },
+  { label: 'Does nothing', icon: Skull },
 ];
 
-// Benefits - CREATE FOMO
+// Benefits - compact labels
 const newWayBenefits = [
-  { label: 'Customer asks at 2am. AI closes the sale by 2:01am.', icon: Robot },
-  { label: 'ChatGPT recommends your competitor. Unless you fix that.', icon: Brain },
-  { label: 'Your AI knows your pricing, FAQs, objections. Handles all of it.', icon: Lightning },
-  { label: 'Change your headline yourself. Takes 11 seconds.', icon: Wrench },
-  { label: 'Launched Monday. Ranked by Friday.', icon: Rocket },
-  { label: 'Every visitor conversation makes it smarter. Forever.', icon: TrendUp },
+  { label: 'AI trained on you', icon: Brain },
+  { label: 'We handle updates', icon: Wrench },
+  { label: 'Custom AI features', icon: Robot },
+  { label: 'AI-powered SEO', icon: TrendUp },
+  { label: 'Live in days', icon: Rocket },
+  { label: 'Gets smarter', icon: Lightning },
 ];
 
-// Stats for the results bar
-const stats = [
-  { label: 'More leads', value: '4x', icon: ArrowUpRight },
-  { label: 'Days to live', value: '7', icon: Timer },
-  { label: 'To rank', value: '$0', icon: PiggyBank },
-];
+// Pill component with hover effects
+const FeaturePill = ({
+  label,
+  icon: Icon,
+  variant,
+}: {
+  label: string;
+  icon: React.ElementType;
+  variant: 'pain' | 'benefit';
+}) => {
+  const isPain = variant === 'pain';
+
+  return (
+    <motion.div
+      className="relative flex items-center gap-2 px-3 py-2.5 rounded-lg cursor-default"
+      style={{
+        backgroundColor: isPain
+          ? 'rgba(255, 140, 66, 0.15)'
+          : 'rgba(0, 85, 106, 0.25)',
+      }}
+      whileHover={{
+        scale: 1.05,
+        backgroundColor: isPain
+          ? 'rgba(255, 140, 66, 0.25)'
+          : 'rgba(0, 85, 106, 0.4)',
+        boxShadow: isPain
+          ? '0 0 20px rgba(255, 140, 66, 0.3)'
+          : '0 0 20px rgba(14, 165, 233, 0.3)',
+      }}
+      transition={{ duration: 0.2 }}
+    >
+      <Icon
+        className="w-4 h-4 shrink-0"
+        weight="thin"
+        style={{ color: isPain ? '#FF8C42' : '#0ea5e9' }}
+      />
+      <span
+        className="text-xs font-medium whitespace-nowrap"
+        style={{ color: isPain ? 'rgba(255, 179, 128, 0.9)' : 'rgba(200, 230, 240, 0.9)' }}
+      >
+        {label}
+      </span>
+      {/* X mark for pain points */}
+      {isPain && (
+        <X
+          className="w-3 h-3 ml-1 opacity-40"
+          weight="bold"
+          style={{ color: '#ef4444' }}
+        />
+      )}
+    </motion.div>
+  );
+};
 
 export default function SmartSitesShowcase() {
   return (
-    <section className="relative w-full overflow-hidden py-20 bg-neutral-950">
+    <section className="relative w-full overflow-hidden py-16 bg-neutral-950">
       {/* Header */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        className="text-center mb-16 px-6"
+        className="text-center mb-12 px-6"
       >
-        <h2 className="text-4xl md:text-6xl font-display text-white mb-3">
-          SMART SITES
+        <span className="inline-block px-4 py-1.5 rounded-full border border-white/10 bg-white/5 text-xs uppercase tracking-widest text-neutral-400 mb-4">
+          Smart Sites
+        </span>
+        <h2 className="text-3xl md:text-4xl font-display text-white mb-3">
+          Your 24/7 Digital Employee
         </h2>
-        <p className="text-lg text-neutral-500 font-display-light">
-          Finally, websites that think.
+        <p className="text-neutral-400 text-sm md:text-base max-w-xl mx-auto">
+          Your website should close deals while you sleep.
         </p>
       </motion.div>
 
       {/* Side by Side Comparison */}
-      <div className="max-w-7xl mx-auto px-6">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-2">
+      <div className="max-w-6xl mx-auto px-6">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
 
-          {/* LEFT SIDE - THE OLD WAY (Graveyard) */}
+          {/* LEFT - Static Sites */}
           <motion.div
-            initial={{ opacity: 0, x: -50 }}
+            initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.7 }}
-            className="relative group"
+            transition={{ duration: 0.5 }}
+            className="h-full"
           >
             <div
-              className="relative overflow-hidden rounded-3xl p-8 md:p-10 h-full"
+              className="relative overflow-hidden rounded-2xl p-8 h-full flex flex-col"
               style={{
-                background: 'linear-gradient(to bottom right, rgba(255, 140, 66, 0.25), rgba(255, 140, 66, 0.15), rgba(255, 140, 66, 0.1))',
+                background: 'linear-gradient(to bottom right, rgba(255, 140, 66, 0.2), rgba(255, 140, 66, 0.08))',
                 borderWidth: '1px',
                 borderStyle: 'solid',
-                borderColor: 'rgba(255, 140, 66, 0.3)',
+                borderColor: 'rgba(255, 140, 66, 0.25)',
               }}
             >
-              {/* Cracked texture */}
-              <div
-                className="absolute inset-0 opacity-10"
-                style={{
-                  backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 30 L15 25 L30 35 L45 20 L60 30 M0 45 L20 50 L40 40 L60 50' stroke='%23FF8C42' fill='none' stroke-width='0.5' opacity='0.3'/%3E%3C/svg%3E")`,
-                }}
-              />
-
-              {/* Warm glow */}
-              <div
-                className="absolute bottom-0 left-0 right-0 h-32 pointer-events-none"
-                style={{
-                  background: 'linear-gradient(to top, rgba(255, 140, 66, 0.15), transparent)',
-                }}
-              />
-
-              <div className="relative z-10">
+              <div className="relative z-10 flex flex-col h-full">
                 {/* Badge */}
                 <div
-                  className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full mb-6"
+                  className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full mb-5 self-start"
                   style={{
                     backgroundColor: 'rgba(255, 140, 66, 0.2)',
                     borderWidth: '1px',
                     borderStyle: 'solid',
-                    borderColor: 'rgba(255, 140, 66, 0.4)',
+                    borderColor: 'rgba(255, 140, 66, 0.3)',
                   }}
                 >
-                  <Skull className="w-4 h-4" weight="thin" style={{ color: '#FF8C42' }} />
-                  <span className="text-xs font-mono uppercase tracking-wider" style={{ color: '#FF8C42' }}>The Old Way</span>
+                  <Skull className="w-3 h-3" weight="thin" style={{ color: '#FF8C42' }} />
+                  <span className="text-[10px] font-mono uppercase tracking-wider" style={{ color: '#FF8C42' }}>The Old Way</span>
                 </div>
 
-                <h3 className="text-3xl md:text-4xl font-display mb-2" style={{ color: '#FFB380' }}>
+                <h3 className="text-2xl md:text-3xl font-display mb-2" style={{ color: '#FFB380' }}>
                   Static Sites
                 </h3>
-                <p className="text-lg mb-8 font-display-light" style={{ color: 'rgba(255, 140, 66, 0.7)' }}>
-                  The $50,000 Mistake You're Still Paying For
+                <p className="text-sm mb-6 font-display-light" style={{ color: 'rgba(255, 140, 66, 0.6)' }}>
+                  Is your website more like a PDF?
                 </p>
 
-                {/* Pain Points */}
-                <div className="space-y-3">
+                {/* Pain Pills - Grid */}
+                <div className="grid grid-cols-3 gap-2 mt-auto">
                   {oldWayPains.map((pain, idx) => (
                     <motion.div
                       key={pain.label}
-                      initial={{ opacity: 0, x: -20 }}
-                      whileInView={{ opacity: 1, x: 0 }}
+                      initial={{ opacity: 0, scale: 0.8 }}
+                      whileInView={{ opacity: 1, scale: 1 }}
                       viewport={{ once: true }}
-                      transition={{ delay: idx * 0.1 }}
-                      className="flex items-center gap-3 p-3 rounded-xl group/item transition-all duration-300"
-                      style={{
-                        backgroundColor: 'rgba(255, 140, 66, 0.15)',
-                        borderWidth: '1px',
-                        borderStyle: 'solid',
-                        borderColor: 'rgba(255, 140, 66, 0.3)',
-                      }}
+                      transition={{ delay: idx * 0.05 }}
                     >
-                      <div className="p-2 rounded-lg" style={{ backgroundColor: 'rgba(255, 140, 66, 0.25)' }}>
-                        <pain.icon className="w-4 h-4" weight="thin" style={{ color: 'rgba(255, 140, 66, 0.8)' }} />
-                      </div>
-                      <span className="text-sm transition-colors" style={{ color: 'rgba(255, 179, 128, 0.8)' }}>
-                        {pain.label}
-                      </span>
-                      <XCircle className="w-4 h-4 ml-auto" weight="thin" style={{ color: 'rgba(239, 68, 68, 0.6)' }} />
+                      <FeaturePill
+                        label={pain.label}
+                        icon={pain.icon}
+                        variant="pain"
+                      />
                     </motion.div>
                   ))}
-                </div>
-
-                {/* Dead CTA */}
-                <div
-                  className="mt-8 p-4 rounded-xl text-center"
-                  style={{
-                    backgroundColor: 'rgba(255, 140, 66, 0.15)',
-                    borderWidth: '1px',
-                    borderStyle: 'solid',
-                    borderColor: 'rgba(255, 140, 66, 0.25)',
-                  }}
-                >
-                  <p className="text-sm italic" style={{ color: 'rgba(255, 140, 66, 0.6)' }}>
-                    "Let me check with my developer and get back to you next quarter..."
-                  </p>
                 </div>
               </div>
             </div>
           </motion.div>
 
-          {/* RIGHT SIDE - THE NEW WAY (Paradise) */}
+          {/* RIGHT - Your 24/7 Digital Employee */}
           <motion.div
-            initial={{ opacity: 0, x: 50 }}
+            initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.7, delay: 0.2 }}
-            className="relative group"
+            transition={{ duration: 0.5, delay: 0.1 }}
+            className="h-full"
           >
-            {/* Animated border glow */}
-            <motion.div
-              className="absolute -inset-[1px] rounded-3xl opacity-75"
-              style={{
-                background: 'linear-gradient(90deg, #004a58, #00556a, #004a58)',
-                backgroundSize: '200% 100%',
-              }}
-              animate={{
-                backgroundPosition: ['0% 50%', '100% 50%', '0% 50%'],
-              }}
-              transition={{ duration: 3, repeat: Infinity, ease: 'linear' }}
-            />
-
-            <div
-              className="relative overflow-hidden rounded-3xl p-8 md:p-10 h-full"
-              style={{
-                background: 'linear-gradient(to bottom right, rgba(0, 74, 88, 0.3), rgba(0, 85, 106, 0.2), rgba(0, 74, 88, 0.15))',
-              }}
-            >
-              {/* Animated glow orbs */}
+            {/* Animated border */}
+            <div className="relative h-full">
               <motion.div
-                className="absolute top-0 right-0 w-96 h-96 rounded-full blur-3xl pointer-events-none"
-                style={{ backgroundColor: 'rgba(0, 85, 106, 0.15)' }}
-                animate={{ scale: [1, 1.2, 1], opacity: [0.1, 0.2, 0.1] }}
-                transition={{ duration: 4, repeat: Infinity }}
-              />
-              <motion.div
-                className="absolute bottom-0 left-0 w-64 h-64 rounded-full blur-3xl pointer-events-none"
-                style={{ backgroundColor: 'rgba(0, 74, 88, 0.15)' }}
-                animate={{ scale: [1, 1.3, 1], opacity: [0.1, 0.15, 0.1] }}
-                transition={{ duration: 5, repeat: Infinity, delay: 1 }}
+                className="absolute -inset-[1px] rounded-2xl opacity-60"
+                style={{
+                  background: 'linear-gradient(90deg, #004a58, #00a8cc, #004a58)',
+                  backgroundSize: '200% 100%',
+                }}
+                animate={{
+                  backgroundPosition: ['0% 50%', '100% 50%', '0% 50%'],
+                }}
+                transition={{ duration: 3, repeat: Infinity, ease: 'linear' }}
               />
 
-              {/* Sparkles */}
-              <div className="absolute inset-0 overflow-hidden pointer-events-none">
-                {[...Array(8)].map((_, i) => (
-                  <motion.div
-                    key={i}
-                    className="absolute w-1 h-1 rounded-full"
-                    style={{ left: `${15 + i * 12}%`, top: `${8 + (i % 4) * 25}%`, backgroundColor: '#00a8cc' }}
-                    animate={{ opacity: [0.2, 1, 0.2], scale: [1, 2, 1], y: [0, -10, 0] }}
-                    transition={{ duration: 2 + i * 0.3, repeat: Infinity, delay: i * 0.2 }}
-                  />
-                ))}
-              </div>
-
-              <div className="relative z-10">
-                {/* Badge */}
+              <div
+                className="relative overflow-hidden rounded-2xl p-8 h-full flex flex-col"
+                style={{
+                  background: 'linear-gradient(to bottom right, rgba(0, 74, 88, 0.25), rgba(0, 85, 106, 0.12))',
+                }}
+              >
+                {/* Glow orb */}
                 <motion.div
-                  className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full mb-6"
-                  style={{
-                    backgroundColor: 'rgba(0, 85, 106, 0.3)',
-                    borderWidth: '1px',
-                    borderStyle: 'solid',
-                    borderColor: 'rgba(0, 168, 204, 0.4)',
-                  }}
-                  animate={{
-                    boxShadow: ['0 0 20px rgba(0, 168, 204, 0)', '0 0 30px rgba(0, 168, 204, 0.4)', '0 0 20px rgba(0, 168, 204, 0)'],
-                  }}
-                  transition={{ duration: 2, repeat: Infinity }}
-                >
-                  <Sparkle className="w-4 h-4" weight="thin" style={{ color: '#00a8cc' }} />
-                  <span className="text-xs font-mono uppercase tracking-wider" style={{ color: '#00a8cc' }}>The New Way</span>
-                </motion.div>
+                  className="absolute top-0 right-0 w-64 h-64 rounded-full blur-3xl pointer-events-none"
+                  style={{ backgroundColor: 'rgba(0, 85, 106, 0.15)' }}
+                  animate={{ scale: [1, 1.2, 1], opacity: [0.1, 0.2, 0.1] }}
+                  transition={{ duration: 4, repeat: Infinity }}
+                />
 
-                <h3 className="text-3xl md:text-4xl font-display text-white mb-2">
-                  Smart Sites
-                </h3>
-                <p className="text-lg mb-8 font-display-light" style={{ color: 'rgba(0, 168, 204, 0.8)' }}>
-                  While You Read This, One Just Closed a Deal
-                </p>
-
-                {/* Benefits */}
-                <div className="space-y-3">
-                  {newWayBenefits.map((benefit, idx) => (
+                <div className="relative z-10 flex flex-col h-full">
+                  {/* Header with Badge and AI Bot */}
+                  <div className="flex items-start justify-between mb-5">
                     <motion.div
-                      key={benefit.label}
-                      initial={{ opacity: 0, x: 20 }}
-                      whileInView={{ opacity: 1, x: 0 }}
-                      viewport={{ once: true }}
-                      transition={{ delay: idx * 0.1 + 0.3 }}
-                      className="flex items-center gap-3 p-3 rounded-xl group/item transition-all duration-300"
+                      className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full"
                       style={{
-                        backgroundColor: 'rgba(0, 85, 106, 0.2)',
+                        backgroundColor: 'rgba(0, 85, 106, 0.3)',
                         borderWidth: '1px',
                         borderStyle: 'solid',
-                        borderColor: 'rgba(0, 168, 204, 0.3)',
+                        borderColor: 'rgba(14, 165, 233, 0.3)',
                       }}
+                      animate={{
+                        boxShadow: ['0 0 15px rgba(14, 165, 233, 0)', '0 0 20px rgba(14, 165, 233, 0.3)', '0 0 15px rgba(14, 165, 233, 0)'],
+                      }}
+                      transition={{ duration: 2, repeat: Infinity }}
                     >
-                      <div className="p-2 rounded-lg" style={{ backgroundColor: 'rgba(0, 85, 106, 0.4)' }}>
-                        <benefit.icon className="w-4 h-4" weight="thin" style={{ color: '#00a8cc' }} />
-                      </div>
-                      <span className="text-neutral-300 text-sm group-hover/item:text-white transition-colors">
-                        {benefit.label}
-                      </span>
-                      <CheckCircle className="w-4 h-4 ml-auto" weight="thin" style={{ color: '#00a8cc' }} />
+                      <Sparkle className="w-3 h-3" weight="thin" style={{ color: '#00a8cc' }} />
+                      <span className="text-[10px] font-mono uppercase tracking-wider" style={{ color: '#00a8cc' }}>The New Way</span>
                     </motion.div>
-                  ))}
-                </div>
 
-                {/* Results Stats Bar */}
-                <motion.div
-                  className="mt-6 p-4 rounded-xl"
-                  style={{
-                    backgroundColor: 'rgba(0, 85, 106, 0.25)',
-                    borderWidth: '1px',
-                    borderStyle: 'solid',
-                    borderColor: 'rgba(0, 168, 204, 0.3)',
-                  }}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: 0.8 }}
-                >
-                  <div className="grid grid-cols-3 gap-4">
-                    {stats.map((stat) => (
-                      <div key={stat.label} className="text-center">
-                        <div className="flex items-center justify-center gap-1 mb-1">
-                          <stat.icon className="w-3 h-3" weight="thin" style={{ color: '#00a8cc' }} />
-                          <span className="text-xl md:text-2xl font-bold text-white">{stat.value}</span>
-                        </div>
-                        <span className="text-xs" style={{ color: 'rgba(0, 168, 204, 0.7)' }}>{stat.label}</span>
-                      </div>
+                    {/* AI Bot Icon */}
+                    <motion.img
+                      src="/slickai.png"
+                      alt="Slick AI"
+                      className="w-12 h-12 object-contain"
+                      animate={{ y: [0, -3, 0] }}
+                      transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut' }}
+                    />
+                  </div>
+
+                  <h3 className="text-2xl md:text-3xl font-display text-white mb-2">
+                    Your 24/7 Digital Employee
+                  </h3>
+                  <p className="text-sm mb-6 font-display-light" style={{ color: 'rgba(14, 165, 233, 0.7)' }}>
+                    Not just a website. An AI-powered team member.
+                  </p>
+
+                  {/* Benefit Pills - Grid */}
+                  <div className="grid grid-cols-3 gap-2 mt-auto">
+                    {newWayBenefits.map((benefit, idx) => (
+                      <motion.div
+                        key={benefit.label}
+                        initial={{ opacity: 0, scale: 0.8 }}
+                        whileInView={{ opacity: 1, scale: 1 }}
+                        viewport={{ once: true }}
+                        transition={{ delay: idx * 0.05 + 0.2 }}
+                      >
+                        <FeaturePill
+                          label={benefit.label}
+                          icon={benefit.icon}
+                          variant="benefit"
+                        />
+                      </motion.div>
                     ))}
                   </div>
-                </motion.div>
-
-                {/* CTA with shine */}
-                <motion.button
-                  className="mt-6 w-full p-4 rounded-xl text-white font-semibold flex items-center justify-center gap-2 transition-all duration-300 relative overflow-hidden"
-                  style={{
-                    background: 'linear-gradient(to right, #004a58, #00556a)',
-                  }}
-                  whileHover={{ scale: 1.02, y: -2 }}
-                  whileTap={{ scale: 0.98 }}
-                  onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
-                >
-                  <motion.div
-                    className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent"
-                    animate={{ x: ['-100%', '100%'] }}
-                    transition={{ duration: 2, repeat: Infinity, repeatDelay: 3 }}
-                  />
-                  <Robot className="w-5 h-5 relative z-10" weight="thin" />
-                  <span className="relative z-10">See It Work in 60 Seconds</span>
-                </motion.button>
+                </div>
               </div>
             </div>
           </motion.div>
 
-        </div>
-
-        {/* VS Badge */}
-        <div className="hidden lg:flex absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-20">
-          <motion.div
-            className="w-16 h-16 rounded-full bg-neutral-900 border-2 border-neutral-700 flex items-center justify-center shadow-2xl"
-            initial={{ scale: 0, rotate: -180 }}
-            whileInView={{ scale: 1, rotate: 0 }}
-            viewport={{ once: true }}
-            transition={{ type: 'spring', stiffness: 200, damping: 15, delay: 0.5 }}
-          >
-            <span className="text-xl font-bold text-neutral-400">VS</span>
-          </motion.div>
         </div>
       </div>
     </section>

@@ -344,8 +344,12 @@ const MusicPortfolio: React.FC<MusicPortfolioProps> = ({
     : '';
 
   return (
-    <div className="portfolio-wrapper">
+    <div className="portfolio-wrapper portfolio-compact">
       <div className="portfolio-container-outer">
+        {/* Header */}
+        <div className="portfolio-header">
+          <h2 className="portfolio-main-title">Recent Projects</h2>
+        </div>
         <main
           ref={containerRef}
           className={`portfolio-container ${activeIndex !== -1 ? 'has-active' : ''}`}
