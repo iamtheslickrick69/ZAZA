@@ -46,7 +46,7 @@ export function BottomNavBar({
     (async function () {
       const cal = await getCalApi();
       cal("ui", {
-        styles: { branding: { brandColor: "#00a8cc" } },
+        styles: { branding: { brandColor: "#0ea5e9" } },
         hideEventTypeDetails: false,
         layout: "month_view"
       });
@@ -109,7 +109,7 @@ export function BottomNavBar({
             className={cn(
               "flex items-center gap-2 px-3 py-2 rounded-full transition-colors duration-200 relative h-10 min-h-[40px] max-h-[44px]",
               isActive
-                ? "bg-[#00a8cc]/10 dark:bg-[#00a8cc]/15 text-[#00a8cc]"
+                ? "bg-[#0ea5e9]/10 dark:bg-[#0ea5e9]/15 text-[#0ea5e9]"
                 : "bg-transparent text-muted-foreground dark:text-muted-foreground hover:bg-muted dark:hover:bg-muted",
               "focus:outline-none focus-visible:ring-0",
             )}
@@ -131,7 +131,7 @@ export function BottomNavBar({
                     size={20}
                     strokeWidth={2}
                     aria-hidden
-                    className="transition-colors duration-200 text-[#00a8cc]"
+                    className="transition-colors duration-200 text-[#0ea5e9]"
                   />
                 </motion.span>
               )}
@@ -141,7 +141,7 @@ export function BottomNavBar({
             <span
               className={cn(
                 "font-medium text-sm whitespace-nowrap select-none transition-colors duration-200",
-                isActive ? "text-[#00a8cc]" : "text-muted-foreground",
+                isActive ? "text-[#0ea5e9]" : "text-muted-foreground",
               )}
             >
               {item.label}

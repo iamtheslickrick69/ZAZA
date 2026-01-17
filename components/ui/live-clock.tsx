@@ -48,22 +48,10 @@ export function LiveClock({ onMidnight }: LiveClockProps) {
   };
 
   return (
-    <div className="flex flex-col items-end gap-1">
-      <AnimatePresence mode="wait">
-        <motion.div
-          key={time.toISOString()}
-          initial={{ opacity: 0, y: -10 }}
-          animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: 10 }}
-          transition={{ duration: 0.3 }}
-          className="font-mono text-2xl font-semibold text-foreground tracking-wider"
-        >
-          {formatTime(time)}
-        </motion.div>
-      </AnimatePresence>
-      <div className="font-body text-sm text-muted-foreground">
-        {formatDate(time)}
-      </div>
+    <div className="flex items-center gap-2 font-mono text-xs text-muted-foreground tracking-wide">
+      <span>{formatDate(time)}</span>
+      <span className="text-muted-foreground/50">·</span>
+      <span>{formatTime(time)}</span>
     </div>
   );
 }

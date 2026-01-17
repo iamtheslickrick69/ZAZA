@@ -191,7 +191,7 @@ export default function SmartSitesShowcase() {
               <motion.div
                 className="absolute -inset-[1px] rounded-2xl opacity-60"
                 style={{
-                  background: 'linear-gradient(90deg, #004a58, #00a8cc, #004a58)',
+                  background: 'linear-gradient(90deg, #004a58, #0ea5e9, #004a58)',
                   backgroundSize: '200% 100%',
                 }}
                 animate={{
@@ -230,8 +230,8 @@ export default function SmartSitesShowcase() {
                       }}
                       transition={{ duration: 2, repeat: Infinity }}
                     >
-                      <Sparkle className="w-3 h-3" weight="thin" style={{ color: '#00a8cc' }} />
-                      <span className="text-[10px] font-mono uppercase tracking-wider" style={{ color: '#00a8cc' }}>The New Way</span>
+                      <Sparkle className="w-3 h-3" weight="thin" style={{ color: '#0ea5e9' }} />
+                      <span className="text-[10px] font-mono uppercase tracking-wider" style={{ color: '#0ea5e9' }}>The New Way</span>
                     </motion.div>
 
                     {/* AI Bot Icon */}

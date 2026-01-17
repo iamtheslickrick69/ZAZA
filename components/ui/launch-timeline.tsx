@@ -13,7 +13,7 @@ import {
 
 const CheckItem = ({ children }: { children: React.ReactNode }) => (
   <div className="flex gap-2 items-center text-neutral-300 text-sm">
-    <CheckCircle className="w-4 h-4 text-[#00a8cc] flex-shrink-0" />
+    <CheckCircle className="w-4 h-4 text-[#0ea5e9] flex-shrink-0" />
     {children}
   </div>
 );
@@ -108,7 +108,7 @@ function AnimatedIcon({ icon: Icon, isActive }: { icon: React.ComponentType<any>
 
   return (
     <div ref={iconRef}>
-      <Icon className="w-5 h-5 text-[#00a8cc]" strokeWidth={1.5} />
+      <Icon className="w-5 h-5 text-[#0ea5e9]" strokeWidth={1.5} />
     </div>
   );
 }
@@ -148,12 +148,12 @@ export function LaunchTimeline() {
                 {isActive && (
                   <motion.div
                     layoutId="active-process-tab"
-                    className="absolute inset-0 bg-[#00a8cc]/20 border border-[#00a8cc]/50 rounded-xl"
+                    className="absolute inset-0 bg-[#0ea5e9]/20 border border-[#0ea5e9]/50 rounded-xl"
                     transition={{ type: "spring", duration: 0.5 }}
                   />
                 )}
                 <span className={`relative z-10 flex items-center gap-2 ${isActive ? "text-white" : "text-neutral-500"}`}>
-                  <span className="text-[#00a8cc] font-bold">{step.id}</span>
+                  <span className="text-[#0ea5e9] font-bold">{step.id}</span>
                   {step.label}
                 </span>
               </button>
@@ -170,7 +170,7 @@ export function LaunchTimeline() {
           className="p-6 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-sm"
         >
           <div className="flex items-center gap-3 mb-4">
-            <div className="p-2 rounded-lg bg-[#00a8cc]/20">
+            <div className="p-2 rounded-lg bg-[#0ea5e9]/20">
               <AnimatedIcon icon={currentStep.icon} isActive={true} />
             </div>
             <h4 className="text-xl font-bold text-white">{currentStep.label}</h4>
@@ -180,7 +180,7 @@ export function LaunchTimeline() {
             {currentStep.description}
           </p>
 
-          <div className="p-4 rounded-xl border border-[#00a8cc]/30 bg-[#004a58]/10">
+          <div className="p-4 rounded-xl border border-[#0ea5e9]/30 bg-[#004a58]/10">
             <div className="space-y-2">
               {currentStep.items.map((item, idx) => (
                 <CheckItem key={idx}>{item}</CheckItem>

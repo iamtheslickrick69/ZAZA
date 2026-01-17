@@ -1,16 +1,16 @@
 "use client";
 
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import Image from "next/image";
 import { SparklesCore } from "@/components/ui/sparkles";
-import { Rocket, Eye, Layers, Zap, Target, Calendar, Shield, TrendingUp, Quote, Music } from "lucide-react";
+import { Eye, Layers, Zap, Target, Calendar, Quote as QuoteIcon, Music, Share2 } from "lucide-react";
 import { PixelCanvas } from "@/components/ui/pixel-canvas";
-import { useState, useEffect, useRef, useCallback } from "react";
+import { useEffect, useRef, useCallback, useState, useMemo } from "react";
 import { getCalApi } from "@calcom/embed-react";
-import { Item, ItemMedia, ItemContent, ItemTitle, ItemDescription } from "@/components/ui/item";
-import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 import { LiveClock } from "@/components/ui/live-clock";
 import { useDailyContent } from "@/hooks/use-daily-content";
+import { AnimatedTabs } from "@/components/ui/animated-tabs";
+import { ShareableCard } from "@/components/ui/shareable-card";
 
 const CHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%&*";
 
@@ -25,8 +25,8 @@ export function HeroBranding() {
   // Daily content hook
   const { content, isTransitioning, handleMidnightTransition } = useDailyContent();
 
-  // Tab state for Song/Quote toggle
-  const [activeTab, setActiveTab] = useState<"song" | "quote">("song");
+  // Share card state
+  const [shareCardType, setShareCardType] = useState<"quote" | "song" | null>(null);
 
   const scramble = useCallback(() => {
     setIsScrambling(true);
@@ -158,7 +158,7 @@ export function HeroBranding() {
           <div className="grid grid-cols-1 lg:grid-cols-[1fr_auto_1fr] gap-12 items-center w-full max-w-7xl">
             {/* LEFT SIDE */}
             <div className="flex flex-col items-center text-center">
-              <h1 className="text-3xl md:text-4xl lg:text-5xl font-display text-foreground leading-tight mb-6 max-w-3xl">
+              <h1 className="text-2xl md:text-3xl lg:text-4xl font-display text-foreground leading-tight mb-6 max-w-xl">
                 AI is the rematch between{" "}
                 <span className="font-body-semibold">David and Goliath</span>.
               </h1>
@@ -193,148 +193,95 @@ export function HeroBranding() {
               <div className="w-px h-full bg-gradient-to-b from-transparent via-white to-transparent" />
             </motion.div>
 
-            {/* RIGHT SIDE - Daily Content with Tabs */}
-            <div className="flex flex-col items-center gap-6 w-full max-w-md">
-              {/* Tab Buttons */}
-              <div className="flex gap-2 p-1.5 bg-muted/30 rounded-xl border border-border/50">
-                <motion.button
-                  onClick={() => setActiveTab("song")}
-                  className={`px-8 py-3 rounded-lg text-sm font-semibold transition-all ${
-                    activeTab === "song"
-                      ? "bg-sky-500 text-white shadow-lg shadow-sky-500/30"
-                      : "text-muted-foreground hover:text-foreground hover:bg-muted/50"
-                  }`}
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  animate={{
-                    scale: activeTab === "song" ? 1 : 1,
-                    backgroundColor: activeTab === "song" ? "rgb(14 165 233)" : "transparent",
-                  }}
-                  transition={{ duration: 0.3, ease: "easeInOut" }}
-                >
-                  Song of the Day
-                </motion.button>
-                <motion.button
-                  onClick={() => setActiveTab("quote")}
-                  className={`px-8 py-3 rounded-lg text-sm font-semibold transition-all ${
-                    activeTab === "quote"
-                      ? "bg-amber-500 text-white shadow-lg shadow-amber-500/30"
-                      : "text-muted-foreground hover:text-foreground hover:bg-muted/50"
-                  }`}
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  animate={{
-                    scale: activeTab === "quote" ? 1 : 1,
-                    backgroundColor: activeTab === "quote" ? "rgb(245 158 11)" : "transparent",
-                  }}
-                  transition={{ duration: 0.3, ease: "easeInOut" }}
-                >
-                  Quote
-                </motion.button>
-              </div>
-
-              {/* Single Item Card - Content switches based on active tab */}
-              <div className="w-full">
-                <AnimatePresence mode="wait">
-                  {!isTransitioning && activeTab === "song" && content.song && (
-                    <motion.div
-                      key={`song-${content.song.date}`}
-                      initial={{ opacity: 0, scale: 0.95, y: 20 }}
-                      animate={{
-                        opacity: 1,
-                        scale: 1,
-                        y: 0,
-                        borderColor: "rgba(14, 165, 233, 0.3)"
-                      }}
-                      exit={{ opacity: 0, scale: 0.95, y: -20 }}
-                      transition={{ duration: 0.4, ease: "easeOut" }}
-                      whileHover={{
-                        scale: 1.02,
-                        borderColor: "rgba(14, 165, 233, 0.5)",
-                        boxShadow: "0 20px 25px -5px rgba(14, 165, 233, 0.2), 0 8px 10px -6px rgba(14, 165, 233, 0.2)"
-                      }}
-                      className="relative rounded-lg border-2 border-sky-500/30 bg-card p-6 shadow-lg shadow-sky-500/10"
-                    >
-                      <div className="flex items-start gap-4">
-                        <motion.div
-                          className="h-16 w-16 shrink-0 rounded-lg overflow-hidden bg-sky-500/10 border border-sky-500/30 flex items-center justify-center"
-                          whileHover={{ scale: 1.1, rotate: 5 }}
-                          transition={{ duration: 0.2 }}
-                        >
+            {/* RIGHT SIDE - Daily Content with AnimatedTabs */}
+            <div className="flex flex-col items-center w-full max-w-md">
+              <AnimatedTabs
+                defaultTab="song"
+                tabs={[
+                  {
+                    id: "song",
+                    label: "Song of the Day",
+                    accentColor: "rgba(14, 165, 233, 0.8)",
+                    pixelColors: ["#0ea5e9", "#7dd3fc", "#0ea5e9"],
+                    content: content.song ? (
+                      <div className="flex flex-col items-center text-center gap-3 relative">
+                        <div className="h-16 w-16 shrink-0 rounded-lg overflow-hidden bg-white/5 border border-white/10 flex items-center justify-center">
                           {content.song.albumCover ? (
                             <Image
                               src={content.song.albumCover}
                               alt={content.song.title}
                               width={64}
                               height={64}
-                              className="object-cover"
+                              className="object-cover w-full h-full"
                             />
                           ) : (
-                            <Music className="h-6 w-6 text-sky-500" />
+                            <Music className="h-6 w-6 text-white/70" />
                           )}
-                        </motion.div>
-                        <div className="flex flex-1 flex-col gap-1.5">
-                          <h3 className="text-lg font-semibold leading-none tracking-tight text-sky-500">
-                            Song
-                          </h3>
-                          <p className="text-base text-foreground font-medium">
+                        </div>
+                        <div className="flex flex-col gap-1">
+                          <p className="text-base text-white/90 font-medium">
                             {content.song.title}
                           </p>
-                          <p className="text-sm text-muted-foreground">
+                          <p className="text-sm text-white/50">
                             {content.song.artist}
                           </p>
                         </div>
-                      </div>
-                    </motion.div>
-                  )}
-
-                  {!isTransitioning && activeTab === "quote" && content.quote && (
-                    <motion.div
-                      key={`quote-${content.quote.date}`}
-                      initial={{ opacity: 0, scale: 0.95, y: 20 }}
-                      animate={{
-                        opacity: 1,
-                        scale: 1,
-                        y: 0,
-                        borderColor: "rgba(245, 158, 11, 0.3)"
-                      }}
-                      exit={{ opacity: 0, scale: 0.95, y: -20 }}
-                      transition={{ duration: 0.4, ease: "easeOut" }}
-                      whileHover={{
-                        scale: 1.02,
-                        borderColor: "rgba(245, 158, 11, 0.5)",
-                        boxShadow: "0 20px 25px -5px rgba(245, 158, 11, 0.2), 0 8px 10px -6px rgba(245, 158, 11, 0.2)"
-                      }}
-                      className="relative rounded-lg border-2 border-amber-500/30 bg-card p-6 shadow-lg shadow-amber-500/10"
-                    >
-                      <div className="flex items-start gap-4">
-                        <motion.div
-                          whileHover={{ scale: 1.1, rotate: -5 }}
-                          transition={{ duration: 0.2 }}
+                        {/* Share button */}
+                        <button
+                          onClick={() => setShareCardType("song")}
+                          className="absolute -top-1 -right-1 p-2 rounded-full bg-white/5 hover:bg-sky-500/20 border border-white/10 hover:border-sky-500/30 transition-all group"
+                          title="Share"
                         >
-                          <Avatar className="h-16 w-16 shrink-0 border-2 border-amber-500/30 bg-amber-500/10">
-                            <AvatarImage src={content.quote.authorImage} alt={content.quote.author} />
-                            <AvatarFallback className="bg-amber-500/10">
-                              <Quote className="h-6 w-6 text-amber-500" />
-                            </AvatarFallback>
-                          </Avatar>
-                        </motion.div>
-                        <div className="flex flex-1 flex-col gap-1.5">
-                          <h3 className="text-lg font-semibold leading-none tracking-tight text-amber-500">
-                            Quote
-                          </h3>
-                          <p className="text-base text-foreground font-medium italic">
+                          <Share2 size={14} className="text-white/50 group-hover:text-sky-400 transition-colors" />
+                        </button>
+                      </div>
+                    ) : (
+                      <div className="text-gray-400">Loading...</div>
+                    ),
+                  },
+                  {
+                    id: "quote",
+                    label: "Quote of the Day",
+                    accentColor: "rgba(245, 158, 11, 0.8)",
+                    pixelColors: ["#D97706", "#F59E0B", "#D97706"],
+                    content: content.quote ? (
+                      <div className="flex flex-col items-center text-center gap-3 relative">
+                        <div className="h-16 w-16 shrink-0 rounded-full overflow-hidden bg-white/5 border border-white/10 flex items-center justify-center">
+                          {content.quote.authorImage ? (
+                            <Image
+                              src={content.quote.authorImage}
+                              alt={content.quote.author}
+                              width={64}
+                              height={64}
+                              className="object-cover w-full h-full"
+                            />
+                          ) : (
+                            <QuoteIcon className="h-6 w-6 text-white/70" />
+                          )}
+                        </div>
+                        <div className="flex flex-col gap-1">
+                          <p className="text-base text-white/90 font-medium italic">
                             &ldquo;{content.quote.text}&rdquo;
                           </p>
-                          <p className="text-sm text-muted-foreground mt-1">
+                          <p className="text-sm text-white/50">
                             — {content.quote.author}
                           </p>
                         </div>
+                        {/* Share button */}
+                        <button
+                          onClick={() => setShareCardType("quote")}
+                          className="absolute -top-1 -right-1 p-2 rounded-full bg-white/5 hover:bg-amber-500/20 border border-white/10 hover:border-amber-500/30 transition-all group"
+                          title="Share"
+                        >
+                          <Share2 size={14} className="text-white/50 group-hover:text-amber-400 transition-colors" />
+                        </button>
                       </div>
-                    </motion.div>
-                  )}
-                </AnimatePresence>
-              </div>
+                    ) : (
+                      <div className="text-gray-400">Loading...</div>
+                    ),
+                  },
+                ]}
+              />
             </div>
           </div>
         </motion.div>
@@ -358,7 +305,7 @@ export function HeroBranding() {
         >
           <div className="grid grid-cols-1 md:grid-cols-3 w-full max-w-5xl">
             {/* Card 1 - Smart Sites (Cyan) */}
-            <div className="group relative overflow-hidden p-8 md:border-r border-border">
+            <div className="group relative overflow-hidden p-8 md:border-r border-border rounded-lg">
               <PixelCanvas
                 gap={10}
                 speed={25}
@@ -383,7 +330,7 @@ export function HeroBranding() {
             </div>
 
             {/* Card 2 - AI Agents (White) */}
-            <div className="group relative overflow-hidden p-8 md:border-r border-border">
+            <div className="group relative overflow-hidden p-8 md:border-r border-border rounded-lg">
               <PixelCanvas
                 gap={10}
                 speed={25}
@@ -408,7 +355,7 @@ export function HeroBranding() {
             </div>
 
             {/* Card 3 - AEO (Orange) */}
-            <div className="group relative overflow-hidden p-8">
+            <div className="group relative overflow-hidden p-8 rounded-lg">
               <PixelCanvas
                 gap={10}
                 speed={25}
@@ -476,6 +423,27 @@ export function HeroBranding() {
         </motion.div>
 
       </div>
+
+      {/* Share Card Modal */}
+      {shareCardType && (
+        <ShareableCard
+          type={shareCardType}
+          data={
+            shareCardType === "quote"
+              ? {
+                  text: content.quote?.text,
+                  author: content.quote?.author,
+                  authorImage: content.quote?.authorImage,
+                }
+              : {
+                  title: content.song?.title,
+                  artist: content.song?.artist,
+                  albumCover: content.song?.albumCover,
+                }
+          }
+          onClose={() => setShareCardType(null)}
+        />
+      )}
     </section>
   );
 }

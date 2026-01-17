@@ -381,9 +381,6 @@ const MusicPortfolio: React.FC<MusicPortfolioProps> = ({
         />
 
         <aside className="corner-elements">
-          <div className="corner-item top-left">
-            <div className="corner-square" aria-hidden="true"></div>
-          </div>
           {coordinates && (
             <div className="corner-item bottom-left">{coordinates}</div>
           )}

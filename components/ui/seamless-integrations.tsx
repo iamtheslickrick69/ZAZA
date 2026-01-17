@@ -51,7 +51,7 @@ export function SeamlessIntegrations() {
               fifth: "Copilot",
               sixth: "Grok"
             }}
-            lightColor="#00a8cc"
+            lightColor="#0ea5e9"
             showImage
             imageSrc="/yo.png"
           />

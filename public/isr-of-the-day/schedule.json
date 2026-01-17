@@ -1,0 +1,111 @@
+{
+  "timezone": "America/Denver",
+  "generatedAt": "2026-01-16T19:37:00-07:00",
+  "schedule": [
+    {
+      "dayOfWeek": 0,
+      "dayName": "sunday",
+      "song": {
+        "title": "Here Comes The Sun",
+        "artist": "The Beatles",
+        "album": "Abbey Road",
+        "albumCover": "songs/sunday.jpg"
+      },
+      "quote": {
+        "text": "The only way to do great work is to love what you do.",
+        "author": "Steve Jobs",
+        "authorImage": "authors/sunday.jpg"
+      }
+    },
+    {
+      "dayOfWeek": 1,
+      "dayName": "monday",
+      "song": {
+        "title": "Don't Stop Believin'",
+        "artist": "Journey",
+        "album": "Escape",
+        "albumCover": "songs/monday.jpg"
+      },
+      "quote": {
+        "text": "The future belongs to those who believe in the beauty of their dreams.",
+        "author": "Eleanor Roosevelt",
+        "authorImage": "authors/monday.jpg"
+      }
+    },
+    {
+      "dayOfWeek": 2,
+      "dayName": "tuesday",
+      "song": {
+        "title": "Lovely Day",
+        "artist": "Bill Withers",
+        "album": "Menagerie",
+        "albumCover": "songs/tuesday.jpg"
+      },
+      "quote": {
+        "text": "It always seems impossible until it's done.",
+        "author": "Nelson Mandela",
+        "authorImage": "authors/tuesday.jpg"
+      }
+    },
+    {
+      "dayOfWeek": 3,
+      "dayName": "wednesday",
+      "song": {
+        "title": "Three Little Birds",
+        "artist": "Bob Marley & The Wailers",
+        "album": "Exodus",
+        "albumCover": "songs/wednesday.jpg"
+      },
+      "quote": {
+        "text": "In the middle of difficulty lies opportunity.",
+        "author": "Albert Einstein",
+        "authorImage": "authors/wednesday.jpg"
+      }
+    },
+    {
+      "dayOfWeek": 4,
+      "dayName": "thursday",
+      "song": {
+        "title": "September",
+        "artist": "Earth, Wind & Fire",
+        "album": "The Best of Earth, Wind & Fire, Vol. 1",
+        "albumCover": "songs/thursday.jpg"
+      },
+      "quote": {
+        "text": "Success is not final, failure is not fatal: it is the courage to continue that counts.",
+        "author": "Winston Churchill",
+        "authorImage": "authors/thursday.jpg"
+      }
+    },
+    {
+      "dayOfWeek": 5,
+      "dayName": "friday",
+      "song": {
+        "title": "Good As Hell",
+        "artist": "Lizzo",
+        "album": "Cuz I Love You (Deluxe)",
+        "albumCover": "songs/friday.jpg"
+      },
+      "quote": {
+        "text": "Be yourself; everyone else is already taken.",
+        "author": "Oscar Wilde",
+        "authorImage": "authors/friday.jpg"
+      }
+    },
+    {
+      "dayOfWeek": 6,
+      "dayName": "saturday",
+      "song": {
+        "title": "Dancing Queen",
+        "artist": "ABBA",
+        "album": "Arrival",
+        "albumCover": "songs/saturday.jpg"
+      },
+      "quote": {
+        "text": "The purpose of life is to live it, to taste experience to the utmost.",
+        "author": "Eleanor Roosevelt",
+        "authorImage": "authors/saturday.jpg"
+      }
+    }
+  ]
+}

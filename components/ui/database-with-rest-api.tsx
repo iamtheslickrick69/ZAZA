@@ -184,7 +184,7 @@ const DatabaseWithRestApi = ({
             <path d="M 250 10 v 15 q 0 5 -5 5 h -100 q -5 0 -5 5 v 10" strokeWidth="0.5" stroke="white" />
           </mask>
           <radialGradient id="db-teal-grad" fx="1">
-            <stop offset="0%" stopColor={lightColor || "#00a8cc"} />
+            <stop offset="0%" stopColor={lightColor || "#0ea5e9"} />
             <stop offset="100%" stopColor="transparent" />
           </radialGradient>
         </defs>
@@ -193,7 +193,7 @@ const DatabaseWithRestApi = ({
       <div className="absolute bottom-6 flex w-full flex-col items-center">
         <div className="absolute -bottom-4 h-[100px] w-[62%] rounded-lg bg-accent/30" />
         <div className="absolute -top-3 z-20 flex items-center justify-center rounded-lg border border-border bg-card px-3 py-1.5 sm:-top-4 sm:py-2">
-          <Globe className="size-3.5 text-[#00a8cc]" />
+          <Globe className="size-3.5 text-[#0ea5e9]" />
           <span className="ml-2 text-xs font-medium text-foreground">
             {title || "YOUR SITE"}
           </span>

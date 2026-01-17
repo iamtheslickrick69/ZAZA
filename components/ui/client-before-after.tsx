@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import {
   Gauge,
   TrendingUp,
@@ -53,6 +53,87 @@ const COLORS = {
 // =========================================
 // SUB-COMPONENTS
 // =========================================
+
+// Animated counter that smoothly transitions between values
+const AnimatedCounter = ({
+  value,
+  color,
+}: {
+  value: string;
+  color: string;
+}) => {
+  const [displayValue, setDisplayValue] = useState(value);
+  const animationRef = useRef<number | null>(null);
+  const startTimeRef = useRef<number | null>(null);
+  const previousValueRef = useRef(value);
+
+  useEffect(() => {
+    // Parse the numeric part and suffix
+    const parseValue = (val: string) => {
+      const match = val.match(/^([\d.]+)(.*)$/);
+      if (match) {
+        return { num: parseFloat(match[1]), suffix: match[2] };
+      }
+      return { num: 0, suffix: '' };
+    };
+
+    const from = parseValue(previousValueRef.current);
+    const to = parseValue(value);
+    const duration = 800; // ms
+
+    // Cancel any existing animation
+    if (animationRef.current) {
+      cancelAnimationFrame(animationRef.current);
+    }
+
+    const animate = (timestamp: number) => {
+      if (!startTimeRef.current) {
+        startTimeRef.current = timestamp;
+      }
+
+      const elapsed = timestamp - startTimeRef.current;
+      const progress = Math.min(elapsed / duration, 1);
+
+      // Easing function (ease-out cubic)
+      const eased = 1 - Math.pow(1 - progress, 3);
+
+      const currentNum = from.num + (to.num - from.num) * eased;
+
+      // Format based on whether the target has decimals
+      const hasDecimal = to.suffix.includes('s') || value.includes('.');
+      const formatted = hasDecimal
+        ? currentNum.toFixed(1)
+        : Math.round(currentNum).toString();
+
+      setDisplayValue(formatted + to.suffix);
+
+      if (progress < 1) {
+        animationRef.current = requestAnimationFrame(animate);
+      } else {
+        setDisplayValue(value);
+        previousValueRef.current = value;
+        startTimeRef.current = null;
+      }
+    };
+
+    animationRef.current = requestAnimationFrame(animate);
+
+    return () => {
+      if (animationRef.current) {
+        cancelAnimationFrame(animationRef.current);
+      }
+    };
+  }, [value]);
+
+  return (
+    <span
+      className="font-mono text-base font-bold tabular-nums"
+      style={{ color }}
+    >
+      {displayValue}
+    </span>
+  );
+};
 
 const MiniToggle = ({
   activeMode,
@@ -111,12 +192,7 @@ const MetricBadge = ({
       }}
     >
       <Icon size={16} style={{ color: colors.accent }} strokeWidth={1.5} />
-      <span
-        className="font-mono text-base font-bold"
-        style={{ color: colors.accent }}
-      >
-        {value}
-      </span>
+      <AnimatedCounter value={value} color={colors.accent} />
     </div>
   );
 };
@@ -172,16 +248,6 @@ export default function ClientBeforeAfter() {
 
   return (
     <section className="relative w-full py-16 bg-neutral-950 overflow-hidden">
-      {/* Subtle background glow */}
-      <div
-        style={{
-          background: isBefore
-            ? 'radial-gradient(circle at 50% 50%, rgba(255,255,255,0.03), transparent 50%)'
-            : 'radial-gradient(circle at 50% 50%, rgba(0,168,204,0.06), transparent 50%)',
-        }}
-        className="absolute inset-0 pointer-events-none"
-      />
-
       <div className="relative z-10 max-w-7xl mx-auto px-6">
         {/* Header */}
         <div className="flex flex-col items-center text-center gap-4 mb-10">
@@ -197,37 +263,14 @@ export default function ClientBeforeAfter() {
           <MiniToggle activeMode={viewMode} onToggle={setViewMode} />
         </div>
 
-        {/* Main Card with Glow Border */}
+        {/* Main Card */}
         <div className="relative">
-          {/* Static Glow Border */}
-          <div
-            className="absolute -inset-[2px] rounded-3xl"
-            style={{
-              background: isBefore
-                ? 'rgba(255,255,255,0.2)'
-                : 'rgba(0,168,204,0.3)',
-            }}
-          />
-
-          {/* Glow Shadow */}
-          <div
-            className="absolute -inset-4 rounded-3xl pointer-events-none"
-            style={{
-              boxShadow: isBefore
-                ? '0 0 60px rgba(255,255,255,0.15), 0 0 120px rgba(255,255,255,0.08)'
-                : '0 0 60px rgba(0,168,204,0.25), 0 0 120px rgba(0,168,204,0.15)',
-            }}
-          />
-
           {/* Card Container */}
           <div
-            className="relative rounded-3xl overflow-hidden"
+            className="relative rounded-3xl overflow-hidden border border-white/10"
             style={{
               backgroundColor: 'rgba(23, 23, 23, 0.6)',
               backdropFilter: 'blur(20px)',
-              borderColor: isBefore
-                ? 'rgba(255,255,255,0.2)'
-                : 'rgba(0,168,204,0.3)',
             }}
           >
             <div className="flex flex-col lg:flex-row">
