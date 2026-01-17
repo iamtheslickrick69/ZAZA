@@ -30,11 +30,11 @@ export const metadata: Metadata = {
   description: "AI Powered, Relationship Driven",
   icons: {
     icon: [
-      { url: '/anvil.png', sizes: '32x32', type: 'image/png' },
-      { url: '/anvil.png', sizes: '192x192', type: 'image/png' },
+      { url: '/slick.png', sizes: '32x32', type: 'image/png' },
+      { url: '/slick.png', sizes: '192x192', type: 'image/png' },
     ],
-    apple: '/anvil.png',
-    shortcut: '/anvil.png',
+    apple: '/slick.png',
+    shortcut: '/slick.png',
   },
   openGraph: {
     title: "Haestus | AI-Powered Design & Development",

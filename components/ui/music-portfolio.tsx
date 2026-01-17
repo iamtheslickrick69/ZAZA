@@ -178,6 +178,7 @@ interface MusicPortfolioProps {
     email?: string;
     x?: string;
   };
+  onPreviewModeChange?: (isPreview: boolean) => void;
 }
 
 // Main Portfolio Component
@@ -186,10 +187,12 @@ const MusicPortfolio: React.FC<MusicPortfolioProps> = ({
   LOCATION = {},
   CALLBACKS = {},
   CONFIG = {},
-  SOCIAL_LINKS = {}
+  SOCIAL_LINKS = {},
+  onPreviewModeChange
 }) => {
   const [activeIndex, setActiveIndex] = useState(-1);
   const [isIdle, setIsIdle] = useState(true);
+  const [isFullscreenPreview, setIsFullscreenPreview] = useState(false);
 
   const backgroundRef = useRef<HTMLDivElement>(null);
   const containerRef = useRef<HTMLElement>(null);
@@ -343,6 +346,18 @@ const MusicPortfolio: React.FC<MusicPortfolioProps> = ({
     ? `${LOCATION.latitude || '34.0522° N'}, ${LOCATION.longitude || '118.2437° W'}`
     : '';
 
+  const handleBackgroundMouseEnter = useCallback(() => {
+    setIsFullscreenPreview(true);
+    document.body.classList.add('preview-mode-active');
+    onPreviewModeChange?.(true);
+  }, [onPreviewModeChange]);
+
+  const handleBackgroundMouseLeave = useCallback(() => {
+    setIsFullscreenPreview(false);
+    document.body.classList.remove('preview-mode-active');
+    onPreviewModeChange?.(false);
+  }, [onPreviewModeChange]);
+
   return (
     <div className="portfolio-wrapper portfolio-compact">
       <div className="portfolio-container-outer">
@@ -350,10 +365,28 @@ const MusicPortfolio: React.FC<MusicPortfolioProps> = ({
         <div className="portfolio-header">
           <h2 className="portfolio-main-title">Recent Projects</h2>
         </div>
+
+        {/* BLACK OVERLAY - Blocks everything when preview is active */}
+        {isFullscreenPreview && (
+          <div
+            style={{
+              position: 'fixed',
+              top: 0,
+              left: 0,
+              width: '100vw',
+              height: '100vh',
+              backgroundColor: '#000000',
+              zIndex: 999998,
+              pointerEvents: 'none'
+            }}
+          />
+        )}
+
         <main
           ref={containerRef}
           className={`portfolio-container ${activeIndex !== -1 ? 'has-active' : ''}`}
           onMouseLeave={handleContainerMouseLeave}
+          style={isFullscreenPreview ? { position: 'fixed', zIndex: 1000000, left: 0, top: 0 } : {}}
         >
           <h1 className="sr-only">Portfolio</h1>
           <ul className="project-list" role="list">
@@ -378,13 +411,26 @@ const MusicPortfolio: React.FC<MusicPortfolioProps> = ({
           id="backgroundImage"
           role="img"
           aria-hidden="true"
+          onMouseEnter={handleBackgroundMouseEnter}
+          onMouseLeave={handleBackgroundMouseLeave}
+          style={isFullscreenPreview ? {
+            position: 'fixed',
+            top: 0,
+            left: 0,
+            width: '100vw',
+            height: '100vh',
+            zIndex: 999999,
+            backgroundColor: 'rgba(0, 0, 0, 0.95)',
+            backgroundSize: 'contain',
+            backgroundPosition: 'center',
+            backgroundRepeat: 'no-repeat'
+          } : {}}
         />
 
         <aside className="corner-elements">
           {coordinates && (
             <div className="corner-item bottom-left">{coordinates}</div>
           )}
-          <TimeDisplay CONFIG={CONFIG} />
         </aside>
       </div>
     </div>

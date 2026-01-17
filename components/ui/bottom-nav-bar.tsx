@@ -92,6 +92,7 @@ export function BottomNavBar({
       transition={{ type: "spring", stiffness: 300, damping: 26 }}
       role="navigation"
       aria-label="Top Navigation"
+      id="main-navigation"
       className={cn(
         "bg-card/95 dark:bg-card/95 backdrop-blur-xl border border-border dark:border-sidebar-border rounded-2xl flex items-center p-2 shadow-2xl space-x-1 min-w-[320px] max-w-[95vw] h-[52px]",
         stickyTop && "fixed inset-x-0 top-4 mx-auto z-50 w-fit",

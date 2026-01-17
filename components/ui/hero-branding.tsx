@@ -204,35 +204,41 @@ export function HeroBranding() {
                     accentColor: "rgba(14, 165, 233, 0.8)",
                     pixelColors: ["#0ea5e9", "#7dd3fc", "#0ea5e9"],
                     content: content.song ? (
-                      <div className="flex flex-col items-center text-center gap-3 relative">
-                        <div className="h-16 w-16 shrink-0 rounded-lg overflow-hidden bg-white/5 border border-white/10 flex items-center justify-center">
+                      <div className="flex flex-col items-center text-center relative py-4">
+                        {/* Album Cover */}
+                        <div className="h-32 w-32 rounded-xl overflow-hidden border-2 border-white/20 shadow-lg mb-5">
                           {content.song.albumCover ? (
                             <Image
                               src={content.song.albumCover}
                               alt={content.song.title}
-                              width={64}
-                              height={64}
+                              width={128}
+                              height={128}
                               className="object-cover w-full h-full"
                             />
                           ) : (
-                            <Music className="h-6 w-6 text-white/70" />
+                            <div className="w-full h-full bg-gradient-to-br from-gray-700 to-gray-900 flex items-center justify-center">
+                              <Music className="h-10 w-10 text-white/70" />
+                            </div>
                           )}
                         </div>
-                        <div className="flex flex-col gap-1">
-                          <p className="text-base text-white/90 font-medium">
-                            {content.song.title}
-                          </p>
-                          <p className="text-sm text-white/50">
-                            {content.song.artist}
-                          </p>
-                        </div>
+
+                        {/* Song Title */}
+                        <p className="text-base text-white/90 font-medium mb-1">
+                          {content.song.title}
+                        </p>
+
+                        {/* Artist */}
+                        <p className="text-sm text-white/50">
+                          {content.song.artist}
+                        </p>
+
                         {/* Share button */}
                         <button
                           onClick={() => setShareCardType("song")}
-                          className="absolute -top-1 -right-1 p-2 rounded-full bg-white/5 hover:bg-sky-500/20 border border-white/10 hover:border-sky-500/30 transition-all group"
+                          className="absolute -bottom-2 right-0 p-2 rounded-full bg-white/10 hover:bg-white/20 border border-white/20 transition-all hover:scale-110"
                           title="Share"
                         >
-                          <Share2 size={14} className="text-white/50 group-hover:text-sky-400 transition-colors" />
+                          <Share2 size={14} className="text-white/70" />
                         </button>
                       </div>
                     ) : (
@@ -245,35 +251,41 @@ export function HeroBranding() {
                     accentColor: "rgba(245, 158, 11, 0.8)",
                     pixelColors: ["#D97706", "#F59E0B", "#D97706"],
                     content: content.quote ? (
-                      <div className="flex flex-col items-center text-center gap-3 relative">
-                        <div className="h-16 w-16 shrink-0 rounded-full overflow-hidden bg-white/5 border border-white/10 flex items-center justify-center">
+                      <div className="flex flex-col items-center text-center relative py-4">
+                        {/* Author Image */}
+                        <div className="h-24 w-24 rounded-full overflow-hidden border-2 border-white/20 shadow-lg mb-5">
                           {content.quote.authorImage ? (
                             <Image
                               src={content.quote.authorImage}
                               alt={content.quote.author}
-                              width={64}
-                              height={64}
+                              width={96}
+                              height={96}
                               className="object-cover w-full h-full"
                             />
                           ) : (
-                            <QuoteIcon className="h-6 w-6 text-white/70" />
+                            <div className="w-full h-full bg-gradient-to-br from-gray-700 to-gray-900 flex items-center justify-center">
+                              <QuoteIcon className="h-10 w-10 text-white/70" />
+                            </div>
                           )}
                         </div>
-                        <div className="flex flex-col gap-1">
-                          <p className="text-base text-white/90 font-medium italic">
-                            &ldquo;{content.quote.text}&rdquo;
-                          </p>
-                          <p className="text-sm text-white/50">
-                            — {content.quote.author}
-                          </p>
-                        </div>
+
+                        {/* Quote Text */}
+                        <p className="text-base text-white/90 font-medium italic leading-relaxed mb-4 max-w-xs">
+                          &ldquo;{content.quote.text}&rdquo;
+                        </p>
+
+                        {/* Author */}
+                        <p className="text-sm text-white/50">
+                          — {content.quote.author}
+                        </p>
+
                         {/* Share button */}
                         <button
                           onClick={() => setShareCardType("quote")}
-                          className="absolute -top-1 -right-1 p-2 rounded-full bg-white/5 hover:bg-amber-500/20 border border-white/10 hover:border-amber-500/30 transition-all group"
+                          className="absolute -bottom-2 right-0 p-2 rounded-full bg-white/10 hover:bg-white/20 border border-white/20 transition-all hover:scale-110"
                           title="Share"
                         >
-                          <Share2 size={14} className="text-white/50 group-hover:text-amber-400 transition-colors" />
+                          <Share2 size={14} className="text-white/70" />
                         </button>
                       </div>
                     ) : (

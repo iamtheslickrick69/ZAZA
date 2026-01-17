@@ -69,7 +69,11 @@ const location = {
   display: false
 };
 
-export function ProjectShowcase() {
+interface ProjectShowcaseProps {
+  onPreviewModeChange?: (isPreview: boolean) => void;
+}
+
+export function ProjectShowcase({ onPreviewModeChange }: ProjectShowcaseProps) {
   return (
     <section id="projects">
       <MusicPortfolio
@@ -77,6 +81,7 @@ export function ProjectShowcase() {
         CONFIG={config}
         SOCIAL_LINKS={socialLinks}
         LOCATION={location}
+        onPreviewModeChange={onPreviewModeChange}
       />
     </section>
   );

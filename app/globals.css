@@ -1380,3 +1380,258 @@ body {
 .preserve-3d {
   transform-style: preserve-3d;
 }
+/* ============================================
+   ARCADE SYSTEM ANIMATIONS
+   ============================================ */
+
+/* Arcade Button Glow */
+@keyframes arcade-glow {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(168, 85, 247, 0.4), 0 0 40px rgba(168, 85, 247, 0.2);
+  }
+  50% {
+    box-shadow: 0 0 30px rgba(168, 85, 247, 0.6), 0 0 60px rgba(168, 85, 247, 0.3);
+  }
+}
+
+/* Pixel Shake (for achievements) */
+@keyframes pixel-shake {
+  0%, 100% { transform: translate(0, 0); }
+  10% { transform: translate(-2px, 0); }
+  20% { transform: translate(2px, 0); }
+  30% { transform: translate(-2px, 0); }
+  40% { transform: translate(2px, 0); }
+  50% { transform: translate(-2px, 0); }
+  60% { transform: translate(2px, 0); }
+  70% { transform: translate(-2px, 0); }
+  80% { transform: translate(2px, 0); }
+  90% { transform: translate(-2px, 0); }
+}
+
+/* Retro Bounce (for streak counter) */
+@keyframes retro-bounce {
+  0%, 100% { transform: translateY(0) scale(1); }
+  50% { transform: translateY(-10px) scale(1.05); }
+}
+
+/* Neon Pulse */
+@keyframes neon-pulse {
+  0%, 100% {
+    text-shadow: 
+      0 0 5px currentColor,
+      0 0 10px currentColor,
+      0 0 20px currentColor;
+  }
+  50% {
+    text-shadow: 
+      0 0 10px currentColor,
+      0 0 20px currentColor,
+      0 0 40px currentColor,
+      0 0 80px currentColor;
+  }
+}
+
+/* XP Bar Fill */
+@keyframes xp-fill {
+  from {
+    transform: scaleX(0);
+    transform-origin: left;
+  }
+  to {
+    transform: scaleX(1);
+    transform-origin: left;
+  }
+}
+
+/* Level Up Flash */
+@keyframes level-up {
+  0% {
+    transform: scale(1) rotate(0deg);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.2) rotate(5deg);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(1) rotate(0deg);
+    opacity: 1;
+  }
+}
+
+/* Coin Spin (for XP gains) */
+@keyframes coin-spin {
+  0% {
+    transform: rotateY(0deg);
+  }
+  100% {
+    transform: rotateY(360deg);
+  }
+}
+
+/* Arcade Flicker */
+@keyframes arcade-flicker {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.8; }
+}
+
+/* Retro Scan Lines */
+.arcade-scanlines::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    to bottom,
+    transparent 50%,
+    rgba(0, 0, 0, 0.05) 50%
+  );
+  background-size: 100% 4px;
+  pointer-events: none;
+  animation: arcade-flicker 0.15s infinite;
+}
+
+/* Theme Unlock Animation */
+@keyframes theme-unlock {
+  0% {
+    transform: scale(0.8) rotateZ(-10deg);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1.1) rotateZ(5deg);
+  }
+  100% {
+    transform: scale(1) rotateZ(0deg);
+    opacity: 1;
+  }
+}
+
+/* Leaderboard Entry Slide */
+@keyframes leaderboard-slide {
+  from {
+    transform: translateX(-20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+/* Stats Counter */
+@keyframes count-up {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Utility Classes */
+.animate-arcade-glow {
+  animation: arcade-glow 2s ease-in-out infinite;
+}
+
+.animate-pixel-shake {
+  animation: pixel-shake 0.5s ease-in-out;
+}
+
+.animate-retro-bounce {
+  animation: retro-bounce 1s ease-in-out infinite;
+}
+
+.animate-neon-pulse {
+  animation: neon-pulse 2s ease-in-out infinite;
+}
+
+.animate-level-up {
+  animation: level-up 0.6s ease-out;
+}
+
+.animate-coin-spin {
+  animation: coin-spin 1s linear infinite;
+}
+
+.animate-theme-unlock {
+  animation: theme-unlock 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.animate-leaderboard-slide {
+  animation: leaderboard-slide 0.4s ease-out;
+}
+
+.animate-count-up {
+  animation: count-up 0.6s ease-out;
+}
+
+/* ============================================
+   PORTFOLIO PREVIEW MODE
+   ============================================ */
+
+/* NUCLEAR OPTION: Hide EVERYTHING when preview mode is active */
+body.preview-mode-active > *:not(main) {
+  display: none !important;
+  opacity: 0 !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+}
+
+body.preview-mode-active #main-navigation,
+body.preview-mode-active .bottom-nav-bar,
+body.preview-mode-active nav,
+body.preview-mode-active header,
+body.preview-mode-active footer,
+body.preview-mode-active .floating-chat-widget,
+body.preview-mode-active .scroll-progress,
+body.preview-mode-active section:not(#projects) {
+  display: none !important;
+  opacity: 0 !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+}
+
+/* Hide ALL sections except projects */
+body.preview-mode-active section#home,
+body.preview-mode-active section#showcase,
+body.preview-mode-active section#contact,
+body.preview-mode-active section#book {
+  display: none !important;
+}
+
+/* Keep ONLY portfolio elements visible with maximum z-index */
+body.preview-mode-active .portfolio-wrapper,
+body.preview-mode-active .project-list,
+body.preview-mode-active .background-image,
+body.preview-mode-active .portfolio-container {
+  display: block !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  pointer-events: auto !important;
+}
+
+/* Legacy support */
+body.portfolio-preview-mode .bottom-nav-bar,
+body.portfolio-preview-mode header,
+body.portfolio-preview-mode nav {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+body.portfolio-preview-mode .portfolio-wrapper,
+body.portfolio-preview-mode .project-list,
+body.portfolio-preview-mode .background-image {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+body.portfolio-preview-mode #main-navigation {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
