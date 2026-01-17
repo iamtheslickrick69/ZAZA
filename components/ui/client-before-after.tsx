@@ -1,7 +1,6 @@
 'use client';
 
 import { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
 import {
   Gauge,
   TrendingUp,
@@ -67,15 +66,14 @@ const MiniToggle = ({
       <button
         key={mode}
         onClick={() => onToggle(mode)}
-        className={`relative px-5 py-2 rounded-lg text-sm font-medium transition-all ${
+        className={`relative px-5 py-2 rounded-lg text-sm font-medium ${
           activeMode === mode
             ? 'text-white'
             : 'text-neutral-500 hover:text-neutral-300'
         }`}
       >
         {activeMode === mode && (
-          <motion.div
-            layoutId="mini-toggle"
+          <div
             className="absolute inset-0 rounded-lg"
             style={{
               background:
@@ -83,7 +81,6 @@ const MiniToggle = ({
                   ? 'rgba(255,255,255,0.15)'
                   : 'rgba(0,168,204,0.25)',
             }}
-            transition={{ type: 'spring', stiffness: 400, damping: 30 }}
           />
         )}
         <span className="relative z-10 capitalize">{mode}</span>
@@ -176,13 +173,12 @@ export default function ClientBeforeAfter() {
   return (
     <section className="relative w-full py-16 bg-neutral-950 overflow-hidden">
       {/* Subtle background glow */}
-      <motion.div
-        animate={{
+      <div
+        style={{
           background: isBefore
             ? 'radial-gradient(circle at 50% 50%, rgba(255,255,255,0.03), transparent 50%)'
             : 'radial-gradient(circle at 50% 50%, rgba(0,168,204,0.06), transparent 50%)',
         }}
-        transition={{ duration: 0.6 }}
         className="absolute inset-0 pointer-events-none"
       />
 
@@ -201,154 +197,113 @@ export default function ClientBeforeAfter() {
           <MiniToggle activeMode={viewMode} onToggle={setViewMode} />
         </div>
 
-        {/* Main Card with Animated Glow Border */}
-        <motion.div
-          className="relative"
-          animate={{
-            scale: isBefore ? 1 : 1.01,
-          }}
-          transition={{ duration: 0.4, ease: 'easeOut' }}
-        >
-          {/* Animated Traveling Glow Border */}
+        {/* Main Card with Glow Border */}
+        <div className="relative">
+          {/* Static Glow Border */}
           <div
-            className="absolute -inset-[2px] rounded-3xl overflow-hidden"
+            className="absolute -inset-[2px] rounded-3xl"
             style={{
               background: isBefore
-                ? 'linear-gradient(90deg, transparent, rgba(255,255,255,0.5), transparent)'
-                : 'linear-gradient(90deg, transparent, rgba(0,168,204,0.7), transparent)',
+                ? 'rgba(255,255,255,0.2)'
+                : 'rgba(0,168,204,0.3)',
             }}
-          >
-            <motion.div
-              className="absolute inset-0"
-              style={{
-                background: isBefore
-                  ? 'conic-gradient(from 0deg, transparent, rgba(255,255,255,0.8), transparent, transparent)'
-                  : 'conic-gradient(from 0deg, transparent, rgba(0,168,204,1), transparent, transparent)',
-              }}
-              animate={{
-                rotate: [0, 360],
-              }}
-              transition={{
-                duration: 4,
-                repeat: Infinity,
-                ease: 'linear',
-              }}
-            />
-          </div>
+          />
 
           {/* Glow Shadow */}
-          <motion.div
+          <div
             className="absolute -inset-4 rounded-3xl pointer-events-none"
-            animate={{
+            style={{
               boxShadow: isBefore
                 ? '0 0 60px rgba(255,255,255,0.15), 0 0 120px rgba(255,255,255,0.08)'
                 : '0 0 60px rgba(0,168,204,0.25), 0 0 120px rgba(0,168,204,0.15)',
             }}
-            transition={{ duration: 0.5 }}
           />
 
           {/* Card Container */}
-          <motion.div
+          <div
             className="relative rounded-3xl overflow-hidden"
             style={{
               backgroundColor: 'rgba(23, 23, 23, 0.6)',
               backdropFilter: 'blur(20px)',
-            }}
-            animate={{
               borderColor: isBefore
                 ? 'rgba(255,255,255,0.2)'
                 : 'rgba(0,168,204,0.3)',
             }}
-            transition={{ duration: 0.4 }}
           >
             <div className="flex flex-col lg:flex-row">
               {/* Left: Image with Browser Frame */}
               <div className="lg:w-[58%] p-5">
                 <BrowserFrame mode={viewMode}>
-                  <AnimatePresence mode="wait">
-                    <motion.img
-                      key={viewMode}
-                      src={isBefore ? '/before.png' : '/after.png'}
-                      alt={isBefore ? 'Before Haestus' : 'After Haestus'}
-                      className="w-full h-full object-cover object-top"
-                      initial={{ opacity: 0, scale: 1.02 }}
-                      animate={{ opacity: 1, scale: 1 }}
-                      exit={{ opacity: 0, scale: 0.98 }}
-                      transition={{ duration: 0.3 }}
-                    />
-                  </AnimatePresence>
+                  <img
+                    key={viewMode}
+                    src={isBefore ? '/before.png' : '/after.png'}
+                    alt={isBefore ? 'Before Haestus' : 'After Haestus'}
+                    className="w-full h-full object-cover object-top"
+                  />
                 </BrowserFrame>
               </div>
 
               {/* Right: Content */}
               <div className="lg:w-[42%] p-8 lg:p-10 flex flex-col justify-center">
-                <AnimatePresence mode="wait">
-                  <motion.div
-                    key={viewMode}
-                    initial={{ opacity: 0, x: 20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    exit={{ opacity: 0, x: -20 }}
-                    transition={{ duration: 0.3 }}
+                <div key={viewMode}>
+                  {/* Title */}
+                  <h3 className="text-2xl md:text-3xl font-display font-bold text-white mb-3">
+                    {isBefore ? 'Before Haestus' : 'After Haestus'}
+                  </h3>
+
+                  {/* Subtitle */}
+                  <p className="text-base text-neutral-400 mb-8 leading-relaxed">
+                    {isBefore
+                      ? 'Slow, outdated template. Zero SEO. Mobile disaster.'
+                      : 'A business this professional deserves an online presence to match.'}
+                  </p>
+
+                  {/* Metrics Row */}
+                  <div className="flex flex-wrap gap-3 mb-8">
+                    {CLIENT_DATA.metrics.map((metric) => (
+                      <MetricBadge
+                        key={metric.label}
+                        metric={metric}
+                        mode={viewMode}
+                      />
+                    ))}
+                  </div>
+
+                  {/* Client Info Footer */}
+                  <div
+                    className="flex items-center justify-between pt-6 border-t"
+                    style={{ borderColor: 'rgba(255,255,255,0.1)' }}
                   >
-                    {/* Title */}
-                    <h3 className="text-2xl md:text-3xl font-display font-bold text-white mb-3">
-                      {isBefore ? 'Before Haestus' : 'After Haestus'}
-                    </h3>
-
-                    {/* Subtitle */}
-                    <p className="text-base text-neutral-400 mb-8 leading-relaxed">
-                      {isBefore
-                        ? 'Slow, outdated template. Zero SEO. Mobile disaster.'
-                        : 'A business this professional deserves an online presence to match.'}
-                    </p>
-
-                    {/* Metrics Row */}
-                    <div className="flex flex-wrap gap-3 mb-8">
-                      {CLIENT_DATA.metrics.map((metric) => (
-                        <MetricBadge
-                          key={metric.label}
-                          metric={metric}
-                          mode={viewMode}
-                        />
-                      ))}
+                    <div>
+                      <p className="text-xs text-neutral-500">
+                        {CLIENT_DATA.industry}
+                      </p>
+                      <p className="text-base font-semibold text-white">
+                        {CLIENT_DATA.name}
+                      </p>
                     </div>
+                    {!isBefore && (
+                      <a
+                        href={CLIENT_DATA.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center gap-1.5 text-sm font-medium transition-colors hover:underline"
+                        style={{ color: colors.accent }}
+                      >
+                        Visit Site <ExternalLink size={14} />
+                      </a>
+                    )}
+                  </div>
 
-                    {/* Client Info Footer */}
-                    <div
-                      className="flex items-center justify-between pt-6 border-t"
-                      style={{ borderColor: 'rgba(255,255,255,0.1)' }}
-                    >
-                      <div>
-                        <p className="text-xs text-neutral-500">
-                          {CLIENT_DATA.industry}
-                        </p>
-                        <p className="text-base font-semibold text-white">
-                          {CLIENT_DATA.name}
-                        </p>
-                      </div>
-                      {!isBefore && (
-                        <a
-                          href={CLIENT_DATA.url}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="flex items-center gap-1.5 text-sm font-medium transition-colors hover:underline"
-                          style={{ color: colors.accent }}
-                        >
-                          Visit Site <ExternalLink size={14} />
-                        </a>
-                      )}
-                    </div>
-
-                    {/* Testimonial */}
-                    <p className="mt-6 text-sm text-neutral-500 italic">
-                      {CLIENT_DATA.testimonial}
-                    </p>
-                  </motion.div>
-                </AnimatePresence>
+                  {/* Testimonial */}
+                  <p className="mt-6 text-sm text-neutral-500 italic">
+                    {CLIENT_DATA.testimonial}
+                  </p>
+                </div>
               </div>
             </div>
-          </motion.div>
-        </motion.div>
+          </div>
+        </div>
       </div>
     </section>
   );

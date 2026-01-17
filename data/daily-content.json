@@ -1,0 +1,396 @@
+{
+  "quotes": [
+    {
+      "date": "2026-01-16",
+      "text": "The only way to do great work is to love what you do.",
+      "author": "Steve Jobs",
+      "authorImage": ""
+    },
+    {
+      "date": "2026-01-17",
+      "text": "Innovation distinguishes between a leader and a follower.",
+      "author": "Steve Jobs",
+      "authorImage": ""
+    },
+    {
+      "date": "2026-01-18",
+      "text": "The future belongs to those who believe in the beauty of their dreams.",
+      "author": "Eleanor Roosevelt",
+      "authorImage": ""
+    },
+    {
+      "date": "2026-01-19",
+      "text": "Success is not final, failure is not fatal: it is the courage to continue that counts.",
+      "author": "Winston Churchill",
+      "authorImage": ""
+    },
+    {
+      "date": "2026-01-20",
+      "text": "The only impossible journey is the one you never begin.",
+      "author": "Tony Robbins",
+      "authorImage": ""
+    },
+    {
+      "date": "2026-01-21",
+      "text": "Life is what happens when you're busy making other plans.",
+      "author": "John Lennon",
+      "authorImage": ""
+    },
+    {
+      "date": "2026-01-22",
+      "text": "The way to get started is to quit talking and begin doing.",
+      "author": "Walt Disney",
+      "authorImage": ""
+    },
+    {
+      "date": "2026-01-23",
+      "text": "Don't let yesterday take up too much of today.",
+      "author": "Will Rogers",
+      "authorImage": ""
+    },
+    {
+      "date": "2026-01-24",
+      "text": "You learn more from failure than from success. Don't let it stop you.",
+      "author": "Unknown",
+      "authorImage": ""
+    },
+    {
+      "date": "2026-01-25",
+      "text": "It's not whether you get knocked down, it's whether you get up.",
+      "author": "Vince Lombardi",
+      "authorImage": ""
+    },
+    {
+      "date": "2026-01-26",
+      "text": "If you are working on something that you really care about, you don't have to be pushed.",
+      "author": "Steve Jobs",
+      "authorImage": ""
+    },
+    {
+      "date": "2026-01-27",
+      "text": "People who are crazy enough to think they can change the world, are the ones who do.",
+      "author": "Rob Siltanen",
+      "authorImage": ""
+    },
+    {
+      "date": "2026-01-28",
+      "text": "Failure will never overtake me if my determination to succeed is strong enough.",
+      "author": "Og Mandino",
+      "authorImage": ""
+    },
+    {
+      "date": "2026-01-29",
+      "text": "We may encounter many defeats but we must not be defeated.",
+      "author": "Maya Angelou",
+      "authorImage": ""
+    },
+    {
+      "date": "2026-01-30",
+      "text": "Knowing is not enough; we must apply. Wishing is not enough; we must do.",
+      "author": "Johann Wolfgang Von Goethe",
+      "authorImage": ""
+    },
+    {
+      "date": "2026-01-31",
+      "text": "Imagine your life is perfect in every respect; what would it look like?",
+      "author": "Brian Tracy",
+      "authorImage": ""
+    },
+    {
+      "date": "2026-02-01",
+      "text": "We generate fears while we sit. We overcome them by action.",
+      "author": "Dr. Henry Link",
+      "authorImage": ""
+    },
+    {
+      "date": "2026-02-02",
+      "text": "Whether you think you can or think you can't, you're right.",
+      "author": "Henry Ford",
+      "authorImage": ""
+    },
+    {
+      "date": "2026-02-03",
+      "text": "Security is mostly a superstition. Life is either a daring adventure or nothing.",
+      "author": "Helen Keller",
+      "authorImage": ""
+    },
+    {
+      "date": "2026-02-04",
+      "text": "The only person you are destined to become is the person you decide to be.",
+      "author": "Ralph Waldo Emerson",
+      "authorImage": ""
+    },
+    {
+      "date": "2026-02-05",
+      "text": "Go confidently in the direction of your dreams. Live the life you have imagined.",
+      "author": "Henry David Thoreau",
+      "authorImage": ""
+    },
+    {
+      "date": "2026-02-06",
+      "text": "Everything you've ever wanted is on the other side of fear.",
+      "author": "George Addair",
+      "authorImage": ""
+    },
+    {
+      "date": "2026-02-07",
+      "text": "Believe you can and you're halfway there.",
+      "author": "Theodore Roosevelt",
+      "authorImage": ""
+    },
+    {
+      "date": "2026-02-08",
+      "text": "Act as if what you do makes a difference. It does.",
+      "author": "William James",
+      "authorImage": ""
+    },
+    {
+      "date": "2026-02-09",
+      "text": "Success usually comes to those who are too busy to be looking for it.",
+      "author": "Henry David Thoreau",
+      "authorImage": ""
+    },
+    {
+      "date": "2026-02-10",
+      "text": "Don't be afraid to give up the good to go for the great.",
+      "author": "John D. Rockefeller",
+      "authorImage": ""
+    },
+    {
+      "date": "2026-02-11",
+      "text": "I find that the harder I work, the more luck I seem to have.",
+      "author": "Thomas Jefferson",
+      "authorImage": ""
+    },
+    {
+      "date": "2026-02-12",
+      "text": "Success is walking from failure to failure with no loss of enthusiasm.",
+      "author": "Winston Churchill",
+      "authorImage": ""
+    },
+    {
+      "date": "2026-02-13",
+      "text": "You miss 100% of the shots you don't take.",
+      "author": "Wayne Gretzky",
+      "authorImage": ""
+    },
+    {
+      "date": "2026-02-14",
+      "text": "The best time to plant a tree was 20 years ago. The second best time is now.",
+      "author": "Chinese Proverb",
+      "authorImage": ""
+    }
+  ],
+  "songs": [
+    {
+      "date": "2026-01-16",
+      "title": "Bohemian Rhapsody",
+      "artist": "Queen",
+      "albumCover": "",
+      "spotifyEmbed": "https://open.spotify.com/embed/track/4u7EnebtmKWzUH433cf5Qv"
+    },
+    {
+      "date": "2026-01-17",
+      "title": "Imagine",
+      "artist": "John Lennon",
+      "albumCover": "",
+      "spotifyEmbed": "https://open.spotify.com/embed/track/7pKfPomDEeI4TPT6EOYjn9"
+    },
+    {
+      "date": "2026-01-18",
+      "title": "Hotel California",
+      "artist": "Eagles",
+      "albumCover": "",
+      "spotifyEmbed": "https://open.spotify.com/embed/track/40riOy7x9W7GXjyGp4pjAv"
+    },
+    {
+      "date": "2026-01-19",
+      "title": "Stairway to Heaven",
+      "artist": "Led Zeppelin",
+      "albumCover": "",
+      "spotifyEmbed": "https://open.spotify.com/embed/track/5CQ30WqJwcep0pYcV4AMNc"
+    },
+    {
+      "date": "2026-01-20",
+      "title": "Hey Jude",
+      "artist": "The Beatles",
+      "albumCover": "",
+      "spotifyEmbed": "https://open.spotify.com/embed/track/0aym2LBJBk9DAYuHHutrIl"
+    },
+    {
+      "date": "2026-01-21",
+      "title": "Billie Jean",
+      "artist": "Michael Jackson",
+      "albumCover": "",
+      "spotifyEmbed": "https://open.spotify.com/embed/track/5ChkMS8OtdzJeqyybCc9R5"
+    },
+    {
+      "date": "2026-01-22",
+      "title": "Sweet Child O' Mine",
+      "artist": "Guns N' Roses",
+      "albumCover": "",
+      "spotifyEmbed": "https://open.spotify.com/embed/track/7o2CTH4ctstm8TNelqjb51"
+    },
+    {
+      "date": "2026-01-23",
+      "title": "Smells Like Teen Spirit",
+      "artist": "Nirvana",
+      "albumCover": "",
+      "spotifyEmbed": "https://open.spotify.com/embed/track/4CeeEOM32jQcH3eN9Q2dGj"
+    },
+    {
+      "date": "2026-01-24",
+      "title": "Purple Rain",
+      "artist": "Prince",
+      "albumCover": "",
+      "spotifyEmbed": "https://open.spotify.com/embed/track/54flyrjcdnQdco7300avMJ"
+    },
+    {
+      "date": "2026-01-25",
+      "title": "Wonderwall",
+      "artist": "Oasis",
+      "albumCover": "",
+      "spotifyEmbed": "https://open.spotify.com/embed/track/4GX8X61y4TuPKTCTjXzKWe"
+    },
+    {
+      "date": "2026-01-26",
+      "title": "Wish You Were Here",
+      "artist": "Pink Floyd",
+      "albumCover": "",
+      "spotifyEmbed": "https://open.spotify.com/embed/track/6mFkJmJqdDVQ1REhVfGgd1"
+    },
+    {
+      "date": "2026-01-27",
+      "title": "Under Pressure",
+      "artist": "Queen & David Bowie",
+      "albumCover": "",
+      "spotifyEmbed": "https://open.spotify.com/embed/track/2fuCquhmrzHpu5xcA1ci9x"
+    },
+    {
+      "date": "2026-01-28",
+      "title": "Don't Stop Believin'",
+      "artist": "Journey",
+      "albumCover": "",
+      "spotifyEmbed": "https://open.spotify.com/embed/track/4bHsxqR3GMrXTxEPLuK5ue"
+    },
+    {
+      "date": "2026-01-29",
+      "title": "Africa",
+      "artist": "Toto",
+      "albumCover": "",
+      "spotifyEmbed": "https://open.spotify.com/embed/track/2374M0fQpWi3dLnB54qaLX"
+    },
+    {
+      "date": "2026-01-30",
+      "title": "Free Bird",
+      "artist": "Lynyrd Skynyrd",
+      "albumCover": "",
+      "spotifyEmbed": "https://open.spotify.com/embed/track/3XSmKV6MjiT6VdVqLnv61N"
+    },
+    {
+      "date": "2026-01-31",
+      "title": "Livin' on a Prayer",
+      "artist": "Bon Jovi",
+      "albumCover": "",
+      "spotifyEmbed": "https://open.spotify.com/embed/track/0J6mQxEZnlRt9ymzFntA6z"
+    },
+    {
+      "date": "2026-02-01",
+      "title": "Comfortably Numb",
+      "artist": "Pink Floyd",
+      "albumCover": "",
+      "spotifyEmbed": "https://open.spotify.com/embed/track/1nrWfzhgzsS4NOGRwpJAHi"
+    },
+    {
+      "date": "2026-02-02",
+      "title": "With or Without You",
+      "artist": "U2",
+      "albumCover": "",
+      "spotifyEmbed": "https://open.spotify.com/embed/track/6ADSaE87h8Y3lccZlBJdXr"
+    },
+    {
+      "date": "2026-02-03",
+      "title": "Dream On",
+      "artist": "Aerosmith",
+      "albumCover": "",
+      "spotifyEmbed": "https://open.spotify.com/embed/track/0DLMsYPoJmRzI43fSuNCGS"
+    },
+    {
+      "date": "2026-02-04",
+      "title": "Born to Run",
+      "artist": "Bruce Springsteen",
+      "albumCover": "",
+      "spotifyEmbed": "https://open.spotify.com/embed/track/4qM7VSwYPIAmKb48dP7V5t"
+    },
+    {
+      "date": "2026-02-05",
+      "title": "Sweet Home Alabama",
+      "artist": "Lynyrd Skynyrd",
+      "albumCover": "",
+      "spotifyEmbed": "https://open.spotify.com/embed/track/7e89621JPkKaeDSTQ3avtg"
+    },
+    {
+      "date": "2026-02-06",
+      "title": "November Rain",
+      "artist": "Guns N' Roses",
+      "albumCover": "",
+      "spotifyEmbed": "https://open.spotify.com/embed/track/6OpnNSeITfYLNdHDCcHRzh"
+    },
+    {
+      "date": "2026-02-07",
+      "title": "Every Breath You Take",
+      "artist": "The Police",
+      "albumCover": "",
+      "spotifyEmbed": "https://open.spotify.com/embed/track/1JSTJqkT5qHq8MDJnJbRE1"
+    },
+    {
+      "date": "2026-02-08",
+      "title": "Take On Me",
+      "artist": "a-ha",
+      "albumCover": "",
+      "spotifyEmbed": "https://open.spotify.com/embed/track/2WfaOiMkCvy7F5fcp2zZ8L"
+    },
+    {
+      "date": "2026-02-09",
+      "title": "Karma Police",
+      "artist": "Radiohead",
+      "albumCover": "",
+      "spotifyEmbed": "https://open.spotify.com/embed/track/63OQupATfueTdZMWTxW03A"
+    },
+    {
+      "date": "2026-02-10",
+      "title": "Mr. Brightside",
+      "artist": "The Killers",
+      "albumCover": "",
+      "spotifyEmbed": "https://open.spotify.com/embed/track/003vvx7Niy0yvhvHt4a68B"
+    },
+    {
+      "date": "2026-02-11",
+      "title": "In the Air Tonight",
+      "artist": "Phil Collins",
+      "albumCover": "",
+      "spotifyEmbed": "https://open.spotify.com/embed/track/18AXbzPzBS8Y3AkgRxCQSN"
+    },
+    {
+      "date": "2026-02-12",
+      "title": "Hallelujah",
+      "artist": "Jeff Buckley",
+      "albumCover": "",
+      "spotifyEmbed": "https://open.spotify.com/embed/track/3GCdLUSnKSMJhs4Tj6CV3s"
+    },
+    {
+      "date": "2026-02-13",
+      "title": "The Sound of Silence",
+      "artist": "Simon & Garfunkel",
+      "albumCover": "",
+      "spotifyEmbed": "https://open.spotify.com/embed/track/4a3jSXtechnological5lBc"
+    },
+    {
+      "date": "2026-02-14",
+      "title": "I Want to Hold Your Hand",
+      "artist": "The Beatles",
+      "albumCover": "",
+      "spotifyEmbed": "https://open.spotify.com/embed/track/4qBYGwQZqOLrYh1n4Mq0nM"
+    }
+  ]
+}
